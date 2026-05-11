@@ -39,7 +39,7 @@ function App() {
                     <div className="form-new__block">
                       <label htmlFor="formTitle" className="subttl">Название задачи</label>
                       <input className="form-new__input" type="text" name="name" id="formTitle" placeholder="Введите название задачи..."
-                             autoFocus></input>
+                             autoFocus/>
                     </div>
                     <div className="form-new__block">
                       <label htmlFor="textArea" className="subttl">Описание задачи</label>
@@ -113,13 +113,13 @@ function App() {
                         </div>
                       </div>
 
-                      <input type="hidden" id="datepick_value" value="08.09.2023">
-                        <div className="calendar__period">
-                          <p className="calendar__p date-end">Выберите срок исполнения <span className="date-control"></span>.</p>
-                        </div>
-                      </input>
-                    </div>
+                      <div className="calendar__period">
+                        <p className="calendar__p date-end">Выберите срок исполнения <span
+                            className="date-control"></span>.</p>
+                        <input type="hidden" id="datepick_value" value="08.09.2023"/>
+                      </div>
                   </div>
+                </div>
                 </div>
                 <div className="pop-new-card__categories categories">
                   <p className="categories__p subttl">Категория</p>
@@ -245,13 +245,13 @@ function App() {
                         </div>
                       </div>
 
-                      <input type="hidden" id="datepick_value" value="08.09.2023">
-                        <div className="calendar__period">
-                          <p className="calendar__p date-end">Срок исполнения: <span className="date-control">09.09.23</span></p>
-                        </div>
-                      </input>
-                    </div>
+                      <div className="calendar__period">
+                        <p className="calendar__p date-end">Срок исполнения: <span
+                            className="date-control">09.09.23</span></p>
+                        <input type="hidden" id="datepick_value" value="08.09.2023"/>
+                      </div>
                   </div>
+                </div>
                 </div>
                 <div className="theme-down__categories theme-down">
                   <p className="categories__p subttl">Категория</p>
@@ -300,7 +300,7 @@ function App() {
                   <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
                   <div className="pop-user-set__theme">
                     <p>Темная тема</p>
-                    <input type="checkbox" className="checkbox" name="checkbox"></input>
+                    <input type="checkbox" className="checkbox" name="checkbox"/>
                   </div>
                   <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
                 </div>
