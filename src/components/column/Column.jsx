@@ -1,9 +1,10 @@
 import Card from "../card/Card.jsx";
 import CardLoader from "../card/CardLoader.jsx";
+import {MainColumn} from "../main/Main.styled.js";
 
 const Column = ({title, cards, loading}) => {
     return (
-        <div className="main__column">
+        <MainColumn>
             <div className="column__title">
                 <p>{title}</p>
             </div>
@@ -14,11 +15,11 @@ const Column = ({title, cards, loading}) => {
                         .map((card) =>
                             loading
                                 ? <CardLoader />
-                                : <Card key={card.id} card={card} />
+                                : <Card card={card} />
                         )
                 }
             </div>
-        </div>
+        </MainColumn>
     );
 }
 

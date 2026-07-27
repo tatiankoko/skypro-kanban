@@ -1,21 +1,23 @@
 import PopUser from "../popups/popUser/PopUser.jsx";
 import {useState} from "react";
+import {HeaderBlock, HeaderButtonMainNew, HeaderNav, HeaderStyled} from "./Header.styled.js";
+import {ContainerStyled} from "../Container.styled.js";
 
 const Header = () => {
     const [showUser, setShowUser] = useState(false)
 
     return (
-        <header className="header">
-            <div className="container">
-                <div className="header__block">
+        <HeaderStyled>
+            <ContainerStyled>
+                <HeaderBlock>
                     <div className="header__logo _show _light">
                         <a href="" target="_self"><img src="/images/logo.png" alt="logo"></img></a>
                     </div>
                     <div className="header__logo _dark">
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></img></a>
                     </div>
-                    <nav className="header__nav">
-                        <button className="header__btn-main-new _hover01" id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></button>
+                    <HeaderNav>
+                        <HeaderButtonMainNew id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></HeaderButtonMainNew>
                         <a href="#user-set-target"
                            className="header__user _hover02"
                            onClick={() => setShowUser(!showUser)}>Ivan Ivanov</a>
@@ -24,10 +26,10 @@ const Header = () => {
                             ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" />
                             : null
                         }
-                    </nav>
-                </div>
-            </div>
-        </header>
+                    </HeaderNav>
+                </HeaderBlock>
+            </ContainerStyled>
+        </HeaderStyled>
     )
 }
 
