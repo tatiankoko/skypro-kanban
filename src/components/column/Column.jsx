@@ -1,15 +1,22 @@
-import Card from 'src/components/card/Card.jsx'
+import Card from "../card/Card.jsx";
+import CardLoader from "../card/CardLoader.jsx";
 
-const Column = () => {
+const Column = ({title, cards, loading}) => {
     return (
         <div className="main__column">
             <div className="column__title">
-                <p>Без статуса</p>
+                <p>{title}</p>
             </div>
             <div className="cards">
-                <div className="cards__item">
-                    <Card />
-                </div>
+                {
+                    cards
+                        .filter((card) => card.status === title)
+                        .map((card) =>
+                            loading
+                                ? <CardLoader />
+                                : <Card key={card.id} card={card} />
+                        )
+                }
             </div>
         </div>
     );
