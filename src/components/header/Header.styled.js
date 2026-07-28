@@ -49,10 +49,54 @@ export const HeaderButtonMainNew = styled.button`
     &:hover {
         background-color: #33399b;
     }
+
+    @media screen and (max-width: 495px) {
+        z-index: 3;
+        position: fixed;
+        left: 16px;
+        bottom: 30px;
+        top: auto;
+        width: calc(100vw - 32px);
+        height: 40px;
+        border-radius: 4px;
+        margin-right: 0;
+    }
+`;
+
+export const HeaderUser = styled.a`
+    height: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 20px;
+    color: #565EEF;
+    
+    &::after {
+        content: "";
+        display: block;
+        width: 6px;
+        height: 6px;
+        border-radius: 1px;
+        border-left: 1.9px solid #565EEF;
+        border-bottom: 1.9px solid #565EEF;
+        transform: rotate(-45deg);
+        margin: -6px 0 0 5px;
+        padding: 0;
+    }
+
+    &:hover {
+        color: #33399b;
+
+        &::after {
+            border-left-color: #33399b;
+            border-bottom-color: #33399b;
+        }
+    }
 `;
 
 /*export const HeaderStyled = styled.header``;
-export const HeaderStyled = styled.header``;
 export const HeaderStyled = styled.header``;
 export const HeaderStyled = styled.header``;
 export const HeaderStyled = styled.header``;

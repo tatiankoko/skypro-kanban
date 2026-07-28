@@ -3,11 +3,12 @@ import PopBrowse from "./components/popups/popBrowse/PopBrowse.jsx";
 import PopNewCard from "./components/popups/popNewCard/PopNewCard.jsx";
 import Header from "./components/header/Header.jsx";
 import Main from "./components/main/Main.jsx";
+import {WrapperStyled} from "./components/Wrapper.styled.js";
 
 function App() {
   return (
     <>
-      <div className="wrapper">
+      <WrapperStyled>
         {/*pop-up start*/}
 
         <div className="pop-exit" id="popExit">
@@ -34,7 +35,7 @@ function App() {
 
         <Header />
         <Main />
-      </div>
+      </WrapperStyled>
 
       {/*<script src="js/script.js"></script>*/}
     </>

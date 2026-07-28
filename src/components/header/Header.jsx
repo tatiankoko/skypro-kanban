@@ -1,6 +1,6 @@
 import PopUser from "../popups/popUser/PopUser.jsx";
 import {useState} from "react";
-import {HeaderBlock, HeaderButtonMainNew, HeaderNav, HeaderStyled} from "./Header.styled.js";
+import {HeaderBlock, HeaderButtonMainNew, HeaderNav, HeaderStyled, HeaderUser} from "./Header.styled.js";
 import {ContainerStyled} from "../Container.styled.js";
 
 const Header = () => {
@@ -17,10 +17,15 @@ const Header = () => {
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></img></a>
                     </div>
                     <HeaderNav>
-                        <HeaderButtonMainNew id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></HeaderButtonMainNew>
-                        <a href="#user-set-target"
-                           className="header__user _hover02"
-                           onClick={() => setShowUser(!showUser)}>Ivan Ivanov</a>
+                        <HeaderButtonMainNew id="btnMainNew">
+                            <a href="#popNewCard">Создать новую задачу</a>
+                        </HeaderButtonMainNew>
+
+                        <HeaderUser
+                            href="#user-set-target"
+                           onClick={() => setShowUser(!showUser)}>
+                            Ivan Ivanov
+                        </HeaderUser>
                         {
                             showUser
                             ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" />
