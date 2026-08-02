@@ -1,6 +1,6 @@
 import PopUser from "../popups/popUser/PopUser.jsx";
 import {useState} from "react";
-import {HeaderBlock, HeaderButtonMainNew, HeaderNav, HeaderStyled, HeaderUser} from "./Header.styled.js";
+import {HeaderBlock, HeaderButtonMainNew, HeaderLogo, HeaderNav, HeaderStyled, HeaderUser} from "./Header.styled.js";
 import {ContainerStyled} from "../Container.styled.js";
 
 const Header = () => {
@@ -10,12 +10,12 @@ const Header = () => {
         <HeaderStyled>
             <ContainerStyled>
                 <HeaderBlock>
-                    <div className="header__logo _show _light">
+                    <HeaderLogo className=" _show _light">
                         <a href="" target="_self"><img src="/images/logo.png" alt="logo"></img></a>
-                    </div>
-                    <div className="header__logo _dark">
+                    </HeaderLogo>
+                    <HeaderLogo className=" _dark">
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></img></a>
-                    </div>
+                    </HeaderLogo>
                     <HeaderNav>
                         <HeaderButtonMainNew id="btnMainNew">
                             <a href="#popNewCard">Создать новую задачу</a>
@@ -23,7 +23,7 @@ const Header = () => {
 
                         <HeaderUser
                             href="#user-set-target"
-                           onClick={() => setShowUser(!showUser)}>
+                            onClick={() => setShowUser(!showUser)}>
                             Ivan Ivanov
                         </HeaderUser>
                         {

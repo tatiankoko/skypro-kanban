@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import {colors} from "../../colors.js";
 
 export const MainStyled = styled.main`
     width: 100%;
-    background-color: #EAEEF6;
+    background-color: ${ colors.mainBg };
 `
 
 export const MainBlock = styled.div`

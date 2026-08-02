@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import {colors} from "../../colors.js";
 
 export const HeaderStyled = styled.header`
     width: 100%;
     margin: 0 auto;
-    background-color: #FFFFFF;
+    background-color: ${ colors.background };
 `;
 
 export const HeaderBlock = styled.div`
@@ -26,16 +27,20 @@ export const HeaderNav = styled.nav`
     justify-content: center;
 `;
 
-export const HeaderLogo = styled.div`
-    width: 85px;
+export const HeaderLogo = styled.div` //._dark _light 
+    display: block;
+    
+    img {
+        width: 85px;
+    }
 `;
 
 export const HeaderButtonMainNew = styled.button`
     width: 178px;
     height: 30px;
     border-radius: 4px;
-    background-color: #565EEF;
-    color: #FFFFFF;
+    background-color: ${ colors.btnBg };
+    color: ${ colors.background };
     border: none;
     font-size: 14px;
     line-height: 1;
@@ -43,11 +48,11 @@ export const HeaderButtonMainNew = styled.button`
     margin-right: 20px;
 
     a {
-        color: #FFFFFF;
+        color: ${ colors.background };
     }
 
     &:hover {
-        background-color: #33399b;
+        background-color: ${ colors.btnHover };
     }
 
     @media screen and (max-width: 495px) {
@@ -71,7 +76,7 @@ export const HeaderUser = styled.a`
     justify-content: center;
     font-size: 14px;
     line-height: 20px;
-    color: #565EEF;
+    color: ${ colors.btnBg };;
     
     &::after {
         content: "";
@@ -79,26 +84,20 @@ export const HeaderUser = styled.a`
         width: 6px;
         height: 6px;
         border-radius: 1px;
-        border-left: 1.9px solid #565EEF;
-        border-bottom: 1.9px solid #565EEF;
+        border-left: 1.9px solid ${ colors.btnBg };
+        border-bottom: 1.9px solid ${ colors.btnBg };
         transform: rotate(-45deg);
         margin: -6px 0 0 5px;
         padding: 0;
     }
 
     &:hover {
-        color: #33399b;
+        color: ${ colors.btnHover };
 
         &::after {
-            border-left-color: #33399b;
-            border-bottom-color: #33399b;
+            border-left-color: ${ colors.btnHover };
+            border-bottom-color: ${ colors.btnHover };
         }
     }
 `;
 
-/*export const HeaderStyled = styled.header``;
-export const HeaderStyled = styled.header``;
-export const HeaderStyled = styled.header``;
-export const HeaderStyled = styled.header``;
-export const HeaderStyled = styled.header``;
-export const HeaderStyled = styled.header``;*/
