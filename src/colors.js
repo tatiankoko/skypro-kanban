@@ -1,5 +1,6 @@
 export const colors = {
     background: '#FFFFFF',
+    wrapperBg: '#F1F1F1',
     mainBg: '#EAEEF6',
     btnBg: '#565EEF',
     btnHover: '#33399b',
