@@ -1,24 +1,30 @@
 import Card from "../card/Card.jsx";
 import CardLoader from "../card/CardLoader.jsx";
+import {MainColumn} from "../main/Main.styled.js";
+import {CardsStyled} from "../card/Card.styled.js";
+import {ColumnTitle} from "./Column.styled.js";
 
 const Column = ({title, cards, loading}) => {
     return (
-        <div className="main__column">
-            <div className="column__title">
+        <MainColumn>
+            <ColumnTitle>
                 <p>{title}</p>
-            </div>
-            <div className="cards">
+            </ColumnTitle>
+            <CardsStyled>
                 {
                     cards
                         .filter((card) => card.status === title)
                         .map((card) =>
                             loading
-                                ? <CardLoader />
-                                : <Card key={card.id} card={card} />
+                                ? <CardLoader key={card.id} />
+                                : <Card key={card.id}
+                                        theme={card.theme}
+                                        title={card.title}
+                                        date={card.date}/>
                         )
                 }
-            </div>
-        </div>
+            </CardsStyled>
+        </MainColumn>
     );
 }
 
