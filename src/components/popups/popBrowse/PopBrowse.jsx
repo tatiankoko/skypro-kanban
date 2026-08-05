@@ -1,7 +1,18 @@
 import Calendar from "../../calendar/Calendar.jsx";
+import {Link, useParams} from "react-router-dom";
+import {useMemo} from "react";
+import {cardList} from "../../../data.js";
 
 const PopBrowse = () => {
+    /*const [id] = useParams();
+    const card = useMemo(() =>
+        cardList.find(item => item.id === id),
+        [id]
+
+    )*/
+    /*console.log(`card with id ${card.id}`);*/
     return (
+        <>
         <div className="pop-browse" id="popBrowse">
             <div className="pop-browse__container">
                 <div className="pop-browse__block">
@@ -52,7 +63,9 @@ const PopBrowse = () => {
                                 <button className="btn-browse__edit _btn-bor _hover03"><a href="#">Редактировать задачу</a></button>
                                 <button className="btn-browse__delete _btn-bor _hover03"><a href="#">Удалить задачу</a></button>
                             </div>
-                            <button className="btn-browse__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
+                            <Link to={"/"}>
+                                <button className="btn-browse__close _btn-bg _hover01">Закрыть</button>
+                            </Link>
                         </div>
                         <div className="pop-browse__btn-edit _hide">
                             <div className="btn-group">
@@ -60,13 +73,16 @@ const PopBrowse = () => {
                                 <button className="btn-edit__edit _btn-bor _hover03"><a href="#">Отменить</a></button>
                                 <button className="btn-edit__delete _btn-bor _hover03" id="btnDelete"><a href="#">Удалить задачу</a></button>
                             </div>
-                            <button className="btn-edit__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
+                            <Link to={"/"}>
+                                <button className="btn-edit__close _btn-bg _hover01">Закрыть</button>
+                            </Link>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+            </>
     )
 }
 

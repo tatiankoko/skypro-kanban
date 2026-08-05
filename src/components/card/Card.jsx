@@ -1,6 +1,7 @@
 import {CardBtn, CardContent, CardDate, CardGroup, CardsCard, CardsItem, CardTheme, CardTitle} from "./Card.styled.js";
+import {Link} from "react-router-dom";
 
-const Card = ({theme, title, date}) => {
+const Card = ({theme, title, date, id}) => {
     const themeBg =
         theme === "Web Design"
         ? 'orangeBg'
@@ -22,13 +23,13 @@ const Card = ({theme, title, date}) => {
                     <CardTheme $bgColor={themeBg} $color={themeColor}>
                         <p>{theme}</p>
                     </CardTheme>
-                    <a href="#popBrowse" target="_self">
+                    <Link to={"card/" + id}>
                         <CardBtn>
                             <div></div>
                             <div></div>
                             <div></div>
                         </CardBtn>
-                    </a>
+                    </Link>
                 </CardGroup>
                 <CardContent>
                     <a href="" target="_blank">

@@ -2,24 +2,37 @@ import PopUser from "../popups/popUser/PopUser.jsx";
 import {useState} from "react";
 import {HeaderBlock, HeaderButtonMainNew, HeaderLogo, HeaderNav, HeaderStyled, HeaderUser} from "./Header.styled.js";
 import {ContainerStyled} from "../Container.styled.js";
+import {Link, useNavigate} from "react-router-dom";
 
-const Header = () => {
+const Header = ({ setIsAuth }) => {
     const [showUser, setShowUser] = useState(false)
+
+    const navigate = useNavigate();
+
+    const handleClickNew = (e) => {
+        e.preventDefault();
+        navigate('/card/add');
+    };
 
     return (
         <HeaderStyled>
             <ContainerStyled>
                 <HeaderBlock>
-                    <HeaderLogo className=" _show _light">
-                        <a href="" target="_self"><img src="/images/logo.png" alt="logo"></img></a>
-                    </HeaderLogo>
+                    <Link to={"/"}>
+                        <HeaderLogo className=" _show _light">
+                            <img src="/images/logo.png" alt="logo"></img>
+                        </HeaderLogo>
+                    </Link>
                     <HeaderLogo className=" _dark">
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></img></a>
                     </HeaderLogo>
                     <HeaderNav>
-                        <HeaderButtonMainNew id="btnMainNew">
-                            <a href="#popNewCard">Создать новую задачу</a>
-                        </HeaderButtonMainNew>
+                        <Link to={"/card/add"}>
+                            <HeaderButtonMainNew id="btnMainNew" onClick={handleClickNew}>
+                                Создать новую задачу
+                                {/*<a href="#popNewCard">Создать новую задачу</a>*/}
+                            </HeaderButtonMainNew>
+                        </Link>
 
                         <HeaderUser
                             href="#user-set-target"
@@ -28,7 +41,7 @@ const Header = () => {
                         </HeaderUser>
                         {
                             showUser
-                            ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" />
+                            ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" setIsAuth={setIsAuth} />
                             : null
                         }
                     </HeaderNav>
