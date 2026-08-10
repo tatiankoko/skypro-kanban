@@ -20,7 +20,6 @@ const PopBrowse = () => {
 
     const activeTheme = "categories__theme theme-top _active-category " + theme;
 
-
     return (
         <div className="pop-browse" id="popBrowse">
             <div className="pop-browse__container">

@@ -3,10 +3,10 @@ import Header from "../components/header/Header.jsx";
 import Main from "../components/main/Main.jsx";
 import {Outlet} from "react-router-dom";
 
-const MainPage = ({setIsAuth}) => {
+const MainPage = () => {
     return (
         <WrapperStyled>
-            <Header setIsAuth={setIsAuth} />
+            <Header />
             <Main />
             <Outlet />
         </WrapperStyled>

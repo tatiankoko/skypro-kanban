@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom";
 import {colors} from "../../colors.js";
 
 export const SignInWrapper = styled.div`
@@ -161,13 +160,4 @@ export const ModalBtnEnter = styled.button`
     @media screen and (max-width: 375px) {
         height: 40px;
     }
-`
-
-export const ModalBtnEnterLink = styled(Link)`
-    width: 100%;
-    height: 100%;
-    color: ${ colors.background };
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `

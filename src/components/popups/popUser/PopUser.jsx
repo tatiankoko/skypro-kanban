@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const PopUser = ({name, mail, setIsAuth}) => {
+const PopUser = ({name, mail}) => {
     return (
         <div className="header__pop-user-set pop-user-set" id="user-set-target">
             {/*<a href="">x</a>*/}

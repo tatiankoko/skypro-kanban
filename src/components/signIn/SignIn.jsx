@@ -1,15 +1,22 @@
 import {
     Modal,
-    ModalBlock, ModalBtnEnter, ModalBtnEnterLink,
-    ModalFormGroup,
+    ModalBlock, ModalBtnEnter, ModalFormGroup,
     ModalFormLogin, ModalInput,
     ModalTtl,
     SignInContainer,
     SignInWrapper
 } from "./SignIn.styled.js";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
-const SignIn = () => {
+const SignIn = ({ setIsAuth }) => {
+    const navigate = useNavigate();
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        setIsAuth(true);
+        navigate("/");
+    }
+
     return (
         <SignInWrapper>
             <SignInContainer>
@@ -30,10 +37,8 @@ const SignIn = () => {
                                         id="formpassword"
                                         placeholder="Пароль"/>
 
-                            <ModalBtnEnter id="btnEnter">
-                                <ModalBtnEnterLink to={"/"}>
+                            <ModalBtnEnter id="btnEnter" onClick={handleLogin}>
                                     Войти
-                                </ModalBtnEnterLink>
                             </ModalBtnEnter>
 
                             <ModalFormGroup>

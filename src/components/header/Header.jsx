@@ -4,7 +4,7 @@ import {HeaderBlock, HeaderButtonMainNew, HeaderLogo, HeaderNav, HeaderStyled, H
 import {ContainerStyled} from "../Container.styled.js";
 import {Link, useNavigate} from "react-router-dom";
 
-const Header = ({ setIsAuth }) => {
+const Header = () => {
     const [showUser, setShowUser] = useState(false)
 
     const navigate = useNavigate();
@@ -41,7 +41,7 @@ const Header = ({ setIsAuth }) => {
                         </HeaderUser>
                         {
                             showUser
-                            ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" setIsAuth={setIsAuth} />
+                            ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" />
                             : null
                         }
                     </HeaderNav>

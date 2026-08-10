@@ -10,20 +10,20 @@ import SignInPage from "../../pages/SignInPage.jsx";
 import SignUpPage from "../../pages/SignUpPage.jsx";
 
 function AppRoutes() {
-    const [isAuth, setIsAuth] = useState(true);
+    const [isAuth, setIsAuth] = useState(false);
 
     return (
         <Routes>
             <Route element={<PrivateRoute isAuth={isAuth} />}>
                 {/* Главная страница */}
-                <Route path="/" element={<MainPage setIsAuth={setIsAuth} />} >
+                <Route path="/" element={<MainPage />} >
                     <Route path="/logout" element={<LogoutPage setIsAuth={setIsAuth} />} />
                     <Route path="/card/add" element={<NewCardPage />} />
                     <Route path="/card/:id" element={<CardPage />} />
                 </Route>
             </Route>
             {/* Страница входа */}
-            <Route path="/sign-in" element={<SignInPage />} />
+            <Route path="/sign-in" element={<SignInPage setIsAuth={setIsAuth} />} />
             {/* Страница регистрации */}
             <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="*" element={<NotFoundPage />} />

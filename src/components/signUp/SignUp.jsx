@@ -1,15 +1,22 @@
 import {
     Modal,
-    ModalBlock, ModalBtnEnter, ModalBtnEnterLink,
+    ModalBlock, ModalBtnEnter,
     ModalFormGroup,
     ModalFormLogin, ModalInput,
     ModalTtl,
     SignInContainer,
     SignInWrapper
 } from "../signIn/SignIn.styled.js";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const SignUp = () => {
+    const navigate = useNavigate();
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        navigate("/sign-in");
+    }
+
     return (
         <SignInWrapper>
             <SignInContainer>
@@ -35,11 +42,9 @@ const SignUp = () => {
                                         id="passwordFirst"
                                         placeholder="Пароль"/>
 
-                            <ModalBtnEnterLink to={"/"}>
-                                <ModalBtnEnter id="SignUpEnter">
-                                    Зарегистрироваться
-                                </ModalBtnEnter>
-                            </ModalBtnEnterLink>
+                            <ModalBtnEnter id="SignUpEnter" onClick={handleRegister}>
+                                Зарегистрироваться
+                            </ModalBtnEnter>
 
                             <ModalFormGroup>
                                 <Link to={"/sign-in"}>
