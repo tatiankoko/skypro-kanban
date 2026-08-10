@@ -12,7 +12,6 @@ const PopBrowse = () => {
     )*/
     /*console.log(`card with id ${card.id}`);*/
     return (
-        <>
         <div className="pop-browse" id="popBrowse">
             <div className="pop-browse__container">
                 <div className="pop-browse__block">
@@ -82,7 +81,6 @@ const PopBrowse = () => {
                 </div>
             </div>
         </div>
-            </>
     )
 }
 

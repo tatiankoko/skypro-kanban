@@ -17,7 +17,7 @@ function AppRoutes() {
             <Route element={<PrivateRoute isAuth={isAuth} />}>
                 {/* Главная страница */}
                 <Route path="/" element={<MainPage setIsAuth={setIsAuth} />} >
-                    <Route path="/logout" element={<LogoutPage />} />
+                    <Route path="/logout" element={<LogoutPage setIsAuth={setIsAuth} />} />
                     <Route path="/card/add" element={<NewCardPage />} />
                     <Route path="/card/:id" element={<CardPage />} />
                 </Route>

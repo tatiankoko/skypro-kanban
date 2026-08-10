@@ -1,14 +1,6 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const PopUser = ({name, mail, setIsAuth}) => {
-    /*const navigate = useNavigate();
-
-    function handleLogout(e) {
-        e.preventDefault();
-        setIsAuth(false);
-        navigate("/sign-in");
-    }*/
-
     return (
         <div className="header__pop-user-set pop-user-set" id="user-set-target">
             {/*<a href="">x</a>*/}
