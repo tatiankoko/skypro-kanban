@@ -1,6 +1,6 @@
 import {
     Modal,
-    ModalBlock, ModalBtnEnter,
+    ModalBlock, ModalBtnEnter, ModalBtnEnterLink,
     ModalFormGroup,
     ModalFormLogin, ModalInput,
     ModalTtl,
@@ -30,11 +30,11 @@ const SignIn = () => {
                                         id="formpassword"
                                         placeholder="Пароль"/>
 
-                            <Link to={"/"}>
-                                <ModalBtnEnter id="btnEnter">
+                            <ModalBtnEnter id="btnEnter">
+                                <ModalBtnEnterLink to={"/"}>
                                     Войти
-                                </ModalBtnEnter>
-                            </Link>
+                                </ModalBtnEnterLink>
+                            </ModalBtnEnter>
 
                             <ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>

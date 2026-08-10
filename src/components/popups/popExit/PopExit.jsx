@@ -1,7 +1,7 @@
 import {Link, useNavigate} from "react-router-dom";
 
 const PopExit = ({setIsAuth}) => {
-    const navigate = useNavigate();
+    /*const navigate = useNavigate();
 
     /*function handleLogout(e) {
         e.preventDefault();
@@ -19,11 +19,15 @@ const PopExit = ({setIsAuth}) => {
                     <form className="pop-exit__form" id="formExit" action="#">
                         <div className="pop-exit__form-group">
                             <Link to={"/sign-in"}>
-                                <button className="pop-exit__exit-yes _hover01" id="exitYes">Да, выйти</button>
+                                <button className="pop-exit__exit-yes _hover01" id="exitYes">
+                                    Да, выйти
+                                </button>
                             </Link>
 
                             <Link to={"/"}>
-                                <button className="pop-exit__exit-no _hover03" id="exitNo">Нет, остаться</button>
+                                <button className="pop-exit__exit-no _hover03" id="exitNo">
+                                    Нет, остаться
+                                </button>
                             </Link>
                         </div>
                     </form>
