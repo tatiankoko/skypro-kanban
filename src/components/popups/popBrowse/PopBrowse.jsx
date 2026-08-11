@@ -1,34 +1,41 @@
 import Calendar from "../../calendar/Calendar.jsx";
+import {Link, useParams} from "react-router-dom";
+import {useMemo} from "react";
+import {cardList} from "../../../data.js";
 
 const PopBrowse = () => {
+    const { id } = useParams();
+    const card = useMemo(() =>
+        cardList.find(item => String(item.id) === id),
+        [id]
+
+    )
+
+    const theme =
+        card?.theme === "Web Design"
+            ? "_orange"
+            : card?.theme === "Research"
+                ? "_green"
+                : "_purple"
+
+    const activeTheme = "categories__theme theme-top _active-category " + theme;
+
     return (
         <div className="pop-browse" id="popBrowse">
             <div className="pop-browse__container">
                 <div className="pop-browse__block">
                     <div className="pop-browse__content">
                         <div className="pop-browse__top-block">
-                            <h3 className="pop-browse__ttl">Название задачи</h3>
-                            <div className="categories__theme theme-top _orange _active-category">
-                                <p className="_orange">Web Design</p>
+                            <h3 className="pop-browse__ttl">{card?.title}</h3>
+                            <div className={activeTheme}>
+                                <p className={theme}>{card?.theme}</p>
                             </div>
                         </div>
                         <div className="pop-browse__status status">
                             <p className="status__p subttl">Статус</p>
                             <div className="status__themes">
-                                <div className="status__theme _hide">
-                                    <p>Без статуса</p>
-                                </div>
                                 <div className="status__theme _gray">
-                                    <p className="_gray">Нужно сделать</p>
-                                </div>
-                                <div className="status__theme _hide">
-                                    <p>В работе</p>
-                                </div>
-                                <div className="status__theme _hide">
-                                    <p>Тестирование</p>
-                                </div>
-                                <div className="status__theme _hide">
-                                    <p>Готово</p>
+                                    <p className="_gray">{card?.status}</p>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +59,9 @@ const PopBrowse = () => {
                                 <button className="btn-browse__edit _btn-bor _hover03"><a href="#">Редактировать задачу</a></button>
                                 <button className="btn-browse__delete _btn-bor _hover03"><a href="#">Удалить задачу</a></button>
                             </div>
-                            <button className="btn-browse__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
+                            <Link to={"/"}>
+                                <button className="btn-browse__close _btn-bg _hover01">Закрыть</button>
+                            </Link>
                         </div>
                         <div className="pop-browse__btn-edit _hide">
                             <div className="btn-group">
@@ -60,7 +69,9 @@ const PopBrowse = () => {
                                 <button className="btn-edit__edit _btn-bor _hover03"><a href="#">Отменить</a></button>
                                 <button className="btn-edit__delete _btn-bor _hover03" id="btnDelete"><a href="#">Удалить задачу</a></button>
                             </div>
-                            <button className="btn-edit__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
+                            <Link to={"/"}>
+                                <button className="btn-edit__close _btn-bg _hover01">Закрыть</button>
+                            </Link>
                         </div>
 
                     </div>

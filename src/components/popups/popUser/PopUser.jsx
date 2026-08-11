@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const PopUser = ({name, mail}) => {
     return (
         <div className="header__pop-user-set pop-user-set" id="user-set-target">
@@ -8,7 +10,12 @@ const PopUser = ({name, mail}) => {
                 <p>Темная тема</p>
                 <input type="checkbox" className="checkbox" name="checkbox"/>
             </div>
-            <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
+
+            <Link to={"/logout"}>
+                <button type="button" className="_hover03">
+                    Выйти
+                </button>
+            </Link>
         </div>
     )
 }

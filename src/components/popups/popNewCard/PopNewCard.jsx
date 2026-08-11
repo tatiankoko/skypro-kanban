@@ -1,4 +1,5 @@
 import Calendar from "../../calendar/Calendar.jsx";
+import {Link} from "react-router-dom";
 
 const PopNewCard = () => {
     return (
@@ -7,7 +8,7 @@ const PopNewCard = () => {
                 <div className="pop-new-card__block">
                     <div className="pop-new-card__content">
                         <h3 className="pop-new-card__ttl">Создание задачи</h3>
-                        <a href="#" className="pop-new-card__close">&#10006;</a>
+                        <Link className="pop-new-card__close" to={"/"}>&#10006;</Link>
                         <div className="pop-new-card__wrap">
                             <form className="pop-new-card__form form-new" id="formNewCard" action="#">
                                 <div className="form-new__block">

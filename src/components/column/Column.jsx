@@ -20,7 +20,8 @@ const Column = ({title, cards, loading}) => {
                                 : <Card key={card.id}
                                         theme={card.theme}
                                         title={card.title}
-                                        date={card.date}/>
+                                        date={card.date}
+                                        id={card.id}/>
                         )
                 }
             </CardsStyled>
