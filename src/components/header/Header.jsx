@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 
 const Header = () => {
     const [showUser, setShowUser] = useState(false)
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     const navigate = useNavigate();
 
@@ -37,11 +38,11 @@ const Header = () => {
                         <HeaderUser
                             href="#user-set-target"
                             onClick={() => setShowUser(!showUser)}>
-                            Ivan Ivanov
+                            {userInfo.name}
                         </HeaderUser>
                         {
                             showUser
-                            ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" />
+                            ? <PopUser name={userInfo.name} mail={userInfo.login} />
                             : null
                         }
                     </HeaderNav>

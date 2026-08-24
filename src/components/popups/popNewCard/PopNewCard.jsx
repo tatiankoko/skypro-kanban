@@ -1,7 +1,50 @@
 import Calendar from "../../calendar/Calendar.jsx";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import {postTask} from "../../../services/api.js";
+import {useState} from "react";
+import PopInput from "../PopInput.jsx";
 
 const PopNewCard = () => {
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
+
+    const [newTask, setNewTask] = useState({
+        title: "",
+        topic: "Web Design",
+        status: "Без статуса",
+        description: "",
+        date: "2024-01-07T16:26:18.179Z"
+    });
+
+    const [errors, setErrors] = useState({
+        title: "",
+        description: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setNewTask({
+            ...newTask,
+            [name]: value,
+        });
+        setError("");
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+        try {
+            console.log(`New task ${newTask}`);
+            const data = await postTask({ token: userInfo.token, task: JSON.stringify(newTask) })
+            console.log(`result ${data}`);
+            navigate("/");
+        } catch (err) {
+            setError(err.message);
+        }
+    }
+
     return (
         <div className="pop-new-card" id="popNewCard">
             <div className="pop-new-card__container">
@@ -13,12 +56,26 @@ const PopNewCard = () => {
                             <form className="pop-new-card__form form-new" id="formNewCard" action="#">
                                 <div className="form-new__block">
                                     <label htmlFor="formTitle" className="subttl">Название задачи</label>
-                                    <input className="form-new__input" type="text" name="name" id="formTitle" placeholder="Введите название задачи..."
-                                           autoFocus/>
+                                    <PopInput
+                                        error={errors.title}
+                                        type="text"
+                                        name="title"
+                                        id="formTitle"
+                                        placeholder="Введите название задачи..."
+                                        value={newTask.title}
+                                        onChange={handleChange}
+                                        autoFocus />
                                 </div>
                                 <div className="form-new__block">
                                     <label htmlFor="textArea" className="subttl">Описание задачи</label>
-                                    <textarea className="form-new__area" name="text" id="textArea" placeholder="Введите описание задачи..."></textarea>
+                                    <PopInput
+                                        error={errors.description}
+                                        type="textarea"
+                                        name="description"
+                                        id="textArea"
+                                        placeholder="Введите описание задачи..."
+                                        value={newTask.description}
+                                        onChange={handleChange} />
                                 </div>
                             </form>
                             <Calendar />
@@ -37,7 +94,7 @@ const PopNewCard = () => {
                                 </div>
                             </div>
                         </div>
-                        <button className="form-new__create _hover01" id="btnCreate">Создать задачу</button>
+                        <button className="form-new__create _hover01" id="btnCreate" onClick={handleSubmit}>Создать задачу</button>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,8 @@ import SignInPage from "../../pages/SignInPage.jsx";
 import SignUpPage from "../../pages/SignUpPage.jsx";
 
 function AppRoutes() {
-    const [isAuth, setIsAuth] = useState(false);
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    const [isAuth, setIsAuth] = useState(userInfo);
 
     return (
         <Routes>

@@ -6,6 +6,7 @@ const PopExit = ({ setIsAuth }) => {
     function handleLogout(e) {
         e.preventDefault();
         setIsAuth(false);
+        localStorage.setItem("userInfo", null);
         navigate("/sign-in");
     }
 

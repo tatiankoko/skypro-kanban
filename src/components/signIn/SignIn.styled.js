@@ -93,7 +93,8 @@ export const ModalFormGroup = styled.div`
     }
 `
 
-export const ModalInput = styled.input`
+export const
+    ModalInput = styled.input`
     width: 100%;
     min-width: 100%;
     border-radius: 8px;
