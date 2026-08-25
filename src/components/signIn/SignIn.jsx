@@ -9,6 +9,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {signIn} from "../../services/auth.js";
 import BaseInput from "./BaseInput.jsx";
+import {ErrorNotification} from "../Notification.styled.js";
 
 const SignIn = ({ setIsAuth }) => {
     const navigate = useNavigate();
@@ -114,7 +115,11 @@ const SignIn = ({ setIsAuth }) => {
                                 value={formData.password}
                                 onChange={handleChange}/>
 
-                            <p style={{ color: "red" }}>;{error}</p>
+                            {
+                                error
+                                    ? <ErrorNotification>{error}</ErrorNotification>
+                                    : null
+                            }
 
                             <ModalBtnEnter id="btnEnter">
                                     Войти

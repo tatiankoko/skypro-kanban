@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {postTask} from "../../../services/api.js";
 import {useState} from "react";
 import PopInput from "../PopInput.jsx";
+import {ErrorMessage} from "../../Notification.styled.js";
 
 const PopNewCard = () => {
     const navigate = useNavigate();
@@ -21,25 +22,50 @@ const PopNewCard = () => {
         description: "",
     });
 
+    const validateForm = () => {
+        const newErrors = { title: "", description: "" };
+        let isValid = true;
+
+        if (!newTask.title.trim()) {
+            newErrors.login = true;
+            setError("Заполните все поля");
+            isValid = false;
+        }
+
+        if (!newTask.description.trim()) {
+            newErrors.password = true;
+            setError("Заполните все поля");
+            isValid = false;
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setNewTask({
             ...newTask,
             [name]: value,
         });
+        setErrors({ ...errors, [name]: false });
         setError("");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!validateForm()) {
+            return;
+        }
+
         const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
         try {
-            console.log(`New task ${newTask}`);
             const data = await postTask({ token: userInfo.token, task: JSON.stringify(newTask) })
-            console.log(`result ${data}`);
-            navigate("/");
+
+            if (data)
+                navigate("/");
         } catch (err) {
             setError(err.message);
         }
@@ -95,6 +121,11 @@ const PopNewCard = () => {
                             </div>
                         </div>
                         <button className="form-new__create _hover01" id="btnCreate" onClick={handleSubmit}>Создать задачу</button>
+                        {
+                            error
+                                ? <ErrorMessage>{error}</ErrorMessage>
+                                : null
+                        }
                     </div>
                 </div>
             </div>

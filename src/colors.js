@@ -4,6 +4,7 @@ export const colors = {
     mainBg: '#EAEEF6',
     btnBg: '#565EEF',
     btnHover: '#33399b',
+    errorText: '#F84D4D',
 
     orangeBg: '#FFE4C2',
     orangeColor: '#FF6D00',

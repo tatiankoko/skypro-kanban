@@ -16,6 +16,12 @@ const Card = ({theme, title, date, id}) => {
                 ? 'greenColor'
                 : 'purpleColor'
 
+    const formatter = new Intl.DateTimeFormat('ru-RU', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+    });
+
     return (
         <CardsItem>
             <CardsCard>
@@ -47,7 +53,7 @@ const Card = ({theme, title, date, id}) => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p>{date}</p>
+                        <p>{ formatter.format(new Date(date)) }</p>
                     </CardDate>
                 </CardContent>
             </CardsCard>
