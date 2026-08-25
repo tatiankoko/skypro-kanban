@@ -1,5 +1,5 @@
 import Column from "../column/Column.jsx";
-import {MainBlock, MainContent, MainStyled} from "./Main.styled.js";
+import {MainBlock, MainContent, MainPlaceholder, MainStyled} from "./Main.styled.js";
 import {ContainerStyled} from "../Container.styled.js";
 
 const Main = ({error, tasks, loading}) => {
@@ -16,19 +16,12 @@ const Main = ({error, tasks, loading}) => {
                     </MainContent>
                     {
                         loading
-                            ? <p>LOADING...</p>
+                            ? <MainPlaceholder>Идет загрузка задач...</MainPlaceholder>
                             : tasks.tasks.length === 0
-                                ? <p>Пока нет задач Выберите пустую форму или другой шаблон выше, чтобы начать.</p>
+                                ? <MainPlaceholder>Пока нет задач</MainPlaceholder>
                                 : null
                     }
                 </MainBlock>
-                {
-                    loading
-                        ? <p>SOMETHING...</p>
-                        : tasks.tasks.length === 0
-                            ? <p>Пока нет задач Выберите пустую форму или другой шаблон выше, чтобы начать.</p>
-                            : null
-                }
             </ContainerStyled>
         </MainStyled>
     )

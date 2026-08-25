@@ -20,7 +20,7 @@ const Column = ({title, tasks, loading}) => {
                                 <CardLoader key={task._id} />
                             )
                         : tasks.tasks.length === 0
-                            ? <p>Ooops...</p>
+                            ? <p></p>
                             : tasks.tasks
                                 .filter((task) => task.status === title)
                                 .map((task) =>
