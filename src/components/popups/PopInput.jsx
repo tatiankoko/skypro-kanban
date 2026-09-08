@@ -1,14 +1,15 @@
 import {StyledInput, StyledTextarea} from "./PopUps.styled.js";
 
 const PopInput = ({
-                       tag = "input",
-                       id,
-                       name,
-                       placeholder = "",
-                       type = "text",
-                       error = false,
-                       onChange,
-
+                      tag = "input",
+                      id,
+                      name,
+                      placeholder = "",
+                      type = "text",
+                      error = false,
+                      onChange,
+                      value,
+                      readOnly = false,
                    }) => {
     // Выбираем компонент в зависимости от тега, на случай, если нужна textarea
     const Component = tag === "textarea" ? StyledTextarea : StyledInput;
@@ -21,6 +22,8 @@ const PopInput = ({
             placeholder={placeholder}
             $error={error}
             onChange={onChange}
+            value={value}
+            readOnly={readOnly}
         />
     );
 };

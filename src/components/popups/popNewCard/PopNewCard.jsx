@@ -5,7 +5,7 @@ import {useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 
-const PopNewCard = () => {
+const PopNewCard = ({updateTasks}) => {
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -65,6 +65,7 @@ const PopNewCard = () => {
             const data = await postTask({ token: userInfo.token, task: JSON.stringify(newTask) })
 
             if (data)
+                updateTasks();
                 navigate("/");
         } catch (err) {
             setError(err.message);
@@ -95,8 +96,9 @@ const PopNewCard = () => {
                                 <div className="form-new__block">
                                     <label htmlFor="textArea" className="subttl">Описание задачи</label>
                                     <PopInput
+                                        tag="textarea"
                                         error={errors.description}
-                                        type="textarea"
+                                        type="text"
                                         name="description"
                                         id="textArea"
                                         placeholder="Введите описание задачи..."
@@ -120,7 +122,11 @@ const PopNewCard = () => {
                                 </div>
                             </div>
                         </div>
-                        <button className="form-new__create _hover01" id="btnCreate" onClick={handleSubmit}>Создать задачу</button>
+                        <button className="form-new__create _hover01"
+                                id="btnCreate"
+                                onClick={handleSubmit}>
+                            Создать задачу
+                        </button>
                         {
                             error
                                 ? <ErrorMessage>{error}</ErrorMessage>

@@ -432,6 +432,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: 18px;
 }
 .pop-browse__form {
   max-width: 370px;
