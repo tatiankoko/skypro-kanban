@@ -43,16 +43,11 @@ export const StyledTextarea = styled.textarea`
     line-height: 1;
     letter-spacing: -0.14px;
     margin-top: 14px;
+    resize: none;
 
     &:read-only {
         background-color: ${colors.mainBg};
-        cursor: not-allowed;
     }
-
-        /*&[readonly] {
-        background-color: ${colors.mainBg};
-        cursor: not-allowed;
-    }*/
 
     &::-moz-placeholder {
         padding-top: 6px;

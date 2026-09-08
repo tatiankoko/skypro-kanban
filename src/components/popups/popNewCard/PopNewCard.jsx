@@ -27,13 +27,13 @@ const PopNewCard = ({updateTasks}) => {
         let isValid = true;
 
         if (!newTask.title.trim()) {
-            newErrors.login = true;
+            newErrors.title = true;
             setError("Заполните все поля");
             isValid = false;
         }
 
         if (!newTask.description.trim()) {
-            newErrors.password = true;
+            newErrors.description = true;
             setError("Заполните все поля");
             isValid = false;
         }

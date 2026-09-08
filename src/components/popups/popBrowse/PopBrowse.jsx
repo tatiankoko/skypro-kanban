@@ -50,7 +50,7 @@ const PopBrowse = ({tasks, updateTasks}) => {
         let isValid = true;
 
         if (!editedTask.description.trim()) {
-            newErrors.password = true;
+            newErrors.description = true;
             setError("Заполните поле описание задачи");
             isValid = false;
         }
@@ -82,6 +82,8 @@ const PopBrowse = ({tasks, updateTasks}) => {
                 updateTasks();
         } catch (err) {
             setError(err.message);
+        } finally {
+            setEditState(false);
         }
     }
 
@@ -125,7 +127,7 @@ const PopBrowse = ({tasks, updateTasks}) => {
                                         name="description"
                                         id="textArea01"
                                         placeholder="Введите описание задачи..."
-                                        value={task?.description}
+                                        defaultValue={task?.description}
                                         onChange={handleChange}
                                         readOnly={!editState} />
                                 </div>
