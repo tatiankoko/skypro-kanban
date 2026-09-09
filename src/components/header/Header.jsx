@@ -24,19 +24,17 @@ const Header = () => {
                             <img src="/images/logo.png" alt="logo"></img>
                         </HeaderLogo>
                     </Link>
-                    <HeaderLogo className=" _dark">
+                    {/*<HeaderLogo className=" _dark">
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></img></a>
-                    </HeaderLogo>
+                    </HeaderLogo>*/}
                     <HeaderNav>
                         <Link to={"/card/add"}>
                             <HeaderButtonMainNew id="btnMainNew" onClick={handleClickNew}>
                                 Создать новую задачу
-                                {/*<a href="#popNewCard">Создать новую задачу</a>*/}
                             </HeaderButtonMainNew>
                         </Link>
 
                         <HeaderUser
-                            href="#user-set-target"
                             onClick={() => setShowUser(!showUser)}>
                             {userInfo.name}
                         </HeaderUser>

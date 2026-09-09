@@ -29,7 +29,7 @@ const Card = ({theme, title, date, id}) => {
                     <CardTheme $bgColor={themeBg} $color={themeColor}>
                         <p>{theme}</p>
                     </CardTheme>
-                    <Link to={"card/" + id}>
+                    <Link to={"/card/" + id}>
                         <CardBtn>
                             <div></div>
                             <div></div>
@@ -38,9 +38,9 @@ const Card = ({theme, title, date, id}) => {
                     </Link>
                 </CardGroup>
                 <CardContent>
-                    <a href="" target="_blank">
+                    <Link to={"/card/" + id}>
                         <CardTitle>{title}</CardTitle>
-                    </a>
+                    </Link>
                     <CardDate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                             <g clipPath="url(#clip0_1_415)">

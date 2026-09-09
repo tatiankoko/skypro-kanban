@@ -1,6 +1,7 @@
 import Column from "../column/Column.jsx";
 import {MainBlock, MainContent, MainPlaceholder, MainStyled} from "./Main.styled.js";
 import {ContainerStyled} from "../Container.styled.js";
+import {ErrorMessage} from "../Notification.styled.js";
 
 const Main = ({error, tasks, loading}) => {
     return (
@@ -20,6 +21,11 @@ const Main = ({error, tasks, loading}) => {
                             : tasks.tasks.length === 0
                                 ? <MainPlaceholder>Пока нет задач</MainPlaceholder>
                                 : null
+                    }
+                    {
+                        error
+                            ? <ErrorMessage>{error}</ErrorMessage>
+                            : null
                     }
                 </MainBlock>
             </ContainerStyled>
