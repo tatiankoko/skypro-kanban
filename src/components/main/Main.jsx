@@ -1,29 +1,32 @@
 import Column from "../column/Column.jsx";
-import {cardList} from "../../data.js";
-import {useEffect, useState} from "react";
-import {MainBlock, MainContent, MainStyled} from "./Main.styled.js";
+import {MainBlock, MainContent, MainPlaceholder, MainStyled} from "./Main.styled.js";
 import {ContainerStyled} from "../Container.styled.js";
+import {ErrorMessage} from "../Notification.styled.js";
 
-const Main = () => {
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        setTimeout(() => {
-            setLoading(false)
-        }, 2000)
-    }, [])
-
+const Main = ({error, tasks, loading}) => {
     return (
         <MainStyled>
             <ContainerStyled>
                 <MainBlock>
                     <MainContent>
-                        <Column title="Без статуса" cards={cardList} loading={loading} />
-                        <Column title="Нужно сделать" cards={cardList} loading={loading} />
-                        <Column title="В работе" cards={cardList} loading={loading} />
-                        <Column title="Тестирование" cards={cardList} loading={loading} />
-                        <Column title="Готово" cards={cardList} loading={loading} />
+                        <Column title="Без статуса" tasks={tasks} loading={loading}/>
+                        <Column title="Нужно сделать" tasks={tasks} loading={loading}/>
+                        <Column title="В работе" tasks={tasks} loading={loading}/>
+                        <Column title="Тестирование" tasks={tasks} loading={loading}/>
+                        <Column title="Готово" tasks={tasks} loading={loading}/>
                     </MainContent>
+                    {
+                        loading
+                            ? <MainPlaceholder>Идет загрузка задач...</MainPlaceholder>
+                            : tasks.tasks.length === 0
+                                ? <MainPlaceholder>Пока нет задач</MainPlaceholder>
+                                : null
+                    }
+                    {
+                        error
+                            ? <ErrorMessage>{error}</ErrorMessage>
+                            : null
+                    }
                 </MainBlock>
             </ContainerStyled>
         </MainStyled>

@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 
 const Header = () => {
     const [showUser, setShowUser] = useState(false)
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     const navigate = useNavigate();
 
@@ -23,25 +24,23 @@ const Header = () => {
                             <img src="/images/logo.png" alt="logo"></img>
                         </HeaderLogo>
                     </Link>
-                    <HeaderLogo className=" _dark">
+                    {/*<HeaderLogo className=" _dark">
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></img></a>
-                    </HeaderLogo>
+                    </HeaderLogo>*/}
                     <HeaderNav>
                         <Link to={"/card/add"}>
                             <HeaderButtonMainNew id="btnMainNew" onClick={handleClickNew}>
                                 Создать новую задачу
-                                {/*<a href="#popNewCard">Создать новую задачу</a>*/}
                             </HeaderButtonMainNew>
                         </Link>
 
                         <HeaderUser
-                            href="#user-set-target"
                             onClick={() => setShowUser(!showUser)}>
-                            Ivan Ivanov
+                            {userInfo.name}
                         </HeaderUser>
                         {
                             showUser
-                            ? <PopUser name="Ivan Ivanov" mail="ivan.ivanov@gmail.com" />
+                            ? <PopUser name={userInfo.name} mail={userInfo.login} />
                             : null
                         }
                     </HeaderNav>

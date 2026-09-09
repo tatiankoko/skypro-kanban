@@ -16,6 +16,12 @@ const Card = ({theme, title, date, id}) => {
                 ? 'greenColor'
                 : 'purpleColor'
 
+    const formatter = new Intl.DateTimeFormat('ru-RU', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+    });
+
     return (
         <CardsItem>
             <CardsCard>
@@ -23,7 +29,7 @@ const Card = ({theme, title, date, id}) => {
                     <CardTheme $bgColor={themeBg} $color={themeColor}>
                         <p>{theme}</p>
                     </CardTheme>
-                    <Link to={"card/" + id}>
+                    <Link to={"/card/" + id}>
                         <CardBtn>
                             <div></div>
                             <div></div>
@@ -32,9 +38,9 @@ const Card = ({theme, title, date, id}) => {
                     </Link>
                 </CardGroup>
                 <CardContent>
-                    <a href="" target="_blank">
+                    <Link to={"/card/" + id}>
                         <CardTitle>{title}</CardTitle>
-                    </a>
+                    </Link>
                     <CardDate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                             <g clipPath="url(#clip0_1_415)">
@@ -47,7 +53,7 @@ const Card = ({theme, title, date, id}) => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p>{date}</p>
+                        <p>{ formatter.format(new Date(date)) }</p>
                     </CardDate>
                 </CardContent>
             </CardsCard>
