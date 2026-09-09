@@ -39,7 +39,9 @@ export const StyledTextarea = styled.textarea`
     background: transparent;
     border: 0.7px solid rgba(148, 166, 190, 0.4);
     border-radius: 8px;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
+    font-weight: 400;
     line-height: 1;
     letter-spacing: -0.14px;
     margin-top: 14px;
