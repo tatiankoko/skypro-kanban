@@ -1,4 +1,4 @@
-import Calendar from "../../calendar/Calendar.jsx";
+import CardCalendar from "../../calendar/Calendar.jsx";
 import {Link, useNavigate} from "react-router-dom";
 import {postTask} from "../../../services/api.js";
 import {useState} from "react";
@@ -14,7 +14,7 @@ const PopNewCard = ({updateTasks}) => {
         topic: "Web Design",
         status: "Без статуса",
         description: "",
-        date: "2024-01-07T16:26:18.179Z"
+        date: ""
     });
 
     const [errors, setErrors] = useState({
@@ -106,7 +106,12 @@ const PopNewCard = ({updateTasks}) => {
                                         onChange={handleChange} />
                                 </div>
                             </form>
-                            <Calendar />
+                            <CardCalendar initialDate={newTask.date}
+                                          setDate={(value)=> setNewTask(
+                                              {
+                                                  ...newTask,
+                                                  date: value,
+                                              })} />
                         </div>
                         <div className="pop-new-card__categories categories">
                             <p className="categories__p subttl">Категория</p>

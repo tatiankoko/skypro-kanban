@@ -1,4 +1,4 @@
-import Calendar from "../../calendar/Calendar.jsx";
+import CardCalendar from "../../calendar/Calendar.jsx";
 import {Link, Outlet, useParams} from "react-router-dom";
 import {useState} from "react";
 import {editTask} from "../../../services/api.js";
@@ -110,6 +110,22 @@ const PopBrowse = ({tasks, updateTasks}) => {
                         </div>
                         <div className="pop-browse__status status">
                             <p className="status__p subttl">Статус</p>
+                            {/*<div className="status__theme _hide">
+                                <p>Без статуса</p>
+                            </div>
+                            <div className="status__theme _gray">
+                                <p className="_gray">Нужно сделать</p>
+                            </div>
+                            <div className="status__theme _hide">
+                                <p>В работе</p>
+                            </div>
+                            <div className="status__theme _hide">
+                                <p>Тестирование</p>
+                            </div>
+                            <div className="status__theme _hide">
+                                <p>Готово</p>
+                            </div>*/}
+
                             <div className="status__themes">
                                 <div className="status__theme _gray">
                                     <p className="_gray">{editedTask?.status}</p>
@@ -132,7 +148,12 @@ const PopBrowse = ({tasks, updateTasks}) => {
                                         readOnly={!editState} />
                                 </div>
                             </form>
-                            <Calendar />
+                            <CardCalendar initialDate={new Date(editedTask.date)}
+                                          setDate={(value)=> setEditedTask(
+                                              {
+                                                  ...editedTask,
+                                                  date: value,
+                                              })} />
                         </div>
                         <div className="theme-down__categories theme-down">
                             <p className="categories__p subttl">Категория</p>
