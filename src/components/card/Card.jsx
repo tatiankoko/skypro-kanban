@@ -1,20 +1,20 @@
 import {CardBtn, CardContent, CardDate, CardGroup, CardsCard, CardsItem, CardTheme, CardTitle} from "./Card.styled.js";
 import {Link} from "react-router-dom";
+import {category} from "../../category.js";
 
 const Card = ({theme, title, date, id}) => {
-    const themeBg =
-        theme === "Web Design"
-        ? 'orangeBg'
-        : theme === "Research"
-                ? 'greenBg'
-                : 'purpleBg'
+    const categoryKey = Object
+        .entries(category)
+        .find(([, category]) => (
+            theme === category
+        ))?.[0]
 
-    const themeColor =
-        theme === "Web Design"
-        ? 'orangeColor'
-        : theme === "Research"
-                ? 'greenColor'
-                : 'purpleColor'
+    const themeBg = categoryKey
+        ? categoryKey + 'Bg'
+        : '';
+    const themeColor = categoryKey
+        ? categoryKey + 'Color'
+        : '';
 
     const formatter = new Intl.DateTimeFormat('ru-RU', {
         day: '2-digit',

@@ -4,6 +4,7 @@ import {postTask} from "../../../services/api.js";
 import {useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
+import {category} from "../../../category.js";
 
 const PopNewCard = ({updateTasks}) => {
     const navigate = useNavigate();
@@ -11,8 +12,8 @@ const PopNewCard = ({updateTasks}) => {
 
     const [newTask, setNewTask] = useState({
         title: "",
-        topic: "Web Design",
-        status: "Без статуса",
+        topic: category.orange,
+        status: "Нужно сделать",
         description: "",
         date: ""
     });
@@ -22,8 +23,15 @@ const PopNewCard = ({updateTasks}) => {
         description: "",
     });
 
+    const handleToggle = (value) => {
+        setNewTask({
+            ...newTask,
+            topic: value,
+        });
+    };
+
     const validateForm = () => {
-        const newErrors = { title: "", description: "" };
+        const newErrors = { title: "", description: "", date: "" };
         let isValid = true;
 
         if (!newTask.title.trim()) {
@@ -35,6 +43,12 @@ const PopNewCard = ({updateTasks}) => {
         if (!newTask.description.trim()) {
             newErrors.description = true;
             setError("Заполните все поля");
+            isValid = false;
+        }
+
+        if (!newTask.date) {
+            newErrors.date = true;
+            setError("Выберите срок исполнения");
             isValid = false;
         }
 
@@ -107,24 +121,34 @@ const PopNewCard = ({updateTasks}) => {
                                 </div>
                             </form>
                             <CardCalendar initialDate={newTask.date}
-                                          setDate={(value)=> setNewTask(
+                                          setDate={(value)=> {
+                                              setNewTask(
                                               {
                                                   ...newTask,
                                                   date: value,
-                                              })} />
+                                              });
+
+                                              setErrors({ ...errors, date: false });
+                                              setError("");
+                                          }}/>
                         </div>
                         <div className="pop-new-card__categories categories">
                             <p className="categories__p subttl">Категория</p>
                             <div className="categories__themes">
-                                <div className="categories__theme _orange _active-category">
-                                    <p className="_orange">Web Design</p>
-                                </div>
-                                <div className="categories__theme _green">
-                                    <p className="_green">Research</p>
-                                </div>
-                                <div className="categories__theme _purple">
-                                    <p className="_purple">Copywriting</p>
-                                </div>
+                                {
+                                    Object.entries(category).map(([key, category]) => (
+                                        <button className={`categories__theme _${key}`}
+                                                key={category}
+                                                onClick={() => handleToggle(category)}
+                                                style={{
+                                                    cursor: 'pointer',
+                                                    opacity: newTask.topic === category ? 1 : 0.4,
+                                                }}
+                                        >
+                                            {category}
+                                        </button>
+                                    ))
+                                }
                             </div>
                         </div>
                         <button className="form-new__create _hover01"

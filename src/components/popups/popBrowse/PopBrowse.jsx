@@ -4,6 +4,7 @@ import {useState} from "react";
 import {editTask} from "../../../services/api.js";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
+import {category} from "../../../category.js";
 
 const PopBrowse = ({tasks, updateTasks}) => {
     const { id } = useParams();
@@ -17,12 +18,11 @@ const PopBrowse = ({tasks, updateTasks}) => {
 
     const task = tasks.tasks.find(item => String(item._id) === id)
 
-    const theme =
-        task?.topic === "Web Design"
-            ? "_orange"
-            : task?.topic === "Research"
-                ? "_green"
-                : "_purple"
+    const theme = '_' + Object
+        .entries(category)
+        .find(([, category]) => (
+            task?.topic === category
+        ))?.[0];
 
     const activeTheme = "categories__theme theme-top _active-category " + theme;
 

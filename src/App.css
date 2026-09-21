@@ -359,8 +359,15 @@
   height: 30px;
   padding: 8px 20px;
   border-radius: 24px;
+  border: none;
   margin-right: 7px;
   opacity: 0.4;
+  transition: background-color 0.2s;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
 }
 .categories__theme p {
   font-size: 14px;
