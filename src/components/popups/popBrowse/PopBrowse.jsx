@@ -147,7 +147,7 @@ const PopBrowse = ({tasks, updateTasks}) => {
                                         name="description"
                                         id="textArea01"
                                         placeholder="Введите описание задачи..."
-                                        defaultValue={task?.description}
+                                        value={editedTask?.description}
                                         onChange={handleChange}
                                         readOnly={!editState} />
                                 </div>

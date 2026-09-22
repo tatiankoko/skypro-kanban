@@ -8,7 +8,7 @@ const PopInput = ({
                       type = "text",
                       error = false,
                       onChange,
-                      defaultValue,
+                      value,
                       readOnly = false,
                    }) => {
     // Выбираем компонент в зависимости от тега, на случай, если нужна textarea
@@ -22,7 +22,7 @@ const PopInput = ({
             placeholder={placeholder}
             $error={error}
             onChange={onChange}
-            defaultValue={defaultValue}
+            value={value}
             readOnly={readOnly}
         />
     );
