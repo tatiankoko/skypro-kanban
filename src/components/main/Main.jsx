@@ -2,6 +2,7 @@ import Column from "../column/Column.jsx";
 import {MainBlock, MainContent, MainPlaceholder, MainStyled} from "./Main.styled.js";
 import {ContainerStyled} from "../Container.styled.js";
 import {ErrorMessage} from "../Notification.styled.js";
+import {status} from "../../status.js";
 
 const Main = ({error, tasks, loading}) => {
     return (
@@ -9,11 +10,11 @@ const Main = ({error, tasks, loading}) => {
             <ContainerStyled>
                 <MainBlock>
                     <MainContent>
-                        <Column title="Без статуса" tasks={tasks} loading={loading}/>
-                        <Column title="Нужно сделать" tasks={tasks} loading={loading}/>
-                        <Column title="В работе" tasks={tasks} loading={loading}/>
-                        <Column title="Тестирование" tasks={tasks} loading={loading}/>
-                        <Column title="Готово" tasks={tasks} loading={loading}/>
+                        <Column title={status.none} tasks={tasks} loading={loading}/>
+                        <Column title={status.todo} tasks={tasks} loading={loading}/>
+                        <Column title={status.process} tasks={tasks} loading={loading}/>
+                        <Column title={status.testing} tasks={tasks} loading={loading}/>
+                        <Column title={status.done} tasks={tasks} loading={loading}/>
                     </MainContent>
                     {
                         loading

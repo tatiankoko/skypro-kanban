@@ -5,6 +5,7 @@ import {editTask} from "../../../services/api.js";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
+import {status} from "../../../status.js";
 
 const PopBrowse = ({tasks, updateTasks}) => {
     const { id } = useParams();
@@ -97,6 +98,13 @@ const PopBrowse = ({tasks, updateTasks}) => {
         setError("");
     };
 
+    const handleToggle = (value) => {
+        setEditedTask({
+            ...editedTask,
+            status: value,
+        });
+    };
+
     return (
         <div className="pop-browse" id="popBrowse">
             <div className="pop-browse__container">
@@ -110,26 +118,22 @@ const PopBrowse = ({tasks, updateTasks}) => {
                         </div>
                         <div className="pop-browse__status status">
                             <p className="status__p subttl">Статус</p>
-                            {/*<div className="status__theme _hide">
-                                <p>Без статуса</p>
-                            </div>
-                            <div className="status__theme _gray">
-                                <p className="_gray">Нужно сделать</p>
-                            </div>
-                            <div className="status__theme _hide">
-                                <p>В работе</p>
-                            </div>
-                            <div className="status__theme _hide">
-                                <p>Тестирование</p>
-                            </div>
-                            <div className="status__theme _hide">
-                                <p>Готово</p>
-                            </div>*/}
-
                             <div className="status__themes">
-                                <div className="status__theme _gray">
-                                    <p className="_gray">{editedTask?.status}</p>
-                                </div>
+                                {
+                                    Object.entries(status).map(([key, taskStatus]) => (
+                                        <button className={`status__theme _gray`}
+                                                key={key}
+                                                onClick={() => editState ? handleToggle(taskStatus) : {}}
+                                                style={{
+                                                    cursor: editState ? 'pointer' : 'default',
+                                                    background: editedTask?.status === taskStatus ? '#94A6BE' : 'transparent',
+                                                    color: editedTask?.status === taskStatus ? '#FFFFFF' : '#94A6BE',
+                                                }}
+                                        >
+                                            {taskStatus}
+                                        </button>
+                                    ))
+                                }
                             </div>
                         </div>
                         <div className="pop-browse__wrap">
@@ -149,17 +153,13 @@ const PopBrowse = ({tasks, updateTasks}) => {
                                 </div>
                             </form>
                             <CardCalendar initialDate={new Date(editedTask.date)}
-                                          setDate={(value)=> setEditedTask(
-                                              {
-                                                  ...editedTask,
-                                                  date: value,
-                                              })} />
-                        </div>
-                        <div className="theme-down__categories theme-down">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__theme _orange _active-category">
-                                <p className="_orange">Web Design</p>
-                            </div>
+                                          setDate={(value)=> editState
+                                              ? setEditedTask(
+                                                  {
+                                                      ...editedTask,
+                                                      date: value,
+                                                  })
+                                              : {} } />
                         </div>
                         {
                             editState

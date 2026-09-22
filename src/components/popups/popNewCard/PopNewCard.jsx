@@ -5,6 +5,7 @@ import {useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
+import {status} from "../../../status.js";
 
 const PopNewCard = ({updateTasks}) => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const PopNewCard = ({updateTasks}) => {
     const [newTask, setNewTask] = useState({
         title: "",
         topic: category.orange,
-        status: "Нужно сделать",
+        status: status.todo,
         description: "",
         date: ""
     });
