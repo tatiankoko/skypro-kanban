@@ -1,20 +1,26 @@
 import {CardBtn, CardContent, CardDate, CardGroup, CardsCard, CardsItem, CardTheme, CardTitle} from "./Card.styled.js";
 import {Link} from "react-router-dom";
+import {category} from "../../category.js";
 
 const Card = ({theme, title, date, id}) => {
-    const themeBg =
-        theme === "Web Design"
-        ? 'orangeBg'
-        : theme === "Research"
-                ? 'greenBg'
-                : 'purpleBg'
+    const categoryKey = Object
+        .entries(category)
+        .find(([, category]) => (
+            theme === category
+        ))?.[0]
 
-    const themeColor =
-        theme === "Web Design"
-        ? 'orangeColor'
-        : theme === "Research"
-                ? 'greenColor'
-                : 'purpleColor'
+    const themeBg = categoryKey
+        ? categoryKey + 'Bg'
+        : '';
+    const themeColor = categoryKey
+        ? categoryKey + 'Color'
+        : '';
+
+    const formatter = new Intl.DateTimeFormat('ru-RU', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+    });
 
     return (
         <CardsItem>
@@ -23,7 +29,7 @@ const Card = ({theme, title, date, id}) => {
                     <CardTheme $bgColor={themeBg} $color={themeColor}>
                         <p>{theme}</p>
                     </CardTheme>
-                    <Link to={"card/" + id}>
+                    <Link to={"/card/" + id}>
                         <CardBtn>
                             <div></div>
                             <div></div>
@@ -32,9 +38,9 @@ const Card = ({theme, title, date, id}) => {
                     </Link>
                 </CardGroup>
                 <CardContent>
-                    <a href="" target="_blank">
+                    <Link to={"/card/" + id}>
                         <CardTitle>{title}</CardTitle>
-                    </a>
+                    </Link>
                     <CardDate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                             <g clipPath="url(#clip0_1_415)">
@@ -47,7 +53,7 @@ const Card = ({theme, title, date, id}) => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p>{date}</p>
+                        <p>{ formatter.format(new Date(date)) }</p>
                     </CardDate>
                 </CardContent>
             </CardsCard>

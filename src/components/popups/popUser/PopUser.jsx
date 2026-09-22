@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 const PopUser = ({name, mail}) => {
     return (
         <div className="header__pop-user-set pop-user-set" id="user-set-target">
-            {/*<a href="">x</a>*/}
             <p className="pop-user-set__name">{name}</p>
             <p className="pop-user-set__mail">{mail}</p>
             <div className="pop-user-set__theme">
