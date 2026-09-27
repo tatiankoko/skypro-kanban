@@ -3,8 +3,9 @@ import CardLoader from "../card/CardLoader.jsx";
 import {MainColumn} from "../main/Main.styled.js";
 import {CardsStyled} from "../card/Card.styled.js";
 import {ColumnTitle} from "./Column.styled.js";
+import {cardList} from "../../data.js";
 
-const Column = ({title, cards, loading}) => {
+const Column = ({title, tasks, loading}) => {
     return (
         <MainColumn>
             <ColumnTitle>
@@ -12,17 +13,25 @@ const Column = ({title, cards, loading}) => {
             </ColumnTitle>
             <CardsStyled>
                 {
-                    cards
-                        .filter((card) => card.status === title)
-                        .map((card) =>
-                            loading
-                                ? <CardLoader key={card.id} />
-                                : <Card key={card.id}
-                                        theme={card.theme}
-                                        title={card.title}
-                                        date={card.date}
-                                        id={card.id}/>
-                        )
+                    loading
+                        ? cardList
+                            .filter((task) => task.status === title)
+                            .map((task) =>
+                                <CardLoader key={task.id} />
+                            )
+                        : tasks.tasks.length === 0
+                            ? <p></p>
+                            : tasks.tasks
+                                .filter((task) => task.status === title)
+                                .map((task) =>
+                                    loading
+                                        ? <CardLoader key={task._id} />
+                                        : <Card key={task._id}
+                                                theme={task.topic}
+                                                title={task.title}
+                                                date={task.date}
+                                                id={task._id}/>
+                                )
                 }
             </CardsStyled>
         </MainColumn>

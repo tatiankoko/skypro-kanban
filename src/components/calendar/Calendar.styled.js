@@ -34,7 +34,7 @@ export const CalendarNav = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-top: 14px;
-    padding: 0 7px;
+    padding: 0 0 0 7px;
 
     @media screen and (max-width: 660px) {
         padding: 0;
