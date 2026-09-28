@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {colors} from "../../colors.js";
 
 export const StyledInput = styled.input`
     width: 100%;
@@ -18,7 +17,7 @@ export const StyledInput = styled.input`
         font-size: 14px;
         line-height: 1px;
         letter-spacing: -0.14px;
-        color: ${ colors.gray };
+        color: ${ ({ theme }) => theme.gray };
     }
 
     &::placeholder {
@@ -26,7 +25,7 @@ export const StyledInput = styled.input`
         font-size: 14px;
         line-height: 1px;
         letter-spacing: -0.14px;
-        color: ${ colors.gray };
+        color: ${ ({ theme }) => theme.gray };
     }
 `
 
@@ -48,7 +47,7 @@ export const StyledTextarea = styled.textarea`
     resize: none;
 
     &:read-only {
-        background-color: ${colors.mainBg};
+        background-color: ${({ theme }) => theme.mainBg};
     }
 
     &::-moz-placeholder {
@@ -57,7 +56,7 @@ export const StyledTextarea = styled.textarea`
         font-size: 14px;
         line-height: 1px;
         letter-spacing: -0.14px;
-        color: ${colors.gray};
+        color: ${({ theme }) => theme.gray};
     }
 
     &::placeholder {
@@ -66,6 +65,6 @@ export const StyledTextarea = styled.textarea`
         font-size: 14px;
         line-height: 1px;
         letter-spacing: -0.14px;
-        color: ${colors.gray};
+        color: ${({ theme }) => theme.gray};
     }
 `

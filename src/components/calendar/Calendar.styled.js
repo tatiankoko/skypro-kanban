@@ -1,5 +1,4 @@
 import styled, {css} from "styled-components";
-import {colors} from "../../colors.js";
 
 export const CalendarStyled = styled.div`
     width: 182px;
@@ -14,7 +13,7 @@ export const CalendarStyled = styled.div`
 export const CalendarTtl = styled.p`
     margin-bottom: 14px;
     padding: 0 7px;
-    color: ${ colors.title };
+    color: ${ ({ theme }) => theme.title };
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -41,7 +40,7 @@ export const CalendarNav = styled.div`
     }
 `
 export const CalendarMonth = styled.div`
-    color: ${ colors.gray };
+    color: ${ ({ theme }) => theme.gray };
     font-size: 14px;
     line-height: 25px;
     font-weight: 600;
@@ -62,7 +61,7 @@ export const NavAction = styled.div`
     justify-content: center;
 
     svg {
-        fill: ${ colors.gray };
+        fill: ${ ({ theme }) => theme.gray };
     }
 `
 
@@ -80,7 +79,7 @@ export const CalendarDaysNames = styled.div`
 `
 
 export const CalendarDayName = styled.div`
-    color: ${ colors.gray };
+    color: ${ ({ theme }) => theme.gray };
     font-size: 10px;
     font-weight: 500;
     line-height: normal;
@@ -115,7 +114,7 @@ export const CalendarCell = styled.div`
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    color: ${ colors.gray };
+    color: ${ ({ theme }) => theme.gray };
     font-size: 10px;
     line-height: 1;
     letter-spacing: -0.2px;
@@ -135,16 +134,16 @@ export const CalendarCell = styled.div`
             props.$isCellDay &&
             css`
                 &:hover {
-                    color: ${ colors.gray };
-                    background-color: ${ colors.mainBg };
+                    color: ${ ({ theme }) => theme.gray };
+                    background-color: ${ ({ theme }) => theme.mainBg };
                 }
             `} 
     
     ${(props) =>
             props.$isActiveDay &&
             css`
-                background-color: ${ colors.gray };
-                color: ${ colors.background };
+                background-color: ${ ({ theme }) => theme.gray };
+                color: ${ ({ theme }) => theme.background };
             `} 
     
     ${(props) =>
@@ -163,12 +162,12 @@ export const CalendarPeriod = styled.div`
 `
 
 export const CalendarP = styled.p`
-    color: ${ colors.gray };
+    color: ${ ({ theme }) => theme.gray };
     font-size: 10px;
     line-height: 1;
 
     span {
-        color: ${ colors.title };
+        color: ${ ({ theme }) => theme.title };
     }
 
     @media screen and (max-width: 660px) {

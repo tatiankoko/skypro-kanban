@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import {colors} from "../../colors.js";
 
 export const HeaderStyled = styled.header`
     width: 100%;
     margin: 0 auto;
-    background-color: ${ colors.background };
+    background-color: ${({ theme }) => theme.background};
 `;
 
 export const HeaderBlock = styled.div`
@@ -39,8 +38,8 @@ export const HeaderButtonMainNew = styled.button`
     width: 178px;
     height: 30px;
     border-radius: 4px;
-    background-color: ${ colors.btnBg };
-    color: ${ colors.background };
+    background-color: ${ ({ theme }) => theme.btnBg };
+    color: ${ ({ theme }) => theme.background };
     border: none;
     font-size: 14px;
     line-height: 1;
@@ -48,11 +47,11 @@ export const HeaderButtonMainNew = styled.button`
     margin-right: 20px;
 
     a {
-        color: ${ colors.background };
+        color: ${ ({ theme }) => theme.background };
     }
 
     &:hover {
-        background-color: ${ colors.btnHover };
+        background-color: ${ ({ theme }) => theme.btnHover };
     }
 
     @media screen and (max-width: 495px) {
@@ -76,7 +75,7 @@ export const HeaderUser = styled.a`
     justify-content: center;
     font-size: 14px;
     line-height: 20px;
-    color: ${ colors.btnBg };;
+    color: ${ ({ theme }) => theme.btnBg };
     
     &::after {
         content: "";
@@ -84,19 +83,19 @@ export const HeaderUser = styled.a`
         width: 6px;
         height: 6px;
         border-radius: 1px;
-        border-left: 1.9px solid ${ colors.btnBg };
-        border-bottom: 1.9px solid ${ colors.btnBg };
+        border-left: 1.9px solid ${ ({ theme }) => theme.btnBg };
+        border-bottom: 1.9px solid ${ ({ theme }) => theme.btnBg };
         transform: rotate(-45deg);
         margin: -6px 0 0 5px;
         padding: 0;
     }
 
     &:hover {
-        color: ${ colors.btnHover };
+        color: ${ ({ theme }) => theme.btnHover };
 
         &::after {
-            border-left-color: ${ colors.btnHover };
-            border-bottom-color: ${ colors.btnHover };
+            border-left-color: ${ ({ theme }) => theme.btnHover };
+            border-bottom-color: ${ ({ theme }) => theme.btnHover };
         }
     }
 `;

@@ -1,25 +1,24 @@
 import styled from "styled-components";
-import {colors} from "../colors.js";
 
 export const Hover01 = styled.div`
     &:hover {
-        background-color: ${ colors.btnHover };
+        background-color: ${ ({ theme }) => theme.btnHover };
 `
 
 export const Hover02 = styled.div`
     &:hover{
-        color: ${ colors.btnHover };
+        color: ${ ({ theme }) => theme.btnHover };
         
         &::after {
-            border-left-color: ${ colors.btnHover };
-            border-bottom-color: ${ colors.btnHover };
+            border-left-color: ${ ({ theme }) => theme.btnHover };
+            border-bottom-color: ${ ({ theme }) => theme.btnHover };
         }
     }    
 `
 
 export const Hover03 = styled.div`
     &:hover {
-        background-color: ${ colors.btnHover };
-        color: ${ colors.background };
+        background-color: ${ ({ theme }) => theme.btnHover };
+        color: ${ ({ theme }) => theme.background };
     }
 `

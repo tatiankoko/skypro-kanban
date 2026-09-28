@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import {colors} from "../../colors.js";
 
 export const MainStyled = styled.main`
     width: 100%;
-    background-color: ${ colors.mainBg };
+    background-color: ${ (theme) => theme.mainBg };
 `
 
 export const MainBlock = styled.div`
@@ -44,7 +43,7 @@ export const MainPlaceholder = styled.div`
     align-content: center;
     height: 100%;
 
-    color: ${ colors.gray };
+    color: ${ ({ theme }) => theme.gray };
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;

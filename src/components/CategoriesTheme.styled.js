@@ -1,22 +1,21 @@
 import styled from "styled-components";
-import {colors} from "../colors.js";
 
 export const ThemeOrange = styled.p`
-    background-color: ${ colors.orangeBg };
-    color: ${ colors.orangeColor };
+    background-color: ${ ({ theme }) => theme.orangeBg };
+    color: ${ ({ theme }) => theme.orangeColor };
 `
 export const ThemeGreen = styled.div`
-    background-color: ${ colors.greenBg };
-    color: ${ colors.greenColor };
+    background-color: ${ ({ theme }) => theme.greenBg };
+    color: ${ ({ theme }) => theme.greenColor };
 `
 export const ThemePurple = styled.div`
-    background-color: ${ colors.purpleBg };
-    color: ${ colors.purpleColor };
+    background-color: ${ ({ theme }) => theme.purpleBg };
+    color: ${ ({ theme }) => theme.purpleColor };
 `
 export const ThemeGray = styled.div`
-    background: ${ colors.gray };
-    color: ${ colors.background };
+    background: ${ ({ theme }) => theme.gray };
+    color: ${ ({ theme }) => theme.background };
 `
 export const ThemeLoader = styled.div`
-    background: linear-gradient(to right, ${ colors.loaderBg1 }, ${ colors.loaderBg2 });
+    background: linear-gradient(to right, ${ ({ theme }) => theme.loaderBg1 }, ${ ({ theme }) => theme.loaderBg2 });
 `

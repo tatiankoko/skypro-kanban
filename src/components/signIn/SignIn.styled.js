@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import {colors} from "../../colors.js";
 
 export const SignInWrapper = styled.div`
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: ${ colors.mainBg };
+    background-color: ${ ({ theme }) => theme.mainBg };
 `
 
 export const SignInContainer = styled.div`
@@ -27,14 +26,14 @@ export const Modal = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 375px) {
-        background-color: ${ colors.background };
+        background-color: ${ ({ theme }) => theme.background };
     }
 `
 
 export const ModalBlock = styled.div`
     display: block;
     margin: 0 auto;
-    background-color: ${colors.background};
+    background-color: ${({ theme }) => theme.background};
     max-width: 368px;
     width: 100%;
     padding: 50px 60px;
@@ -114,7 +113,7 @@ export const
         font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.28px;
-        color: ${ colors.gray };
+        color: ${ ({ theme }) => theme.gray };
     }
 
     &::placeholder {
@@ -123,14 +122,14 @@ export const
         font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.28px;
-        color: ${ colors.gray };
+        color: ${ ({ theme }) => theme.gray };
     }
 `
 
 export const ModalBtnEnter = styled.button`
     width: 100%;
     height: 30px;
-    background-color: ${ colors.btnBg };
+    background-color: ${ ({ theme }) => theme.btnBg };
     border-radius: 4px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -143,10 +142,10 @@ export const ModalBtnEnter = styled.button`
     line-height: 21px;
     font-weight: 500;
     letter-spacing: -0.14px;
-    color: ${ colors.background};
+    color: ${ ({ theme }) => theme.background};
     
     &:hover {
-        background-color: ${ colors.btnHover };
+        background-color: ${ ({ theme }) => theme.btnHover };
     }
 
     /*a {

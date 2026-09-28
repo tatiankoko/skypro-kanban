@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {colors} from "../colors.js";
 
 export const ErrorNotification = styled.div`
     font-weight: 400;
@@ -7,7 +6,7 @@ export const ErrorNotification = styled.div`
     line-height: 150%;
     letter-spacing: 0;
     text-align: center;
-    color: ${ colors.errorText };
+    color: ${ ({ theme }) => theme.errorText };
     padding-top: 7px;
 `
 
@@ -17,6 +16,6 @@ export const ErrorMessage = styled.p`
     line-height: 150%;
     letter-spacing: 0;
     text-align: left;
-    color: ${ colors.errorText };
+    color: ${ ({ theme }) => theme.errorText };
     padding: 7px;
 `
