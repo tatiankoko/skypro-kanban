@@ -2,6 +2,14 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {deleteTask} from "../../../services/api.js";
 import {useState} from "react";
 import {ErrorNotification} from "../../Notification.styled.js";
+import {
+    PopExitBlock,
+    PopExitContainer, PopExitExitNo,
+    PopExitExitYes,
+    PopExitForm,
+    PopExitStyled,
+    PopExitTtl
+} from "../popExit/PopExit.styled.js";
 
 const PopDeleteTask = ({updateTasks}) => {
     const { id } = useParams();
@@ -29,36 +37,32 @@ const PopDeleteTask = ({updateTasks}) => {
     }
 
     return (
-        <div className="pop-exit" id="popExit">
-            <div className="pop-exit__container">
-                <div className="pop-exit__block">
-                    <div className="pop-exit__ttl">
+        <PopExitStyled>
+            <PopExitContainer>
+                <PopExitBlock>
+                    <PopExitTtl>
                         <h2>Вы уверены, что хотите удалить задачу?</h2>
-                    </div>
-                    <form className="pop-exit__form" id="formExit" action="#">
-                        <div className="pop-exit__form-group">
-                            <button className="pop-exit__exit-yes _hover01"
-                                    id="exitYes"
-                                    onClick={handleDelete}>
-                                Да, удалить
-                            </button>
+                    </PopExitTtl>
+                    <PopExitForm action="#">
+                        <PopExitExitYes id="exitYes" onClick={handleDelete}>
+                            Да, удалить
+                        </PopExitExitYes>
 
-                            <Link to={"/card/" + id}>
-                                <button className="pop-exit__exit-no _hover03" id="exitNo">
-                                    Нет, оставить
-                                </button>
-                            </Link>
-                        </div>
-                    </form>
+                        <Link to={"/card/" + id}>
+                            <PopExitExitNo id="exitNo">
+                                Нет, оставить
+                            </PopExitExitNo>
+                        </Link>
+                    </PopExitForm>
 
                     {
                         error
                             ? <ErrorNotification>{error}</ErrorNotification>
                             : null
                     }
-                </div>
-            </div>
-        </div>
+                </PopExitBlock>
+            </PopExitContainer>
+        </PopExitStyled>
     )
 }
 

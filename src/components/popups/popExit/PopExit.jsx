@@ -1,4 +1,12 @@
 import {Link, useNavigate} from "react-router-dom";
+import {
+    PopExitBlock,
+    PopExitContainer, PopExitExitNo,
+    PopExitExitYes,
+    PopExitForm,
+    PopExitStyled,
+    PopExitTtl
+} from "./PopExit.styled.js";
 
 const PopExit = ({ setIsAuth }) => {
     const navigate = useNavigate();
@@ -11,30 +19,26 @@ const PopExit = ({ setIsAuth }) => {
     }
 
     return (
-        <div className="pop-exit" id="popExit">
-            <div className="pop-exit__container">
-                <div className="pop-exit__block">
-                    <div className="pop-exit__ttl">
+        <PopExitStyled>
+            <PopExitContainer>
+                <PopExitBlock>
+                    <PopExitTtl>
                         <h2>Выйти из аккаунта?</h2>
-                    </div>
-                    <form className="pop-exit__form" id="formExit" action="#">
-                        <div className="pop-exit__form-group">
-                            <button className="pop-exit__exit-yes _hover01"
-                                    id="exitYes"
-                                    onClick={handleLogout}>
-                                Да, выйти
-                            </button>
+                    </PopExitTtl>
+                    <PopExitForm action="#">
+                        <PopExitExitYes id="exitYes" onClick={handleLogout}>
+                            Да, выйти
+                        </PopExitExitYes>
 
-                            <Link to={"/"}>
-                                <button className="pop-exit__exit-no _hover03" id="exitNo">
-                                    Нет, остаться
-                                </button>
-                            </Link>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                        <Link to={"/"}>
+                            <PopExitExitNo id="exitNo">
+                                Нет, остаться
+                            </PopExitExitNo>
+                        </Link>
+                    </PopExitForm>
+                </PopExitBlock>
+            </PopExitContainer>
+        </PopExitStyled>
     )
 }
 

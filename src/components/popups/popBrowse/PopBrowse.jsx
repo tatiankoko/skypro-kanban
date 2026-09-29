@@ -6,6 +6,17 @@ import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
 import {status} from "../../../status.js";
+import {
+    BtnBor,
+    BtnBg, BtnGroup,
+    FormBrowseBlock,
+    PopBrowseBlock, PopBrowseBtnEdit,
+    PopBrowseContainer,
+    PopBrowseContent, PopBrowseForm, PopBrowseStatus, PopBrowseStatusP, PopBrowseStatusThemes,
+    PopBrowseStyled,
+    PopBrowseTopBlock, PopBrowseTtl, PopBrowseWrapper, PopBrowseBtnBrowse
+} from "./PopBrowse.styled.js";
+import {Subttl} from "../popNewCard/PopNewCard.styled.js";
 
 const PopBrowse = ({tasks, updateTasks}) => {
     const { id } = useParams();
@@ -106,19 +117,19 @@ const PopBrowse = ({tasks, updateTasks}) => {
     };
 
     return (
-        <div className="pop-browse" id="popBrowse">
-            <div className="pop-browse__container">
-                <div className="pop-browse__block">
-                    <div className="pop-browse__content">
-                        <div className="pop-browse__top-block">
-                            <h3 className="pop-browse__ttl">{task?.title}</h3>
+        <PopBrowseStyled id="popBrowse">
+            <PopBrowseContainer>
+                <PopBrowseBlock>
+                    <PopBrowseContent>
+                        <PopBrowseTopBlock>
+                            <PopBrowseTtl>{task?.title}</PopBrowseTtl>
                             <div className={activeTheme}>
                                 <p className={theme}>{task?.topic}</p>
                             </div>
-                        </div>
-                        <div className="pop-browse__status status">
-                            <p className="status__p subttl">Статус</p>
-                            <div className="status__themes">
+                        </PopBrowseTopBlock>
+                        <PopBrowseStatus>
+                            <PopBrowseStatusP>Статус</PopBrowseStatusP>
+                            <PopBrowseStatusThemes>
                                 {
                                     Object.entries(status).map(([key, taskStatus]) => (
                                         <button className={`status__theme _gray`}
@@ -134,12 +145,12 @@ const PopBrowse = ({tasks, updateTasks}) => {
                                         </button>
                                     ))
                                 }
-                            </div>
-                        </div>
-                        <div className="pop-browse__wrap">
-                            <form className="pop-browse__form form-browse" id="formBrowseCard" action="#">
-                                <div className="form-browse__block">
-                                    <label htmlFor="textArea01" className="subttl">Описание задачи</label>
+                            </PopBrowseStatusThemes>
+                        </PopBrowseStatus>
+                        <PopBrowseWrapper>
+                            <PopBrowseForm id="formBrowseCard" action="#">
+                                <FormBrowseBlock>
+                                    <Subttl htmlFor="textArea01">Описание задачи</Subttl>
                                     <PopInput
                                         tag="textarea"
                                         error={errors.description}
@@ -150,8 +161,8 @@ const PopBrowse = ({tasks, updateTasks}) => {
                                         value={editedTask?.description}
                                         onChange={handleChange}
                                         readOnly={!editState} />
-                                </div>
-                            </form>
+                                </FormBrowseBlock>
+                            </PopBrowseForm>
                             <CardCalendar initialDate={new Date(editedTask.date)}
                                           setDate={(value)=> editState
                                               ? setEditedTask(
@@ -160,59 +171,53 @@ const PopBrowse = ({tasks, updateTasks}) => {
                                                       date: value,
                                                   })
                                               : {} } />
-                        </div>
+                        </PopBrowseWrapper>
                         {
                             editState
-                                ? <div className="pop-browse__btn-edit">
-                                    <div className="btn-group">
-                                        <button className="btn-edit__edit _btn-bg _hover01"
-                                                onClick={handleSubmitEdit}>
+                                ? <PopBrowseBtnEdit>
+                                    <BtnGroup>
+                                        <BtnBg onClick={handleSubmitEdit}>
                                             Сохранить
-                                        </button>
+                                        </BtnBg>
 
-                                        <button className="btn-edit__edit _btn-bor _hover03"
-                                                onClick={handleCancelEditState}>
+                                        <BtnBg onClick={handleCancelEditState}>
                                             Отменить
-                                        </button>
+                                        </BtnBg>
 
                                         <Link to={"/card/" + id + "/delete"}>
-                                            <button className="btn-edit__delete _btn-bor _hover03" >
-                                                Удалить задачу
-                                            </button>
+                                            <BtnBor>Удалить задачу</BtnBor>
                                         </Link>
-                                    </div>
+                                    </BtnGroup>
                                     <Link to={"/"}>
-                                        <button className="btn-edit__close _btn-bg _hover01">
-                                            Закрыть
-                                        </button>
+                                        <BtnBg>Закрыть</BtnBg>
                                     </Link>
-                                </div>
-                                : <div className="pop-browse__btn-browse ">
-                                    <div className="btn-group">
-                                        <button className="btn-browse__edit _btn-bor _hover03"
-                                                onClick={handleEditState}>
+                                </PopBrowseBtnEdit>
+                                : <PopBrowseBtnBrowse className="pop-browse__btn-browse ">
+                                    <BtnGroup>
+                                        <BtnBor onClick={handleEditState}>
                                             Редактировать задачу
-                                        </button>
+                                        </BtnBor>
 
                                         <Link to={"delete"}>
-                                            <button className="btn-browse__delete _btn-bor _hover03">Удалить задачу</button>
+                                            <BtnBor>Удалить задачу</BtnBor>
                                         </Link>
-                                    </div>
+                                    </BtnGroup>
+
                                     <Link to={"/"}>
-                                        <button className="btn-browse__close _btn-bg _hover01">Закрыть</button>
+                                        <BtnBor>Закрыть</BtnBor>
                                     </Link>
-                                </div>
+                                </PopBrowseBtnBrowse>
                         }
                         {
                             error
                                 ? <ErrorMessage>{error}</ErrorMessage>
                                 : null
                         }
-                    </div>
-                </div>
-            </div>
+                    </PopBrowseContent>
+                </PopBrowseBlock>
+            </PopBrowseContainer>
             <Outlet />
-        </div>
+        </PopBrowseStyled>
     )
 }
 

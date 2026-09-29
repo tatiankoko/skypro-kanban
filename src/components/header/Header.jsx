@@ -31,9 +31,6 @@ const Header = () => {
                             }
                         </HeaderLogo>
                     </Link>
-                    {/*<HeaderLogo className=" _dark">
-                        <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></img></a>
-                    </HeaderLogo>*/}
                     <HeaderNav>
                         <Link to={"/card/add"}>
                             <HeaderButtonMainNew id="btnMainNew" onClick={handleClickNew}>
