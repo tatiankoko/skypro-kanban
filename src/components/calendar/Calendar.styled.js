@@ -142,7 +142,7 @@ export const CalendarContainer = styled.div`
     .react-calendar__tile--active {
         background: ${ props => props.theme.gray } !important;
         border-radius: 50%;
-        color: #FFFFFF;
+        color: ${ props => props.theme.background };
 
         &:enabled:hover,
         &:enabled:focus {

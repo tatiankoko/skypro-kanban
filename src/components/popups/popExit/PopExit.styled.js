@@ -35,9 +35,9 @@ export const PopExitBlock = styled.div`
     width: 100%;
     padding: 50px 60px;
     border-radius: 10px;
-    background-color: #FFFFFF;
-    border: 0.7px solid #D4DBE5;
-    box-shadow: 0 4px 67px -12px rgba(0, 0, 0, 0.13);
+    background-color: ${ props => props.theme.background };
+    border: 0.7px solid ${ props => props.theme.border };
+    box-shadow: 0 4px 67px -12px ${ props => props.theme.popShadow };
 
     @media only screen and (max-width: 375px) {
         padding: 50px 20px;
@@ -70,7 +70,7 @@ export const PopExitForm = styled.form`
 export const PopExitExitYes = styled.button`
     min-width: 153px;
     height: 30px;
-    background-color: #565EEF;
+    background-color: ${ props => props.theme.btnBg };
     border-radius: 4px;
     border: none;
     outline: none;
@@ -81,11 +81,11 @@ export const PopExitExitYes = styled.button`
     line-height: 21px;
     font-weight: 500;
     letter-spacing: -0.14px;
-    color: #FFFFFF;
+    color: ${ props => props.theme.background };
     margin-right: 10px;
     
     &:hover {
-        background-color: #33399b;
+        background-color: ${ props => props.theme.btnHover };
     }
 
     @media only screen and (max-width: 375px) {
@@ -101,7 +101,7 @@ export const PopExitExitNo = styled.button`
     height: 30px;
     background-color: transparent;
     border-radius: 4px;
-    border: 0.7px solid #565EEF;
+    border: 0.7px solid ${ props => props.theme.btnBg };
     outline: none;
     display: flex;
     align-items: center;
@@ -110,11 +110,11 @@ export const PopExitExitNo = styled.button`
     line-height: 21px;
     font-weight: 500;
     letter-spacing: -0.14px;
-    /*color: #FFFFFF;*/
+    /*color: ${ props => props.theme.background };*/
     
     &:hover {
-        background-color: #33399b;
-        color: #FFFFFF;
+        background-color: ${ props => props.theme.btnHover };
+        color: ${ props => props.theme.background };
     }
 
     @media only screen and (max-width: 375px) {

@@ -38,8 +38,8 @@ export const ModalBlock = styled.div`
     width: 100%;
     padding: 50px 60px;
     border-radius: 10px;
-    border: 1px solid #D4DBE5;
-    box-shadow: 0 4px 67px -12px rgba(0, 0, 0, 0.13);
+    border: 1px solid ${ props => props.theme.border };
+    box-shadow: 0 4px 67px -12px ${ props => props.theme.popShadow };
 
     @media screen and (max-width: 375px) {
         max-width: 368px;
@@ -80,7 +80,7 @@ export const ModalFormGroup = styled.div`
     text-align: center;
 
     p, a {
-        color: rgba(148, 166, 190, 0.4);
+        color: ${ props => props.theme.gray40 };
         font-size: 14px;
         font-weight: 400;
         line-height: 150%;
@@ -97,7 +97,7 @@ export const
     width: 100%;
     min-width: 100%;
     border-radius: 8px;
-    border: 1px solid rgba(148, 166, 190, 0.4);
+    border: 1px solid ${ props => props.theme.gray40 };
     outline: none;
     padding: 4px 10px;
     
@@ -151,7 +151,7 @@ export const ModalBtnEnter = styled.button`
     /*a {
         width: 100%;
         height: 100%;
-        color: #FFFFFF;
+        color: ${ props => props.theme.background };
         display: flex;
         align-items: center;
         justify-content: center;

@@ -40,12 +40,12 @@ export const PopBrowseContainer = styled.div`
 export const PopBrowseBlock = styled.div`
     display: block;
     margin: 0 auto;
-    background-color: #FFFFFF;
+    background-color: ${ props => props.theme.background };
     max-width: 630px;
     width: 100%;
     padding: 40px 30px 38px;
     border-radius: 10px;
-    border: 0.7px solid #D4DBE5;
+    border: 0.7px solid ${ props => props.theme.border };
     position: relative;
 
     @media screen and (max-width: 660px) {
@@ -91,7 +91,7 @@ export const PopBrowseTopBlock = styled.div`
 `
 
 export const PopBrowseTtl = styled.h3`
-    color: #000;
+    color: ${ props => props.theme.title };
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
@@ -102,7 +102,7 @@ export const PopBrowseStatus = styled.h3`
 `
 export const PopBrowseStatusP = styled.p`
     margin-bottom: 14px;
-    color: #000;
+    color: ${ props => props.theme.title };
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -198,37 +198,37 @@ export const BtnGroup = styled.div`
 
 export const BtnBg = styled.button`
     border-radius: 4px;
-    background: #565EEF;
+    background: ${ props => props.theme.btnBg };
     border: none;
     outline: none;
-    color: #FFFFFF;
+    color: ${ props => props.theme.background };
     
     &:hover {
-        background-color: #33399b;
+        background-color: ${ props => props.theme.btnHover };
     }
 
     & a {
-        color: #FFFFFF;
+        color: ${ props => props.theme.background };
     }
 `
 
 export const BtnBor = styled.button`
     border-radius: 4px;
-    border: 0.7px solid #565EEF;
+    border: 0.7px solid ${ props => props.theme.btnBg };
     outline: none;
     background: transparent;
-    color: #565EEF;
+    color: ${ props => props.theme.btnBg };
     
     &:hover {
-        background-color: #33399b;
-        color: #FFFFFF;
+        background-color: ${ props => props.theme.btnHover };
+        color: ${ props => props.theme.background };
         
         & a {
-            color: #FFFFFF;
+            color: ${ props => props.theme.background };
         }
     }
 
     & a {
-        color: #565EEF;
+        color: ${ props => props.theme.btnBg };
     }
 `

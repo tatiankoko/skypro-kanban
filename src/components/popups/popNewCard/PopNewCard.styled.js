@@ -46,12 +46,12 @@ export const PopNewCardContainer = styled.div`
 export const PopNewCardBlock = styled.div`
     display: block;
     margin: 0 auto;
-    background-color: #FFFFFF;
+    background-color: ${ props => props.theme.background };
     max-width: 630px;
     width: 100%;
     padding: 40px 30px 48px;
     border-radius: 10px;
-    border: 0.7px solid #D4DBE5;
+    border: 0.7px solid ${ props => props.theme.border };
     position: relative;
 
     @media screen and (max-width: 660px) {
@@ -69,7 +69,7 @@ export const PopNewCardContent = styled.div`
 `
 
 export const PopNewCardTtl = styled.h3`
-    color: #000;
+    color: ${ props => props.theme.title };
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
@@ -80,11 +80,11 @@ export const PopNewCardClose = styled(Link)`
     position: absolute;
     top: 20px;
     right: 30px;
-    color: #94A6BE;
+    color: ${ props => props.theme.gray };
     cursor: pointer;
 
     &:hover {
-        color: #000000;
+        color: ${ props => props.theme.title };
     }
 `
 
@@ -122,7 +122,7 @@ export const Categories = styled.div`
 
 export const CategoriesP = styled.p`
     margin-bottom: 14px;
-    color: #000;
+    color: ${ props => props.theme.title };
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -138,18 +138,18 @@ export const CategoriesThemes = styled.div`
 export const FormNewCreate = styled.button`
     width: 132px;
     height: 30px;
-    background-color: #565EEF;
+    background-color: ${ props => props.theme.btnBg };
     border-radius: 4px;
     border: 0;
     outline: none;
     font-size: 14px;
     font-weight: 500;
     line-height: 1;
-    color: #FFFFFF;
+    color: ${ props => props.theme.background };
     float: right;
 
     &:hover {
-        background-color: #33399b;
+        background-color: ${ props => props.theme.btnHover };
     }
 
     @media screen and (max-width: 495px) {
@@ -159,7 +159,7 @@ export const FormNewCreate = styled.button`
 `
 
 export const Subttl = styled.label`
-    color: #000;
+    color: ${ props => props.theme.title };
     font-size: 14px;
     font-weight: 600;
     line-height: 1;

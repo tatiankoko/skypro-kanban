@@ -5,7 +5,7 @@ export const StyledInput = styled.input`
     outline: none;
     padding: 14px;
     background: transparent;
-    border: 0.7px solid rgba(148, 166, 190, 0.4);
+    border: 0.7px solid ${ props => props.theme.gray40 };
     border-radius: 8px;
     font-size: 14px;
     line-height: 1;
@@ -36,7 +36,7 @@ export const StyledTextarea = styled.textarea`
     outline: none;
     padding: 20px 14px;
     background: transparent;
-    border: 0.7px solid rgba(148, 166, 190, 0.4);
+    border: 0.7px solid ${ props => props.theme.gray40 };
     border-radius: 8px;
     font-family: "Roboto", sans-serif;
     font-size: 14px;
