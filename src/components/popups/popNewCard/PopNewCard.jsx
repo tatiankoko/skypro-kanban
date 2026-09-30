@@ -12,10 +12,13 @@ import {
     PopNewCardContainer,
     PopNewCardContent, PopNewCardForm,
     PopNewCardStyled, PopNewCardTtl, PopNewCardWrapper,
-    Subttl, CategoriesP, CategoriesThemes, FormNewCreate, PopNewCardClose
+    Subttl, CategoriesP, CategoriesThemes, FormNewCreate, PopNewCardClose, CategoriesTheme
 } from "./PopNewCard.styled.js";
+import {themeBg, themeColor} from "../../card/Card.jsx";
+import {useTheme} from "styled-components";
 
 const PopNewCard = ({updateTasks}) => {
+    const userTheme = useTheme();
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -146,16 +149,19 @@ const PopNewCard = ({updateTasks}) => {
                             <CategoriesThemes>
                                 {
                                     Object.entries(category).map(([key, category]) => (
-                                        <button className={`categories__theme _${key}`}
-                                                key={category}
-                                                onClick={() => handleToggle(category)}
-                                                style={{
-                                                    cursor: 'pointer',
-                                                    opacity: newTask.topic === category ? 1 : 0.4,
-                                                }}
+                                        <CategoriesTheme
+                                            $active={false}
+                                            $bgColor={userTheme[themeBg(key)]}
+                                            $color={userTheme[themeColor(key)]}
+                                            key={category}
+                                            onClick={() => handleToggle(category)}
+                                            style={{
+                                                cursor: 'pointer',
+                                                opacity: newTask.topic === category ? 1 : 0.4,
+                                            }}
                                         >
                                             {category}
-                                        </button>
+                                        </CategoriesTheme>
                                     ))
                                 }
                             </CategoriesThemes>

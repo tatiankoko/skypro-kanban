@@ -23,7 +23,7 @@ const Header = () => {
             <ContainerStyled>
                 <HeaderBlock>
                     <Link to={"/"}>
-                        <HeaderLogo className=" _show _light">
+                        <HeaderLogo>
                             {
                                 theme === 'light'
                                     ? <img src="/images/logo.png" alt="logo"></img>

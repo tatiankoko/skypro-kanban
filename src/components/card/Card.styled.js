@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {CardAnimation} from "./CardAnimation.styled.js";
-import {colors} from "../../colors.js";
 
 export const CardsStyled = styled.div`
     width: 100%;
@@ -59,17 +58,17 @@ export const CardTheme = styled.div`
     height: 20px;
     padding: 5px 14px;
     border-radius: 18px;
-    
-    background-color: ${ ({$bgColor}) => colors[$bgColor] };
-    color: ${ ({$color}) => colors[$color] };
+
+    background-color: ${ ({$bgColor}) => $bgColor };
+    color: ${ ({$color}) => $color };
 
     p {
         font-size: 10px;
         font-weight: 600;
         line-height: 10px;
 
-        background-color: ${ ({$bgColor}) => colors[$bgColor] };
-        color: ${ ({$color}) => colors[$color] };
+        background-color: ${ ({$bgColor}) => $bgColor };
+        color: ${ ({$color}) => $color };
     }
 `
 

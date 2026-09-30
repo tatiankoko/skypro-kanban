@@ -1,20 +1,27 @@
 import {CardBtn, CardContent, CardDate, CardGroup, CardsCard, CardsItem, CardTheme, CardTitle} from "./Card.styled.js";
 import {Link} from "react-router-dom";
 import {category} from "../../category.js";
+import {useTheme} from "styled-components";
+
+export const themeBg = (categoryKey) => {
+    return categoryKey
+        ? categoryKey + 'Bg'
+        : '';
+}
+export const themeColor = (categoryKey) => {
+    return categoryKey
+        ? categoryKey + 'Color'
+        : '';
+}
 
 const Card = ({theme, title, date, id}) => {
+    const userTheme = useTheme();
+
     const categoryKey = Object
         .entries(category)
         .find(([, category]) => (
             theme === category
         ))?.[0]
-
-    const themeBg = categoryKey
-        ? categoryKey + 'Bg'
-        : '';
-    const themeColor = categoryKey
-        ? categoryKey + 'Color'
-        : '';
 
     const formatter = new Intl.DateTimeFormat('ru-RU', {
         day: '2-digit',
@@ -26,7 +33,9 @@ const Card = ({theme, title, date, id}) => {
         <CardsItem>
             <CardsCard>
                 <CardGroup>
-                    <CardTheme $bgColor={themeBg} $color={themeColor}>
+                    <CardTheme
+                        $bgColor={userTheme[themeBg(categoryKey)]}
+                        $color={userTheme[themeColor(categoryKey)]}>
                         <p>{theme}</p>
                     </CardTheme>
                     <Link to={"/card/" + id}>

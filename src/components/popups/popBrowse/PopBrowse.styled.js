@@ -60,27 +60,6 @@ export const PopBrowseBlock = styled.div`
 export const PopBrowseContent = styled.div`
     display: block;
     text-align: left;
-
-    & .categories__theme {
-        opacity: 1;
-    }
-    & .theme-down {
-        display: none;
-        margin-bottom: 20px;
-    }
-    & .theme-top {
-        display: block;
-    }
-    
-    @media screen and (max-width: 495px) {
-        & .theme-down {
-            display: block;
-            margin-bottom: 20px;
-        }
-        & .theme-top {
-            display: none;
-        }
-    }
 `
 
 export const PopBrowseTopBlock = styled.div`
@@ -100,6 +79,7 @@ export const PopBrowseTtl = styled.h3`
 export const PopBrowseStatus = styled.h3`
     margin-bottom: 11px;
 `
+
 export const PopBrowseStatusP = styled.p`
     margin-bottom: 14px;
     color: ${ props => props.theme.title };
@@ -107,12 +87,36 @@ export const PopBrowseStatusP = styled.p`
     font-weight: 600;
     line-height: 1;
 `
+
 export const PopBrowseStatusThemes = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     /*justify-content: flex-start;*/
     justify-content: space-between;
+`
+
+export const PopBrowseStatusTheme = styled.div`
+    border-radius: 24px;
+    border: 0.7px solid ${ props => props.theme.gray40 };
+    background: ${ ({$active}) => $active 
+            ? props => props.theme.gray 
+            : 'transparent' };
+    color: ${ ({$active}) => $active 
+            ? props => props.theme.background 
+            : props => props.theme.gray };
+
+    padding: 10px 17px;
+    /*margin-right: 7px;*/
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.14px;
+
+    opacity: ${ ({$readonly, $active}) => $readonly && !$active ? 0 : 1 };
+    cursor: ${ ({$readonly}) => $readonly ? 'default' : 'pointer' };
 `
 
 export const PopBrowseWrapper = styled.div`

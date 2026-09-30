@@ -14,11 +14,15 @@ import {
     PopBrowseContainer,
     PopBrowseContent, PopBrowseForm, PopBrowseStatus, PopBrowseStatusP, PopBrowseStatusThemes,
     PopBrowseStyled,
-    PopBrowseTopBlock, PopBrowseTtl, PopBrowseWrapper, PopBrowseBtnBrowse
+    PopBrowseTopBlock, PopBrowseTtl, PopBrowseWrapper, PopBrowseBtnBrowse, PopBrowseStatusTheme
 } from "./PopBrowse.styled.js";
-import {Subttl} from "../popNewCard/PopNewCard.styled.js";
+import {CategoriesTheme, Subttl} from "../popNewCard/PopNewCard.styled.js";
+import {themeBg, themeColor} from "../../card/Card.jsx";
+import {useTheme} from "styled-components";
 
 const PopBrowse = ({tasks, updateTasks}) => {
+    const userTheme = useTheme();
+
     const { id } = useParams();
     const [error, setError] = useState("");
     const [editState, setEditState] = useState(false);
@@ -30,13 +34,11 @@ const PopBrowse = ({tasks, updateTasks}) => {
 
     const task = tasks.tasks.find(item => String(item._id) === id)
 
-    const theme = '_' + Object
+    const categoryKey = Object
         .entries(category)
         .find(([, category]) => (
             task?.topic === category
         ))?.[0];
-
-    const activeTheme = "categories__theme theme-top _active-category " + theme;
 
     const [editedTask, setEditedTask] = useState({
         status: task?.status,
@@ -123,26 +125,27 @@ const PopBrowse = ({tasks, updateTasks}) => {
                     <PopBrowseContent>
                         <PopBrowseTopBlock>
                             <PopBrowseTtl>{task?.title}</PopBrowseTtl>
-                            <div className={activeTheme}>
-                                <p className={theme}>{task?.topic}</p>
-                            </div>
+                            <CategoriesTheme
+                                $active={true}
+                                $bgColor={userTheme[themeBg(categoryKey)]}
+                                $color={userTheme[themeColor(categoryKey)]}
+                            >
+                                <p>{task?.topic}</p>
+                            </CategoriesTheme>
                         </PopBrowseTopBlock>
                         <PopBrowseStatus>
                             <PopBrowseStatusP>Статус</PopBrowseStatusP>
                             <PopBrowseStatusThemes>
                                 {
                                     Object.entries(status).map(([key, taskStatus]) => (
-                                        <button className={`status__theme _gray`}
-                                                key={key}
-                                                onClick={() => editState ? handleToggle(taskStatus) : {}}
-                                                style={{
-                                                    cursor: editState ? 'pointer' : 'default',
-                                                    background: editedTask?.status === taskStatus ? '#94A6BE' : 'transparent',
-                                                    color: editedTask?.status === taskStatus ? '#FFFFFF' : '#94A6BE',
-                                                }}
+                                        <PopBrowseStatusTheme
+                                            $active={editedTask?.status === taskStatus}
+                                            $readonly={!editState}
+                                            key={key}
+                                            onClick={() => editState ? handleToggle(taskStatus) : {}}
                                         >
                                             {taskStatus}
-                                        </button>
+                                        </PopBrowseStatusTheme>
                                     ))
                                 }
                             </PopBrowseStatusThemes>

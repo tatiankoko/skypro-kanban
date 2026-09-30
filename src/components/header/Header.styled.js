@@ -26,7 +26,7 @@ export const HeaderNav = styled.nav`
     justify-content: center;
 `;
 
-export const HeaderLogo = styled.div` //._dark _light 
+export const HeaderLogo = styled.div`
     display: block;
     
     img {
