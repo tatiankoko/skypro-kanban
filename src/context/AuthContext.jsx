@@ -1,13 +1,34 @@
 import {createContext, useState} from 'react';
 
-const AuthContext = createContext();
+const AuthContext = createContext(undefined);
 
 export function AuthProvider({ children }) {
-    // Храним данные о пользователе в состоянии
-    const [user, setUser] = useState(null); // null означает, что пользователь не авторизован
+    const userInfo = JSON.parse(
+        localStorage.getItem("userInfo"));
+    const [user, setUser] = useState(userInfo); // null означает, что пользователь не авторизован
+    const [isAuth, setIsAuth] = useState(Boolean(userInfo));
+
+    const login = (userData) => {
+        localStorage.setItem(
+            "userInfo",
+            JSON.stringify(userData));
+
+        setIsAuth(true);
+        setUser(userData);
+    };
+
+    const logout = () => {
+        localStorage.removeItem('userInfo');
+
+        setIsAuth(false);
+        setUser(null);
+    };
 
     return (
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{
+            user, setUser,
+            isAuth, setIsAuth,
+            login, logout }}>
             {children}
         </AuthContext.Provider>
     );

@@ -7,14 +7,16 @@ import {
     PopExitStyled,
     PopExitTtl
 } from "./PopExit.styled.js";
+import {useContext} from "react";
+import AuthContext from "../../../context/AuthContext.jsx";
 
-const PopExit = ({ setIsAuth }) => {
+const PopExit = () => {
     const navigate = useNavigate();
+    const { logout } = useContext(AuthContext);
 
     function handleLogout(e) {
         e.preventDefault();
-        setIsAuth(false);
-        localStorage.setItem("userInfo", null);
+        logout();
         navigate("/sign-in");
     }
 

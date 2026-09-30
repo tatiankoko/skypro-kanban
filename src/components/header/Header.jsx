@@ -4,12 +4,12 @@ import {HeaderBlock, HeaderButtonMainNew, HeaderLogo, HeaderNav, HeaderStyled, H
 import {ContainerStyled} from "../Container.styled.js";
 import {Link, useNavigate} from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext.jsx";
+import AuthContext from "../../context/AuthContext.jsx";
 
 const Header = () => {
     const [showUser, setShowUser] = useState(false)
     const {theme} = useContext(ThemeContext);
-
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    const {user} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -33,18 +33,18 @@ const Header = () => {
                     </Link>
                     <HeaderNav>
                         <Link to={"/card/add"}>
-                            <HeaderButtonMainNew id="btnMainNew" onClick={handleClickNew}>
+                            <HeaderButtonMainNew onClick={handleClickNew}>
                                 Создать новую задачу
                             </HeaderButtonMainNew>
                         </Link>
 
                         <HeaderUser
                             onClick={() => setShowUser(!showUser)}>
-                            {userInfo.name}
+                            {user?.name}
                         </HeaderUser>
                         {
                             showUser
-                            ? <PopUser name={userInfo.name} mail={userInfo.login} />
+                            ? <PopUser name={user?.name} mail={user?.login} />
                             : null
                         }
                     </HeaderNav>

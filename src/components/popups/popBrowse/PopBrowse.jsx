@@ -1,6 +1,6 @@
 import CardCalendar from "../../calendar/Calendar.jsx";
 import {Link, Outlet, useParams} from "react-router-dom";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {editTask} from "../../../services/api.js";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
@@ -19,9 +19,11 @@ import {
 import {CategoriesTheme, Subttl} from "../popNewCard/PopNewCard.styled.js";
 import {themeBg, themeColor} from "../../card/Card.jsx";
 import {useTheme} from "styled-components";
+import AuthContext from "../../../context/AuthContext.jsx";
 
 const PopBrowse = ({tasks, updateTasks}) => {
     const userTheme = useTheme();
+    const {user} = useContext(AuthContext);
 
     const { id } = useParams();
     const [error, setError] = useState("");
@@ -84,11 +86,9 @@ const PopBrowse = ({tasks, updateTasks}) => {
         task.description = editedTask.description;
         task.date = editedTask.date;
 
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
         try {
             const data = await editTask({
-                token: userInfo.token,
+                token: user?.token,
                 id: id,
                 task: JSON.stringify(task) })
 

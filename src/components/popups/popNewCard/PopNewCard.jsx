@@ -1,7 +1,7 @@
 import CardCalendar from "../../calendar/Calendar.jsx";
 import {useNavigate} from "react-router-dom";
 import {postTask} from "../../../services/api.js";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
@@ -16,11 +16,13 @@ import {
 } from "./PopNewCard.styled.js";
 import {themeBg, themeColor} from "../../card/Card.jsx";
 import {useTheme} from "styled-components";
+import AuthContext from "../../../context/AuthContext.jsx";
 
 const PopNewCard = ({updateTasks}) => {
     const userTheme = useTheme();
     const navigate = useNavigate();
     const [error, setError] = useState("");
+    const {user} = useContext(AuthContext);
 
     const [newTask, setNewTask] = useState({
         title: "",
@@ -85,10 +87,10 @@ const PopNewCard = ({updateTasks}) => {
             return;
         }
 
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
         try {
-            const data = await postTask({ token: userInfo.token, task: JSON.stringify(newTask) })
+            const data = await postTask({
+                token: user?.token,
+                task: JSON.stringify(newTask) })
 
             if (data)
                 updateTasks();
