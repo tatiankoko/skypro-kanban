@@ -1,7 +1,7 @@
 import PopNewCard from "../components/popups/popNewCard/PopNewCard.jsx";
 
-const NewCardPage = ({updateTasks}) => {
-    return <PopNewCard updateTasks={updateTasks} />
+const NewCardPage = () => {
+    return <PopNewCard />
 }
 
 export default NewCardPage;

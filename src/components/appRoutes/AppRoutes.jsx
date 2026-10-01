@@ -2,7 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import MainPage from "../../pages/MainPage.jsx";
 import NotFoundPage from "../../pages/NotFoundPage.jsx";
 import PrivateRoute from "../../pages/PrivateRoute.jsx";
-import {useCallback, useContext, useState} from "react";
+import {useCallback, useContext, useEffect, useState} from "react";
 import LogoutPage from "../../pages/LogoutPage.jsx";
 import NewCardPage from "../../pages/NewCardPage.jsx";
 import CardPage from "../../pages/CardPage.jsx";
@@ -11,12 +11,13 @@ import SignUpPage from "../../pages/SignUpPage.jsx";
 import DeleteTaskPage from "../../pages/DeleteTaskPage.jsx";
 import {fetchTasks} from "../../services/api.js";
 import AuthContext from "../../context/AuthContext.jsx";
+import TasksContext from "../../context/TaskContext.jsx";
 
 function AppRoutes() {
-    const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('');
     const {user} = useContext(AuthContext);
+    const {setTasks} = useContext(TasksContext);
 
     const getTasks = useCallback(async () => {
         try {
@@ -37,15 +38,19 @@ function AppRoutes() {
         }
     }, []);
 
+    useEffect(() => {
+        getTasks();
+    }, [getTasks]);
+
     return (
         <Routes>
             <Route element={<PrivateRoute />}>
                 {/* Главная страница */}
-                <Route path="/" element={<MainPage tasks={tasks} loading={loading} getTasks={getTasks} error={error}/>} >
+                <Route path="/" element={<MainPage loading={loading} error={error}/>} >
                     <Route path="/logout" element={<LogoutPage />} />
-                    <Route path="/card/add" element={<NewCardPage updateTasks={getTasks} />} />
-                    <Route path="/card/:id" element={<CardPage tasks={tasks} updateTasks={getTasks} />} >
-                        <Route path="/card/:id/delete" element={<DeleteTaskPage updateTasks={getTasks} />} />
+                    <Route path="/card/add" element={<NewCardPage />} />
+                    <Route path="/card/:id" element={<CardPage />} >
+                        <Route path="/card/:id/delete" element={<DeleteTaskPage />} />
                     </Route>
                 </Route>
             </Route>

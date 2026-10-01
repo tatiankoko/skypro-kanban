@@ -1,5 +1,4 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {deleteTask} from "../../../services/api.js";
 import {useContext, useState} from "react";
 import {ErrorNotification} from "../../Notification.styled.js";
 import {
@@ -10,25 +9,21 @@ import {
     PopExitStyled,
     PopExitTtl
 } from "../popExit/PopExit.styled.js";
-import AuthContext from "../../../context/AuthContext.jsx";
+import TasksContext from "../../../context/TaskContext.jsx";
 
-const PopDeleteTask = ({updateTasks}) => {
+const PopDeleteTask = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const {user} = useContext(AuthContext);
+    const {removeTask} = useContext(TasksContext);
 
     const handleDelete = async (e) => {
         e.preventDefault();
 
         try {
-            const data = await deleteTask({
-                token: user.token,
-                id: id
-            });
+            const data = await removeTask(id);
 
             if (data) {
-                updateTasks(data);
                 navigate("/");
             }
         } catch (err) {

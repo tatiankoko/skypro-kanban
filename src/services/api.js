@@ -11,7 +11,7 @@ export async function fetchTasks({ token }) {
                 },
             })
 
-        return data.data
+        return data.data.tasks
         // когда работаем с axios, не забываем, что результат лежит в ключе data
     } catch (error) {
         throw new Error(error.message)

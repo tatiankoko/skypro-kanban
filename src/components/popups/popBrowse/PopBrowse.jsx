@@ -1,7 +1,6 @@
 import CardCalendar from "../../calendar/Calendar.jsx";
 import {Link, Outlet, useParams} from "react-router-dom";
 import {useContext, useState} from "react";
-import {editTask} from "../../../services/api.js";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
@@ -19,11 +18,11 @@ import {
 import {CategoriesTheme, Subttl} from "../popNewCard/PopNewCard.styled.js";
 import {themeBg, themeColor} from "../../card/Card.jsx";
 import {useTheme} from "styled-components";
-import AuthContext from "../../../context/AuthContext.jsx";
+import TasksContext from "../../../context/TaskContext.jsx";
 
-const PopBrowse = ({tasks, updateTasks}) => {
+const PopBrowse = () => {
     const userTheme = useTheme();
-    const {user} = useContext(AuthContext);
+    const {tasks, updateTask} = useContext(TasksContext);
 
     const { id } = useParams();
     const [error, setError] = useState("");
@@ -34,7 +33,7 @@ const PopBrowse = ({tasks, updateTasks}) => {
         description: "",
     });
 
-    const task = tasks.tasks.find(item => String(item._id) === id)
+    const task = tasks?.find(item => String(item._id) === id)
 
     const categoryKey = Object
         .entries(category)
@@ -43,6 +42,7 @@ const PopBrowse = ({tasks, updateTasks}) => {
         ))?.[0];
 
     const [editedTask, setEditedTask] = useState({
+        _id: task?.id,
         status: task?.status,
         description: task?.description,
         date: task?.date,
@@ -87,13 +87,7 @@ const PopBrowse = ({tasks, updateTasks}) => {
         task.date = editedTask.date;
 
         try {
-            const data = await editTask({
-                token: user?.token,
-                id: id,
-                task: JSON.stringify(task) })
-
-            if (data)
-                updateTasks();
+            await updateTask(task);
         } catch (err) {
             setError(err.message);
         } finally {
