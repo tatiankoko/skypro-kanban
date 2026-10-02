@@ -113,7 +113,7 @@ const PopBrowse = () => {
     };
 
     return (
-        <PopBrowseStyled id="popBrowse">
+        <PopBrowseStyled>
             <PopBrowseContainer>
                 <PopBrowseBlock>
                     <PopBrowseContent>
@@ -145,7 +145,7 @@ const PopBrowse = () => {
                             </PopBrowseStatusThemes>
                         </PopBrowseStatus>
                         <PopBrowseWrapper>
-                            <PopBrowseForm id="formBrowseCard" action="#">
+                            <PopBrowseForm action="#">
                                 <FormBrowseBlock>
                                     <Subttl htmlFor="textArea01">Описание задачи</Subttl>
                                     <PopInput
@@ -189,7 +189,7 @@ const PopBrowse = () => {
                                         <BtnBg>Закрыть</BtnBg>
                                     </Link>
                                 </PopBrowseBtnEdit>
-                                : <PopBrowseBtnBrowse className="pop-browse__btn-browse ">
+                                : <PopBrowseBtnBrowse>
                                     <BtnGroup>
                                         <BtnBor onClick={handleEditState}>
                                             Редактировать задачу

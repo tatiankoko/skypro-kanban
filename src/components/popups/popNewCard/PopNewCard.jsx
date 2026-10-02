@@ -131,17 +131,18 @@ const PopNewCard = () => {
                                         onChange={handleChange} />
                                 </FormNewBlock>
                             </PopNewCardForm>
-                            <CardCalendar initialDate={newTask.date}
-                                          setDate={(value)=> {
-                                              setNewTask(
-                                              {
-                                                  ...newTask,
-                                                  date: value,
-                                              });
+                            <CardCalendar
+                                initialDate={newTask.date}
+                                setDate={(value)=> {
+                                    setNewTask(
+                                        {
+                                            ...newTask,
+                                            date: value,
+                                        });
 
-                                              setErrors({ ...errors, date: false });
-                                              setError("");
-                                          }}/>
+                                    setErrors({ ...errors, date: false });
+                                    setError("");
+                                }}/>
                         </PopNewCardWrapper>
                         <Categories>
                             <CategoriesP>Категория</CategoriesP>
@@ -149,15 +150,11 @@ const PopNewCard = () => {
                                 {
                                     Object.entries(category).map(([key, category]) => (
                                         <CategoriesTheme
-                                            $active={false}
+                                            $active={newTask.topic === category}
                                             $bgColor={userTheme[themeBg(key)]}
                                             $color={userTheme[themeColor(key)]}
                                             key={category}
                                             onClick={() => handleToggle(category)}
-                                            style={{
-                                                cursor: 'pointer',
-                                                opacity: newTask.topic === category ? 1 : 0.4,
-                                            }}
                                         >
                                             {category}
                                         </CategoriesTheme>
@@ -165,7 +162,7 @@ const PopNewCard = () => {
                                 }
                             </CategoriesThemes>
                         </Categories>
-                        <FormNewCreate id="btnCreate" onClick={handleSubmit}>
+                        <FormNewCreate onClick={handleSubmit}>
                             Создать задачу
                         </FormNewCreate>
                         {

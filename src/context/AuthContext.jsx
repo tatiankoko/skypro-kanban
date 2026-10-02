@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react';
-import {signIn} from "../services/auth.js";
+import {signIn, signUp} from "../services/auth.js";
 
 const AuthContext = createContext(undefined);
 
@@ -35,11 +35,21 @@ export function AuthProvider({ children }) {
         setUser(null);
     };
 
+    const signup = async ({name, login, password}) => {
+        const userData = await signUp({
+            name: name,
+            login: login,
+            password: password
+        });
+
+        return !!userData;
+    };
+
     return (
         <AuthContext.Provider value={{
             user, setUser,
             isAuth, setIsAuth,
-            login, logout
+            login, logout, signup
         }}>
             {children}
         </AuthContext.Provider>

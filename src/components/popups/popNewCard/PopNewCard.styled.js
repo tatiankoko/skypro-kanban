@@ -145,6 +145,7 @@ export const CategoriesTheme = styled.div`
     margin-right: 7px;
     opacity: ${ ({$active}) => $active ? 1 : 0.4 };
     transition: background-color 0.2s;
+    cursor: ${ ({$active}) => $active ? 'default' : 'pointer' };
 
     font-size: 14px;
     font-weight: 600;

@@ -28,12 +28,12 @@ const PopExit = () => {
                         <h2>Выйти из аккаунта?</h2>
                     </PopExitTtl>
                     <PopExitForm action="#">
-                        <PopExitExitYes id="exitYes" onClick={handleLogout}>
+                        <PopExitExitYes onClick={handleLogout}>
                             Да, выйти
                         </PopExitExitYes>
 
                         <Link to={"/"}>
-                            <PopExitExitNo id="exitNo">
+                            <PopExitExitNo>
                                 Нет, остаться
                             </PopExitExitNo>
                         </Link>

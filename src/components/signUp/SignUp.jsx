@@ -7,29 +7,27 @@ import {
     SignInWrapper
 } from "../signIn/SignIn.styled.js";
 import {Link, useNavigate} from "react-router-dom";
-import {useState} from "react";
-import {signUp} from "../../services/auth.js";
+import {useContext, useState} from "react";
 import BaseInput from "../signIn/BaseInput.jsx";
 import {ErrorNotification} from "../Notification.styled.js";
+import AuthContext from "../../context/AuthContext.jsx";
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const { signup } = useContext(AuthContext);
 
-    // состояние полей
     const [formData, setFormData] = useState({
         name: "",
         login: "",
         password: "",
     });
 
-    // состояние ошибок
     const [errors, setErrors] = useState({
         name: "",
         login: "",
         password: "",
     });
 
-    // состояние текста ошибки, чтобы показать её пользователю
     const [error, setError] = useState("");
 
     const validateForm = () => {
@@ -75,11 +73,11 @@ const SignUp = () => {
             return;
         }
         try {
-            const data =
-                await signUp({
+            const data = await signup({
                     name: formData.name,
                     login: formData.login,
-                    password: formData.password });
+                    password: formData.password
+            });
 
             if (data) {
                 navigate("/sign-in");
@@ -98,7 +96,7 @@ const SignUp = () => {
                             <h2>Регистрация</h2>
                         </ModalTtl>
 
-                        <ModalFormLogin id="formLogUp" onSubmit={handleSubmit}>
+                        <ModalFormLogin onSubmit={handleSubmit}>
                             <BaseInput error={errors.name}
                                        type="text"
                                        name="name"
@@ -131,9 +129,7 @@ const SignUp = () => {
                                     : null
                             }
 
-                            <ModalBtnEnter id="btnEnter">
-                                Зарегистрироваться
-                            </ModalBtnEnter>
+                            <ModalBtnEnter>Зарегистрироваться</ModalBtnEnter>
 
                             <ModalFormGroup>
                                 <p>Уже есть аккаунт?</p>

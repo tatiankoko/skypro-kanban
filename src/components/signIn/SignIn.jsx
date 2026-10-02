@@ -91,8 +91,7 @@ const SignIn = () => {
                             <h2>Вход</h2>
                         </ModalTtl>
 
-                        <ModalFormLogin id="formLogIn"
-                                        onSubmit={handleSubmit}>
+                        <ModalFormLogin onSubmit={handleSubmit}>
                             <BaseInput
                                 error={errors.login}
                                 type="text"
@@ -117,9 +116,7 @@ const SignIn = () => {
                                     : null
                             }
 
-                            <ModalBtnEnter id="btnEnter">
-                                    Войти
-                            </ModalBtnEnter>
+                            <ModalBtnEnter>Войти</ModalBtnEnter>
 
                             <ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>

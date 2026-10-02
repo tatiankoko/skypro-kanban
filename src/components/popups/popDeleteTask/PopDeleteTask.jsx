@@ -39,12 +39,12 @@ const PopDeleteTask = () => {
                         <h2>Вы уверены, что хотите удалить задачу?</h2>
                     </PopExitTtl>
                     <PopExitForm action="#">
-                        <PopExitExitYes id="exitYes" onClick={handleDelete}>
+                        <PopExitExitYes onClick={handleDelete}>
                             Да, удалить
                         </PopExitExitYes>
 
                         <Link to={"/card/" + id}>
-                            <PopExitExitNo id="exitNo">
+                            <PopExitExitNo>
                                 Нет, оставить
                             </PopExitExitNo>
                         </Link>
