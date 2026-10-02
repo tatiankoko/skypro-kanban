@@ -7,7 +7,6 @@ import {
 } from "./SignIn.styled.js";
 import {Link, useNavigate} from "react-router-dom";
 import {useContext, useState} from "react";
-import {signIn} from "../../services/auth.js";
 import BaseInput from "./BaseInput.jsx";
 import {ErrorNotification} from "../Notification.styled.js";
 import AuthContext from "../../context/AuthContext.jsx";
@@ -70,26 +69,18 @@ const SignIn = () => {
             return;
         }
         try {
-            const data =
-                await signIn({
-                    login: formData.login,
-                    password: formData.password
-                });
+            const data = await login({
+                login: formData.login,
+                password: formData.password
+            });
 
             if (data) {
-                login(data);
                 navigate("/");
             }
         } catch (err) {
             setError(err.message);
         }
     };
-
-/*    const handleLogin = (e) => {
-        e.preventDefault();
-        setIsAuth(true);
-        navigate("/");
-    }*/
 
     return (
         <SignInWrapper>
@@ -100,7 +91,8 @@ const SignIn = () => {
                             <h2>Вход</h2>
                         </ModalTtl>
 
-                        <ModalFormLogin id="formLogIn" onSubmit={handleSubmit}>
+                        <ModalFormLogin id="formLogIn"
+                                        onSubmit={handleSubmit}>
                             <BaseInput
                                 error={errors.login}
                                 type="text"
