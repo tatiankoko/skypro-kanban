@@ -45,7 +45,7 @@ export const PopBrowseBlock = styled.div`
     width: 100%;
     padding: 40px 30px 38px;
     border-radius: 10px;
-    border: 0.7px solid ${ props => props.theme.border };
+    border: 1px solid ${ props => props.theme.border };
     position: relative;
 
     @media screen and (max-width: 660px) {
@@ -98,7 +98,7 @@ export const PopBrowseStatusThemes = styled.div`
 
 export const PopBrowseStatusTheme = styled.div`
     border-radius: 24px;
-    border: 0.7px solid ${ props => props.theme.gray40 };
+    border: 1px solid ${ props => props.theme.gray40 };
     background: ${ ({$active}) => $active 
             ? props => props.theme.gray 
             : 'transparent' };
@@ -202,37 +202,26 @@ export const BtnGroup = styled.div`
 
 export const BtnBg = styled.button`
     border-radius: 4px;
-    background: ${ props => props.theme.btnBg };
+    background-color: ${ props => props.theme.btnBg };
     border: none;
     outline: none;
-    color: ${ props => props.theme.background };
+    color: ${ props => props.theme.btnText };
     
     &:hover {
         background-color: ${ props => props.theme.btnHover };
-    }
-
-    & a {
-        color: ${ props => props.theme.background };
     }
 `
 
 export const BtnBor = styled.button`
     border-radius: 4px;
-    border: 0.7px solid ${ props => props.theme.btnBg };
+    border: 1px solid ${ props => props.theme.btnBorder };
     outline: none;
     background: transparent;
-    color: ${ props => props.theme.btnBg };
+    color: ${ props => props.theme.btnBorder };
     
     &:hover {
-        background-color: ${ props => props.theme.btnHover };
-        color: ${ props => props.theme.background };
-        
-        & a {
-            color: ${ props => props.theme.background };
-        }
-    }
-
-    & a {
-        color: ${ props => props.theme.btnBg };
+        background-color: ${ props => props.theme.btnBg };
+        border-color: ${ props => props.theme.btnBg };
+        color: ${ props => props.theme.btnText };
     }
 `

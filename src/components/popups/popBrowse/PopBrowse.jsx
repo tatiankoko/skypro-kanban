@@ -177,9 +177,9 @@ const PopBrowse = () => {
                                             Сохранить
                                         </BtnBg>
 
-                                        <BtnBg onClick={handleCancelEditState}>
+                                        <BtnBor onClick={handleCancelEditState}>
                                             Отменить
-                                        </BtnBg>
+                                        </BtnBor>
 
                                         <Link to={"/card/" + id + "/delete"}>
                                             <BtnBor>Удалить задачу</BtnBor>
@@ -201,7 +201,7 @@ const PopBrowse = () => {
                                     </BtnGroup>
 
                                     <Link to={"/"}>
-                                        <BtnBor>Закрыть</BtnBor>
+                                        <BtnBg>Закрыть</BtnBg>
                                     </Link>
                                 </PopBrowseBtnBrowse>
                         }

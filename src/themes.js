@@ -1,10 +1,14 @@
 export const lightTheme = {
+    mode: 'light',
+
     background: '#FFFFFF',
     border: '#D4DBE5',
     wrapperBg: '#F1F1F1',
     mainBg: '#EAEEF6',
     btnBg: '#565EEF',
     btnHover: '#33399b',
+    btnBorder: '#565EEF',
+    btnText: '#FFFFFF',
     errorText: '#F84D4D',
 
     orangeBg: '#FFE4C2',
@@ -24,12 +28,16 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
+    mode: 'dark',
+
     background: '#20202C',
     border: '#4E5566',
     wrapperBg: '#151419',
-    mainBg: '#EAEEF6',
+    mainBg: '#151419',
     btnBg: '#565EEF',
     btnHover: '#33399b',
+    btnBorder: '#FFFFFF',
+    btnText: '#FFFFFF',
     errorText: '#F84D4D',
 
     orangeBg: '#FF6D00',
@@ -46,4 +54,5 @@ export const darkTheme = {
     title: '#FFFFFF',
     shadow: '#94A6BE66',
     popShadow: '#00000021',
+    /*#8B94A3*/
 }

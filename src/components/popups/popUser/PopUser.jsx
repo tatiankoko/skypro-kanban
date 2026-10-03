@@ -20,9 +20,7 @@ const PopUser = ({name, mail}) => {
             </PopUserSetTheme>
 
             <Link to={"/logout"}>
-                <button type="button" className="_hover03">
-                    Выйти
-                </button>
+                <button type="button">Выйти</button>
             </Link>
         </PopUserSetStyled>
     )

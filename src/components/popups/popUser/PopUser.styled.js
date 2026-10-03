@@ -23,12 +23,14 @@ export const PopUserSetStyled = styled.div`
         width: 72px;
         height: 30px;
         background: transparent;
-        color: ${ props => props.theme.btnBg };
+        color: ${ props => props.theme.btnBorder };
         border-radius: 4px;
-        border: 1px solid ${ props => props.theme.btnBg };
-        
-        & a {
-            color: ${ props => props.theme.btnBg };
+        border: 1px solid ${ props => props.theme.btnBorder };
+
+        &:hover {
+            background-color: ${ props => props.theme.btnBg };
+            border-color: ${ props => props.theme.btnBg };
+            color: ${ props => props.theme.btnText };
         }
     }
 `
@@ -67,7 +69,9 @@ export const PopUserSetTheme = styled.div`
         width: 24px;
         height: 13px;
         border-radius: 100px;
-        background: ${ props => props.theme.mainBg };
+        background: ${ (props) => props.theme.mode === 'light' 
+                ? props.theme.mainBg 
+                : props.theme.title };
         outline: none;
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -81,12 +85,28 @@ export const PopUserSetTheme = styled.div`
             width: 11px;
             height: 11px;
             border-radius: 50%;
-            background-color: ${ props => props.theme.gray };
+            background-color: ${ (props) => props.theme.mode === 'light'
+                    ? props.theme.gray
+                    : props.theme.btnBg };
             transition: 0.5s;
         }
     }
     
     & input:checked[type=checkbox]::before {
         left: 12px;
+    }
+`
+
+export const PopUserButton = styled.button`
+    border-radius: 4px;
+    border: 0.7px solid ${ props => props.theme.btnBorder };
+    outline: none;
+    background: transparent;
+    color: ${ props => props.theme.btnBorder };
+    
+    &:hover {
+        background-color: ${ props => props.theme.btnBg };
+        border-color: ${ props => props.theme.btnBg };
+        color: ${ props => props.theme.btnText };
     }
 `

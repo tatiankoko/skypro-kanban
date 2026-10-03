@@ -51,7 +51,7 @@ export const PopNewCardBlock = styled.div`
     width: 100%;
     padding: 40px 30px 48px;
     border-radius: 10px;
-    border: 0.7px solid ${ props => props.theme.border };
+    border: 1px solid ${ props => props.theme.border };
     position: relative;
 
     @media screen and (max-width: 660px) {
@@ -176,7 +176,7 @@ export const FormNewCreate = styled.button`
     font-size: 14px;
     font-weight: 500;
     line-height: 1;
-    color: ${ props => props.theme.background };
+    color: ${ props => props.theme.btnText };
     float: right;
 
     &:hover {
