@@ -1,5 +1,4 @@
 import {createGlobalStyle} from "styled-components";
-import {colors} from "../colors.js";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -19,8 +18,7 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
-    button,
-    ._btn {
+    button {
         cursor: pointer;
         outline: none;
     }
@@ -34,7 +32,6 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         font-family: "Roboto", Arial, Helvetica, sans-serif;
-        color: ${ colors.title }
+        color: ${ props => props.theme.title };
     }
-
 `

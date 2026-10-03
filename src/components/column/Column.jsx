@@ -4,8 +4,12 @@ import {MainColumn} from "../main/Main.styled.js";
 import {CardsStyled} from "../card/Card.styled.js";
 import {ColumnTitle} from "./Column.styled.js";
 import {cardList} from "../../data.js";
+import {useContext} from "react";
+import TasksContext from "../../context/TaskContext.jsx";
 
-const Column = ({title, tasks, loading}) => {
+const Column = ({title, loading}) => {
+    const {tasks} = useContext(TasksContext);
+
     return (
         <MainColumn>
             <ColumnTitle>
@@ -19,9 +23,9 @@ const Column = ({title, tasks, loading}) => {
                             .map((task) =>
                                 <CardLoader key={task.id} />
                             )
-                        : tasks.tasks.length === 0
+                        : tasks?.length === 0
                             ? <p></p>
-                            : tasks.tasks
+                            : tasks
                                 .filter((task) => task.status === title)
                                 .map((task) =>
                                     loading

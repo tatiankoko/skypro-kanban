@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import {colors} from "../../colors.js";
 
 export const SignInWrapper = styled.div`
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: ${ colors.mainBg };
+    background-color: ${ ({ theme }) => theme.mainBg };
 `
 
 export const SignInContainer = styled.div`
@@ -27,20 +26,20 @@ export const Modal = styled.div`
     justify-content: center;
 
     @media screen and (max-width: 375px) {
-        background-color: ${ colors.background };
+        background-color: ${ ({ theme }) => theme.background };
     }
 `
 
 export const ModalBlock = styled.div`
     display: block;
     margin: 0 auto;
-    background-color: ${colors.background};
+    background-color: ${({ theme }) => theme.background};
     max-width: 368px;
     width: 100%;
     padding: 50px 60px;
     border-radius: 10px;
-    border: 1px solid #D4DBE5;
-    box-shadow: 0 4px 67px -12px rgba(0, 0, 0, 0.13);
+    border: 1px solid ${ props => props.theme.border };
+    box-shadow: 0 4px 67px -12px ${ props => props.theme.popShadow };
 
     @media screen and (max-width: 375px) {
         max-width: 368px;
@@ -81,7 +80,7 @@ export const ModalFormGroup = styled.div`
     text-align: center;
 
     p, a {
-        color: rgba(148, 166, 190, 0.4);
+        color: ${ props => props.theme.gray40 };
         font-size: 14px;
         font-weight: 400;
         line-height: 150%;
@@ -93,12 +92,11 @@ export const ModalFormGroup = styled.div`
     }
 `
 
-export const
-    ModalInput = styled.input`
+export const ModalInput = styled.input`
     width: 100%;
     min-width: 100%;
     border-radius: 8px;
-    border: 1px solid rgba(148, 166, 190, 0.4);
+    border: 1px solid ${ props => props.theme.gray40 };
     outline: none;
     padding: 4px 10px;
     
@@ -114,7 +112,7 @@ export const
         font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.28px;
-        color: ${ colors.gray };
+        color: ${ ({ theme }) => theme.gray };
     }
 
     &::placeholder {
@@ -123,14 +121,14 @@ export const
         font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.28px;
-        color: ${ colors.gray };
+        color: ${ ({ theme }) => theme.gray };
     }
 `
 
 export const ModalBtnEnter = styled.button`
     width: 100%;
     height: 30px;
-    background-color: ${ colors.btnBg };
+    background-color: ${ ({ theme }) => theme.btnBg };
     border-radius: 4px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -143,16 +141,16 @@ export const ModalBtnEnter = styled.button`
     line-height: 21px;
     font-weight: 500;
     letter-spacing: -0.14px;
-    color: ${ colors.background};
+    color: ${ ({ theme }) => theme.background};
     
     &:hover {
-        background-color: ${ colors.btnHover };
+        background-color: ${ ({ theme }) => theme.btnHover };
     }
 
     /*a {
         width: 100%;
         height: 100%;
-        color: #FFFFFF;
+        color: ${ props => props.theme.background };
         display: flex;
         align-items: center;
         justify-content: center;

@@ -6,13 +6,14 @@ import {
     SignInWrapper
 } from "./SignIn.styled.js";
 import {Link, useNavigate} from "react-router-dom";
-import {useState} from "react";
-import {signIn} from "../../services/auth.js";
+import {useContext, useState} from "react";
 import BaseInput from "./BaseInput.jsx";
 import {ErrorNotification} from "../Notification.styled.js";
+import AuthContext from "../../context/AuthContext.jsx";
 
-const SignIn = ({ setIsAuth }) => {
+const SignIn = () => {
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     // состояние полей
     const [formData, setFormData] = useState({
@@ -68,24 +69,18 @@ const SignIn = ({ setIsAuth }) => {
             return;
         }
         try {
-            const data =
-                await signIn({ login: formData.login, password: formData.password });
+            const data = await login({
+                login: formData.login,
+                password: formData.password
+            });
 
             if (data) {
-                setIsAuth(true);
-                localStorage.setItem("userInfo", JSON.stringify(data));
                 navigate("/");
             }
         } catch (err) {
             setError(err.message);
         }
     };
-
-/*    const handleLogin = (e) => {
-        e.preventDefault();
-        setIsAuth(true);
-        navigate("/");
-    }*/
 
     return (
         <SignInWrapper>
@@ -96,7 +91,7 @@ const SignIn = ({ setIsAuth }) => {
                             <h2>Вход</h2>
                         </ModalTtl>
 
-                        <ModalFormLogin id="formLogIn" onSubmit={handleSubmit}>
+                        <ModalFormLogin onSubmit={handleSubmit}>
                             <BaseInput
                                 error={errors.login}
                                 type="text"
@@ -121,9 +116,7 @@ const SignIn = ({ setIsAuth }) => {
                                     : null
                             }
 
-                            <ModalBtnEnter id="btnEnter">
-                                    Войти
-                            </ModalBtnEnter>
+                            <ModalBtnEnter>Войти</ModalBtnEnter>
 
                             <ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>
