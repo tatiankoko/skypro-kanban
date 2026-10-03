@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 export const CalendarContainer = styled.div`
     .react-calendar {
@@ -100,7 +100,7 @@ export const CalendarContainer = styled.div`
         color: ${ props => props.theme.gray };
 
         &:hover,
-        .react-calendar__tile:focus {
+        &:focus {
             border-radius: 50%;
         }
 
@@ -115,7 +115,7 @@ export const CalendarContainer = styled.div`
 
         &:enabled:hover,
         &:enabled:focus {
-            background-color: #e6e6e6;
+            background-color: ${ props => props.theme.mainBg };
         }
     }    
 
@@ -268,55 +268,6 @@ export const CalendarCells = styled.div`
         justify-content: space-around;
     }
 `
-
-export const CalendarCell = styled.div`
-    width: 22px;
-    height: 22px;
-    margin: 2px;
-    border-radius: 50%;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    color: ${ ({ theme }) => theme.gray };
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: -0.2px;
-    cursor: pointer;
-
-    @media screen and (max-width: 660px) {
-        width: 42px;
-        height: 42px;
-        font-size: 14px;
-    }
-
-    ${(props) =>
-            props.$isOtherMonth &&
-            css`opacity: 0;`}
-
-    ${(props) =>
-            props.$isCellDay &&
-            css`
-                &:hover {
-                    color: ${ ({ theme }) => theme.gray };
-                    background-color: ${ ({ theme }) => theme.mainBg };
-                }
-            `} 
-    
-    ${(props) =>
-            props.$isActiveDay &&
-            css`
-                background-color: ${ ({ theme }) => theme.gray };
-                color: ${ ({ theme }) => theme.background };
-            `} 
-    
-    ${(props) =>
-            props.$isCurrent &&
-            css`
-                font-weight: 700;
-            `}
-`
-
 export const CalendarPeriod = styled.div`
     padding: 0 7px;
 
