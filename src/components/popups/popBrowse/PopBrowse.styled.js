@@ -97,6 +97,7 @@ export const PopBrowseStatusThemes = styled.div`
 `
 
 export const PopBrowseStatusTheme = styled.div`
+    display: ${ ({$readonly, $active}) => $readonly && !$active ? 'none': 'block' };
     border-radius: 24px;
     border: 1px solid ${ props => props.theme.gray40 };
     background: ${ ({$active}) => $active 
