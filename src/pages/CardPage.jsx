@@ -1,9 +1,7 @@
 import PopBrowse from "../components/popups/popBrowse/PopBrowse.jsx";
 
-const CardPage = ({tasks, updateTasks}) => {
-    return (
-        <PopBrowse tasks={tasks} updateTasks={updateTasks} />
-    );
+const CardPage = () => {
+    return <PopBrowse />;
 }
 
 export default CardPage;

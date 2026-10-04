@@ -1,40 +1,46 @@
 import {Link, useNavigate} from "react-router-dom";
+import {
+    PopExitBlock,
+    PopExitContainer, PopExitExitNo,
+    PopExitExitYes,
+    PopExitForm,
+    PopExitStyled,
+    PopExitTtl
+} from "./PopExit.styled.js";
+import {useContext} from "react";
+import AuthContext from "../../../context/AuthContext.jsx";
 
-const PopExit = ({ setIsAuth }) => {
+const PopExit = () => {
     const navigate = useNavigate();
+    const { logout } = useContext(AuthContext);
 
     function handleLogout(e) {
         e.preventDefault();
-        setIsAuth(false);
-        localStorage.setItem("userInfo", null);
+        logout();
         navigate("/sign-in");
     }
 
     return (
-        <div className="pop-exit" id="popExit">
-            <div className="pop-exit__container">
-                <div className="pop-exit__block">
-                    <div className="pop-exit__ttl">
+        <PopExitStyled>
+            <PopExitContainer>
+                <PopExitBlock>
+                    <PopExitTtl>
                         <h2>Выйти из аккаунта?</h2>
-                    </div>
-                    <form className="pop-exit__form" id="formExit" action="#">
-                        <div className="pop-exit__form-group">
-                            <button className="pop-exit__exit-yes _hover01"
-                                    id="exitYes"
-                                    onClick={handleLogout}>
-                                Да, выйти
-                            </button>
+                    </PopExitTtl>
+                    <PopExitForm action="#">
+                        <PopExitExitYes onClick={handleLogout}>
+                            Да, выйти
+                        </PopExitExitYes>
 
-                            <Link to={"/"}>
-                                <button className="pop-exit__exit-no _hover03" id="exitNo">
-                                    Нет, остаться
-                                </button>
-                            </Link>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                        <Link to={"/"}>
+                            <PopExitExitNo>
+                                Нет, остаться
+                            </PopExitExitNo>
+                        </Link>
+                    </PopExitForm>
+                </PopExitBlock>
+            </PopExitContainer>
+        </PopExitStyled>
     )
 }
 

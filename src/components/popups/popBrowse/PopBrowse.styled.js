@@ -1,0 +1,228 @@
+import styled from "styled-components";
+
+export const PopBrowseStyled = styled.div`
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 375px;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    
+    &:target {
+        display: block;
+    }
+
+    @media screen and (max-width: 660px) {
+        top: 70px;
+    }
+`
+
+export const PopBrowseContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+
+    @media screen and (max-width: 660px) {
+        padding: 0;
+        justify-content: flex-start;
+    }
+`
+
+export const PopBrowseBlock = styled.div`
+    display: block;
+    margin: 0 auto;
+    background-color: ${ props => props.theme.background };
+    max-width: 630px;
+    width: 100%;
+    padding: 40px 30px 38px;
+    border-radius: 10px;
+    border: 1px solid ${ props => props.theme.border };
+    position: relative;
+
+    @media screen and (max-width: 660px) {
+        border-radius: 0;
+    }
+    
+    @media screen and (max-width: 495px) {
+        padding: 20px 16px 32px;
+    }
+`
+
+export const PopBrowseContent = styled.div`
+    display: block;
+    text-align: left;
+`
+
+export const PopBrowseTopBlock = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+`
+
+export const PopBrowseTtl = styled.h3`
+    color: ${ props => props.theme.title };
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+`
+
+export const PopBrowseStatus = styled.h3`
+    margin-bottom: 11px;
+`
+
+export const PopBrowseStatusP = styled.p`
+    margin-bottom: 14px;
+    color: ${ props => props.theme.title };
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+`
+
+export const PopBrowseStatusThemes = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    /*justify-content: flex-start;*/
+    justify-content: space-between;
+`
+
+export const PopBrowseStatusTheme = styled.div`
+    display: ${ ({$readonly, $active}) => $readonly && !$active ? 'none': 'block' };
+    border-radius: 24px;
+    border: 1px solid ${ props => props.theme.gray40 };
+    background: ${ ({$active}) => $active 
+            ? props => props.theme.gray 
+            : 'transparent' };
+    color: ${ ({$active}) => $active 
+            ? props => props.theme.background 
+            : props => props.theme.gray };
+
+    padding: 10px 17px;
+    /*margin-right: 7px;*/
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.14px;
+
+    opacity: ${ ({$readonly, $active}) => $readonly && !$active ? 0 : 1 };
+    cursor: ${ ({$readonly}) => $readonly ? 'default' : 'pointer' };
+`
+
+export const PopBrowseWrapper = styled.div`
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 18px;
+
+    @media screen and (max-width: 660px) {
+        display: block;
+    }
+`
+
+export const PopBrowseForm = styled.form`
+    max-width: 370px;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 495px) {
+        max-width: 100%;
+    }
+`
+
+export const FormBrowseBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const PopBrowseBtnEdit = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    & button {
+        height: 30px;
+        margin-bottom: 10px;
+        padding: 0 14px;
+    }
+
+    @media screen and (max-width: 495px) {
+        & button {
+            width: 100%;
+            height: 40px;
+        }
+    }
+`
+
+export const PopBrowseBtnBrowse = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    & button {
+        height: 30px;
+        margin-bottom: 10px;
+        padding: 0 14px;
+    }
+
+    @media screen and (max-width: 495px) {
+        & button {
+            width: 100%;
+            height: 40px;
+        }
+    }
+`
+
+export const BtnGroup = styled.div`    
+    & button {
+        margin-right: 8px;
+    }
+
+    @media screen and (max-width: 495px) {
+        width: 100%;
+        
+        & button {
+            margin-right: 0;
+        }
+    }
+`
+
+export const BtnBg = styled.button`
+    border-radius: 4px;
+    background-color: ${ props => props.theme.btnBg };
+    border: none;
+    outline: none;
+    color: ${ props => props.theme.btnText };
+    
+    &:hover {
+        background-color: ${ props => props.theme.btnHover };
+    }
+`
+
+export const BtnBor = styled.button`
+    border-radius: 4px;
+    border: 1px solid ${ props => props.theme.btnBorder };
+    outline: none;
+    background: transparent;
+    color: ${ props => props.theme.btnBorder };
+    
+    &:hover {
+        background-color: ${ props => props.theme.btnBg };
+        border-color: ${ props => props.theme.btnBg };
+        color: ${ props => props.theme.btnText };
+    }
+`

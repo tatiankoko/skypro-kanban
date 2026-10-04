@@ -1,15 +1,27 @@
 import CardCalendar from "../../calendar/Calendar.jsx";
-import {Link, useNavigate} from "react-router-dom";
-import {postTask} from "../../../services/api.js";
-import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {useContext, useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
 import {status} from "../../../status.js";
+import {
+    FormNewBlock,
+    PopNewCardBlock, Categories,
+    PopNewCardContainer,
+    PopNewCardContent, PopNewCardForm,
+    PopNewCardStyled, PopNewCardTtl, PopNewCardWrapper,
+    Subttl, CategoriesP, CategoriesThemes, FormNewCreate, PopNewCardClose, CategoriesTheme
+} from "./PopNewCard.styled.js";
+import {themeBg, themeColor} from "../../card/Card.jsx";
+import {useTheme} from "styled-components";
+import TasksContext from "../../../context/TaskContext.jsx";
 
-const PopNewCard = ({updateTasks}) => {
+const PopNewCard = () => {
+    const userTheme = useTheme();
     const navigate = useNavigate();
     const [error, setError] = useState("");
+    const {addTask} = useContext(TasksContext);
 
     const [newTask, setNewTask] = useState({
         title: "",
@@ -74,30 +86,28 @@ const PopNewCard = ({updateTasks}) => {
             return;
         }
 
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-
         try {
-            const data = await postTask({ token: userInfo.token, task: JSON.stringify(newTask) })
+            const result = await addTask(newTask);
 
-            if (data)
-                updateTasks();
+            if (result) {
                 navigate("/");
+            }
         } catch (err) {
             setError(err.message);
         }
     }
 
     return (
-        <div className="pop-new-card" id="popNewCard">
-            <div className="pop-new-card__container">
-                <div className="pop-new-card__block">
-                    <div className="pop-new-card__content">
-                        <h3 className="pop-new-card__ttl">Создание задачи</h3>
-                        <Link className="pop-new-card__close" to={"/"}>&#10006;</Link>
-                        <div className="pop-new-card__wrap">
-                            <form className="pop-new-card__form form-new" id="formNewCard" action="#">
-                                <div className="form-new__block">
-                                    <label htmlFor="formTitle" className="subttl">Название задачи</label>
+        <PopNewCardStyled>
+            <PopNewCardContainer>
+                <PopNewCardBlock>
+                    <PopNewCardContent>
+                        <PopNewCardTtl>Создание задачи</PopNewCardTtl>
+                        <PopNewCardClose to={"/"}>&#10006;</PopNewCardClose>
+                        <PopNewCardWrapper>
+                            <PopNewCardForm action="#">
+                                <FormNewBlock>
+                                    <Subttl htmlFor="formTitle">Название задачи</Subttl>
                                     <PopInput
                                         error={errors.title}
                                         type="text"
@@ -107,9 +117,9 @@ const PopNewCard = ({updateTasks}) => {
                                         value={newTask.title}
                                         onChange={handleChange}
                                         autoFocus />
-                                </div>
-                                <div className="form-new__block">
-                                    <label htmlFor="textArea" className="subttl">Описание задачи</label>
+                                </FormNewBlock>
+                                <FormNewBlock>
+                                    <Subttl htmlFor="textArea">Описание задачи</Subttl>
                                     <PopInput
                                         tag="textarea"
                                         error={errors.description}
@@ -119,53 +129,51 @@ const PopNewCard = ({updateTasks}) => {
                                         placeholder="Введите описание задачи..."
                                         value={newTask.description}
                                         onChange={handleChange} />
-                                </div>
-                            </form>
-                            <CardCalendar initialDate={newTask.date}
-                                          setDate={(value)=> {
-                                              setNewTask(
-                                              {
-                                                  ...newTask,
-                                                  date: value,
-                                              });
+                                </FormNewBlock>
+                            </PopNewCardForm>
+                            <CardCalendar
+                                initialDate={newTask.date}
+                                setDate={(value)=> {
+                                    setNewTask(
+                                        {
+                                            ...newTask,
+                                            date: value,
+                                        });
 
-                                              setErrors({ ...errors, date: false });
-                                              setError("");
-                                          }}/>
-                        </div>
-                        <div className="pop-new-card__categories categories">
-                            <p className="categories__p subttl">Категория</p>
-                            <div className="categories__themes">
+                                    setErrors({ ...errors, date: false });
+                                    setError("");
+                                }}/>
+                        </PopNewCardWrapper>
+                        <Categories>
+                            <CategoriesP>Категория</CategoriesP>
+                            <CategoriesThemes>
                                 {
                                     Object.entries(category).map(([key, category]) => (
-                                        <button className={`categories__theme _${key}`}
-                                                key={category}
-                                                onClick={() => handleToggle(category)}
-                                                style={{
-                                                    cursor: 'pointer',
-                                                    opacity: newTask.topic === category ? 1 : 0.4,
-                                                }}
+                                        <CategoriesTheme
+                                            $active={newTask.topic === category}
+                                            $bgColor={userTheme[themeBg(key)]}
+                                            $color={userTheme[themeColor(key)]}
+                                            key={category}
+                                            onClick={() => handleToggle(category)}
                                         >
                                             {category}
-                                        </button>
+                                        </CategoriesTheme>
                                     ))
                                 }
-                            </div>
-                        </div>
-                        <button className="form-new__create _hover01"
-                                id="btnCreate"
-                                onClick={handleSubmit}>
+                            </CategoriesThemes>
+                        </Categories>
+                        <FormNewCreate onClick={handleSubmit}>
                             Создать задачу
-                        </button>
+                        </FormNewCreate>
                         {
                             error
                                 ? <ErrorMessage>{error}</ErrorMessage>
                                 : null
                         }
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </PopNewCardContent>
+                </PopNewCardBlock>
+            </PopNewCardContainer>
+        </PopNewCardStyled>
     )
 }
 

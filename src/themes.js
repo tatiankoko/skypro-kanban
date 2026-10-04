@@ -1,0 +1,58 @@
+export const lightTheme = {
+    mode: 'light',
+
+    background: '#FFFFFF',
+    border: '#D4DBE5',
+    wrapperBg: '#F1F1F1',
+    mainBg: '#EAEEF6',
+    btnBg: '#565EEF',
+    btnHover: '#33399b',
+    btnBorder: '#565EEF',
+    btnText: '#FFFFFF',
+    errorText: '#F84D4D',
+
+    orangeBg: '#FFE4C2',
+    orangeColor: '#FF6D00',
+    greenBg: '#B4FDD1',
+    greenColor: '#06B16E',
+    purpleBg: '#E9D4FF',
+    purpleColor: '#9A48F1',
+    gray: '#94A6BE',
+    gray40: '#94A6BE66',
+    loaderBg1: '#C1CDDC',
+    loaderBg2: '#E9EEF7',
+
+    title: '#000000',
+    shadow: '#1A386536',
+    popShadow: '#00000021',
+}
+
+export const darkTheme = {
+    mode: 'dark',
+
+    background: '#20202C',
+    border: '#4E5566',
+    wrapperBg: '#151419',
+    mainBg: '#151419',
+    btnBg: '#565EEF',
+    btnHover: '#33399b',
+    btnBorder: '#FFFFFF',
+    btnText: '#FFFFFF',
+    errorText: '#F84D4D',
+
+    orangeBg: '#FF6D00',
+    orangeColor: '#FFE4C2',
+    greenBg: '#06B16E',
+    greenColor: '#B4FDD1',
+    purpleBg: '#9A48F1',
+    purpleColor: '#E9D4FF',
+    gray: '#94A6BE',
+    gray40: '#94A6BE66',
+    loaderBg1: '#C1CDDC',
+    loaderBg2: '#E9EEF7',
+
+    title: '#FFFFFF',
+    shadow: '#94A6BE66',
+    popShadow: '#00000021',
+    /*#8B94A3*/
+}

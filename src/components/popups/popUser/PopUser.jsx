@@ -1,21 +1,28 @@
 import {Link} from "react-router-dom";
+import {useContext} from "react";
+import ThemeContext from "../../../context/ThemeContext.jsx";
+import {PopUserSetMail, PopUserSetName, PopUserSetStyled, PopUserSetTheme} from "./PopUser.styled.js";
 
 const PopUser = ({name, mail}) => {
+    const { theme, toggleTheme } = useContext(ThemeContext);
+
     return (
-        <div className="header__pop-user-set pop-user-set" id="user-set-target">
-            <p className="pop-user-set__name">{name}</p>
-            <p className="pop-user-set__mail">{mail}</p>
-            <div className="pop-user-set__theme">
+        <PopUserSetStyled>
+            <PopUserSetName>{name}</PopUserSetName>
+            <PopUserSetMail>{mail}</PopUserSetMail>
+            <PopUserSetTheme>
                 <p>Темная тема</p>
-                <input type="checkbox" className="checkbox" name="checkbox"/>
-            </div>
+                <input type="checkbox"
+                       className="checkbox"
+                       name="checkbox"
+                       checked={theme === 'dark'}
+                       onChange={toggleTheme} />
+            </PopUserSetTheme>
 
             <Link to={"/logout"}>
-                <button type="button" className="_hover03">
-                    Выйти
-                </button>
+                <button type="button">Выйти</button>
             </Link>
-        </div>
+        </PopUserSetStyled>
     )
 }
 
