@@ -1,16 +1,28 @@
-# React + Vite
+# Сайт с канбан-доской
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React-приложение для ведения задач в формате канбана.
 
-Currently, two official plugins are available:
+Официальные плагины:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [react-router](https://github.com/remix-run/react-router)
+- [styled-components](https://github.com/styled-components/styled-components)
 
-## React Compiler
+## Особенности проекта
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Управление задачами.** Создание, редактирование, удаление и перемещение задач.
+- **Авторизация.** Вход и регистрация пользователей.
+- **Продвинутые оповещения.** Система уведомлений для пользователя с помощью [react-toastify](https://github.com/fkhadra/react-toastify).
+- **Drag & Drop.** Перетаскивание задач между колонками для быстрого изменения статуса с помощью [@dnd-kit/dom](https://github.com/clauderic/dnd-kit).
+- **Адаптивность.** Сайт корректно отображается на мобильных, планшетах и десктопах.
+- **Интерактивные элементы.** Реализованы анимации загрузки и плавные переходы при перемещении задач.
+- **Темная тема.** Переключение между светлой и темной темой с помощью [ThemeProvider](https://styled-components.com/docs/advanced).
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Дополнительная функциональность
+
+- [react-calendar](https://github.com/wojtekmaj/react-calendar) компонент календаря 
+- [react-toastify](https://github.com/fkhadra/react-toastify) компонент продвинутых оповещений
+- [@dnd-kit/dom](https://github.com/clauderic/dnd-kit) компонент для реализации Drag and Drop
+

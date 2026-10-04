@@ -1,4 +1,3 @@
-import './App.css'
 import AppRoutes from './components/appRoutes/AppRoutes.jsx';
 
 function App() {
