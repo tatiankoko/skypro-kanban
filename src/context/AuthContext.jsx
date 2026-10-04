@@ -1,4 +1,4 @@
-import {createContext, useState} from 'react';
+import {createContext, useContext, useState} from 'react';
 import {signIn, signUp} from "../services/auth.js";
 
 const AuthContext = createContext(undefined);
@@ -54,6 +54,15 @@ export function AuthProvider({ children }) {
             {children}
         </AuthContext.Provider>
     );
+}
+
+// Кастомный хук
+export function useAuth() {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth должен использоваться внутри AuthProvider');
+    }
+    return context;
 }
 
 export default AuthContext;

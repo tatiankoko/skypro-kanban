@@ -1,5 +1,5 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {ErrorNotification} from "../../Notification.styled.js";
 import {
     PopExitBlock,
@@ -9,13 +9,13 @@ import {
     PopExitStyled,
     PopExitTtl
 } from "../popExit/PopExit.styled.js";
-import TasksContext from "../../../context/TaskContext.jsx";
+import {useTasks} from "../../../context/TaskContext.jsx";
 
 const PopDeleteTask = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [error, setError] = useState('');
-    const {removeTask} = useContext(TasksContext);
+    const {removeTask} = useTasks();
 
     const handleDelete = async (e) => {
         e.preventDefault();

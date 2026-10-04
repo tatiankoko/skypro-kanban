@@ -1,11 +1,11 @@
 import {createContext, useContext, useState} from 'react';
 import {deleteTask, editTask, postTask} from "../services/api.js";
-import AuthContext from "./AuthContext.jsx";
+import {useAuth} from "./AuthContext.jsx";
 
 const TasksContext = createContext(undefined);
 
 export function TasksProvider({ children }) {
-    const {user} = useContext(AuthContext);
+    const {user} = useAuth();
     const [tasks, setTasks] = useState(null);
 
     // Функция добавления новой задачи
@@ -64,6 +64,15 @@ export function TasksProvider({ children }) {
             {children}
         </TasksContext.Provider>
     );
+}
+
+// Кастомный хук
+export function useTasks() {
+    const context = useContext(TasksContext);
+    if (!context) {
+        throw new Error('useTasks должен использоваться внутри TasksProvider');
+    }
+    return context;
 }
 
 export default TasksContext;

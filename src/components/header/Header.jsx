@@ -4,12 +4,12 @@ import {HeaderBlock, HeaderButtonMainNew, HeaderLogo, HeaderNav, HeaderStyled, H
 import {ContainerStyled} from "../Container.styled.js";
 import {Link, useNavigate} from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext.jsx";
-import AuthContext from "../../context/AuthContext.jsx";
+import {useAuth} from "../../context/AuthContext.jsx";
 
 const Header = () => {
     const [showUser, setShowUser] = useState(false)
     const {theme} = useContext(ThemeContext);
-    const {user} = useContext(AuthContext);
+    const {user} = useAuth();
 
     const navigate = useNavigate();
 

@@ -1,6 +1,6 @@
 import CardCalendar from "../../calendar/Calendar.jsx";
 import {Link, Outlet, useParams} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
@@ -18,11 +18,11 @@ import {
 import {CategoriesTheme, Subttl} from "../popNewCard/PopNewCard.styled.js";
 import {themeBg, themeColor} from "../../card/Card.jsx";
 import {useTheme} from "styled-components";
-import TasksContext from "../../../context/TaskContext.jsx";
+import {useTasks} from "../../../context/TaskContext.jsx";
 
 const PopBrowse = () => {
     const userTheme = useTheme();
-    const {tasks, updateTask} = useContext(TasksContext);
+    const {tasks, updateTask} = useTasks();
 
     const { id } = useParams();
     const [error, setError] = useState("");

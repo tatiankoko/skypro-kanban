@@ -4,11 +4,10 @@ import {MainColumn} from "../main/Main.styled.js";
 import {CardsStyled} from "../card/Card.styled.js";
 import {ColumnTitle} from "./Column.styled.js";
 import {cardList} from "../../data.js";
-import {useContext} from "react";
-import TasksContext from "../../context/TaskContext.jsx";
+import {useTasks} from "../../context/TaskContext.jsx";
 
 const Column = ({title, loading}) => {
-    const {tasks} = useContext(TasksContext);
+    const {tasks} = useTasks();
 
     return (
         <MainColumn>

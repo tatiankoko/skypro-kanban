@@ -3,11 +3,39 @@ import {MainBlock, MainContent, MainPlaceholder, MainStyled} from "./Main.styled
 import {ContainerStyled} from "../Container.styled.js";
 import {ErrorMessage} from "../Notification.styled.js";
 import {status} from "../../status.js";
-import {useContext} from "react";
-import TasksContext from "../../context/TaskContext.jsx";
+import {useCallback, useEffect, useState} from "react";
+import {useTasks} from "../../context/TaskContext.jsx";
+import {fetchTasks} from "../../services/api.js";
+import {useAuth} from "../../context/AuthContext.jsx";
 
-const Main = ({error, loading}) => {
-    const {tasks} = useContext(TasksContext);
+const Main = () => {
+    const [loading, setLoading] = useState(true)
+    const {tasks, setTasks} = useTasks();
+    const {user} = useAuth();
+    const [error, setError] = useState('');
+
+    const getTasks = useCallback(async () => {
+        try {
+            setLoading(true);
+
+            const data = await fetchTasks({
+                token: user.token,
+            });
+
+            if (data) {
+                setTasks(data);
+            }
+        } catch (err) {
+            setError(err.message);
+            console.log(err.message);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        getTasks();
+    }, [getTasks]);
 
     return (
         <MainStyled>
