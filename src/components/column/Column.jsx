@@ -5,16 +5,21 @@ import {CardsStyled} from "../card/Card.styled.js";
 import {ColumnTitle} from "./Column.styled.js";
 import {cardList} from "../../data.js";
 import {useTasks} from "../../context/TaskContext.jsx";
+import {useDroppable} from "@dnd-kit/react";
 
 const Column = ({title, loading}) => {
     const {tasks} = useTasks();
+
+    const {ref} = useDroppable({
+        id: title,
+    });
 
     return (
         <MainColumn>
             <ColumnTitle>
                 <p>{title}</p>
             </ColumnTitle>
-            <CardsStyled>
+            <CardsStyled ref={ref}>
                 {
                     loading
                         ? cardList
@@ -33,7 +38,7 @@ const Column = ({title, loading}) => {
                                                 theme={task.topic}
                                                 title={task.title}
                                                 date={task.date}
-                                                id={task._id}/>
+                                                id={task._id} />
                                 )
                 }
             </CardsStyled>

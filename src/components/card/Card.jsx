@@ -2,6 +2,7 @@ import {CardBtn, CardContent, CardDate, CardGroup, CardsCard, CardsItem, CardThe
 import {Link} from "react-router-dom";
 import {category} from "../../category.js";
 import {useTheme} from "styled-components";
+import {useDraggable} from "@dnd-kit/react";
 
 export const themeBg = (categoryKey) => {
     return categoryKey
@@ -29,8 +30,10 @@ const Card = ({theme, title, date, id}) => {
         year: '2-digit'
     });
 
+    const {ref} = useDraggable({id});
+
     return (
-        <CardsItem>
+        <CardsItem ref={ref}>
             <CardsCard>
                 <CardGroup>
                     <CardTheme

@@ -7,10 +7,11 @@ import {useCallback, useEffect, useState} from "react";
 import {useTasks} from "../../context/TaskContext.jsx";
 import {fetchTasks} from "../../services/api.js";
 import {useAuth} from "../../context/AuthContext.jsx";
+import {DragDropProvider} from "@dnd-kit/react";
 
 const Main = () => {
     const [loading, setLoading] = useState(true)
-    const {tasks, setTasks} = useTasks();
+    const {tasks, setTasks, updateTask} = useTasks();
     const {user} = useAuth();
     const [error, setError] = useState('');
 
@@ -37,16 +38,31 @@ const Main = () => {
         getTasks();
     }, [getTasks]);
 
+
+    const handleDragEnd = async (event) => {
+        if (event.canceled) return;
+
+        const {source, target} = event.operation;
+        if (!source || !target) return;
+
+        const task = tasks?.find((task) => task._id === source.id);
+        if (!task || task.status === target.id) return;
+
+        await updateTask({...task, status: target.id});
+    };
+
     return (
         <MainStyled>
             <ContainerStyled>
                 <MainBlock>
                     <MainContent>
-                        <Column title={status.none} loading={loading}/>
-                        <Column title={status.todo} loading={loading}/>
-                        <Column title={status.process} loading={loading}/>
-                        <Column title={status.testing} loading={loading}/>
-                        <Column title={status.done} loading={loading}/>
+                        <DragDropProvider onDragEnd={handleDragEnd}>
+                            <Column title={status.none} loading={loading}/>
+                            <Column title={status.todo} loading={loading}/>
+                            <Column title={status.process} loading={loading}/>
+                            <Column title={status.testing} loading={loading}/>
+                            <Column title={status.done} loading={loading}/>
+                        </DragDropProvider>
                     </MainContent>
                     {
                         loading
