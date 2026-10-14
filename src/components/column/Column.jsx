@@ -6,9 +6,14 @@ import {ColumnTitle} from "./Column.styled.js";
 import {cardList} from "../../data.js";
 import {useTasks} from "../../context/TaskContext.jsx";
 import CardDroppable from "../card/CardDroppable.jsx";
+import {useDragOperation} from "@dnd-kit/react";
 
 const Column = ({title, loading, dragActive}) => {
     const {tasks} = useTasks();
+    const {source} = useDragOperation();
+
+    const draggedTask = tasks?.find((task) => task._id === source?.id);
+    const isSourceColumn = draggedTask?.status === title;
 
     return (
         <MainColumn>
@@ -37,7 +42,11 @@ const Column = ({title, loading, dragActive}) => {
                                                 id={task._id} />
                                 )
                 }
-                <CardDroppable dragActive={dragActive} title={title} />
+                {
+                    dragActive && !isSourceColumn
+                        ? <CardDroppable title={title} />
+                        : null
+                }
             </CardsStyled>
         </MainColumn>
     );

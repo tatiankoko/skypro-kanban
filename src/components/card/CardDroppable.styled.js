@@ -20,8 +20,6 @@ export const CardsCardDroppable = styled.div`
     justify-content: stretch;
     padding: 15px 13px 19px;
 
-    opacity: ${ ({$dragActive}) => $dragActive ? 1 : 0 };
-
     @media screen and (max-width: 1200px) {
         width: 220px;
         height: 130px;

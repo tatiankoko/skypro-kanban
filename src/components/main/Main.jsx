@@ -7,7 +7,8 @@ import {useCallback, useEffect, useState} from "react";
 import {useTasks} from "../../context/TaskContext.jsx";
 import {fetchTasks} from "../../services/api.js";
 import {useAuth} from "../../context/AuthContext.jsx";
-import {DragDropProvider} from "@dnd-kit/react";
+import {DragDropProvider, DragOverlay} from "@dnd-kit/react";
+import {CardView} from "../card/Card.jsx";
 
 const Main = () => {
     const [loading, setLoading] = useState(true)
@@ -67,11 +68,29 @@ const Main = () => {
                     <MainContent>
                         <DragDropProvider onDragStart={handleDragStart}
                                           onDragEnd={handleDragEnd}>
-                            <Column title={status.none} loading={loading} dragActive={dragActive}/>
-                            <Column title={status.todo} loading={loading} dragActive={dragActive}/>
-                            <Column title={status.process} loading={loading} dragActive={dragActive}/>
-                            <Column title={status.testing} loading={loading} dragActive={dragActive}/>
-                            <Column title={status.done} loading={loading} dragActive={dragActive}/>
+                            <Column title={status.none}
+                                    loading={loading}
+                                    dragActive={dragActive}/>
+                            <Column title={status.todo}
+                                    loading={loading}
+                                    dragActive={dragActive}/>
+                            <Column title={status.process}
+                                    loading={loading}
+                                    dragActive={dragActive}/>
+                            <Column title={status.testing}
+                                    loading={loading}
+                                    dragActive={dragActive}/>
+                            <Column title={status.done}
+                                    loading={loading}
+                                    dragActive={dragActive}/>
+                            <DragOverlay>
+                                {(source) => (
+                                    <CardView theme={source.data.theme}
+                                              title={source.data.title}
+                                              date={source.data.date}
+                                              id={source.data.id} />
+                                )}
+                            </DragOverlay>
                         </DragDropProvider>
                     </MainContent>
                     {
