@@ -14,6 +14,7 @@ const Main = () => {
     const {tasks, setTasks, updateTask} = useTasks();
     const {user} = useAuth();
     const [error, setError] = useState('');
+    const [dragActive, setDragActive] = useState(false);
 
     const getTasks = useCallback(async () => {
         try {
@@ -39,7 +40,15 @@ const Main = () => {
     }, [getTasks]);
 
 
+    const handleDragStart = async (event) => {
+        if (event.canceled) return;
+
+        setDragActive(true);
+    };
+
     const handleDragEnd = async (event) => {
+        setDragActive(false);
+
         if (event.canceled) return;
 
         const {source, target} = event.operation;
@@ -56,12 +65,13 @@ const Main = () => {
             <ContainerStyled>
                 <MainBlock>
                     <MainContent>
-                        <DragDropProvider onDragEnd={handleDragEnd}>
-                            <Column title={status.none} loading={loading}/>
-                            <Column title={status.todo} loading={loading}/>
-                            <Column title={status.process} loading={loading}/>
-                            <Column title={status.testing} loading={loading}/>
-                            <Column title={status.done} loading={loading}/>
+                        <DragDropProvider onDragStart={handleDragStart}
+                                          onDragEnd={handleDragEnd}>
+                            <Column title={status.none} loading={loading} dragActive={dragActive}/>
+                            <Column title={status.todo} loading={loading} dragActive={dragActive}/>
+                            <Column title={status.process} loading={loading} dragActive={dragActive}/>
+                            <Column title={status.testing} loading={loading} dragActive={dragActive}/>
+                            <Column title={status.done} loading={loading} dragActive={dragActive}/>
                         </DragDropProvider>
                     </MainContent>
                     {

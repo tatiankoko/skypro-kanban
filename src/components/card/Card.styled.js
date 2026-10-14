@@ -18,6 +18,7 @@ export const CardsItem = styled.div`
     animation-name: ${ CardAnimation };
     animation-duration: 500ms;
     animation-timing-function: linear;
+    cursor: grab;
 `
 
 export const CardsCard = styled.div`
@@ -79,6 +80,7 @@ export const CardBtn = styled.div`
     align-items: center;
     justify-content: space-around;
     padding: 2px;
+    cursor: default;
 
     div {
         width: 4px;
