@@ -27,15 +27,28 @@ export const ColumnTitle = styled.div`
 
 export const ColumnCards = styled.div`
     width: 100%;
-    /*height: 100vh;*/
+    max-height: calc(100vh - 188px);
     display: block;
     position: relative;
+    overflow-x: hidden;
     overflow-y: auto;
-    /*overflow-x: auto;*/
-    
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    touch-action: pan-y;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+
     @media screen and (max-width: 1200px) {
         width: 100%;
+        max-height: none;
         display: flex;
-        overflow-y: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        touch-action: pan-x;
     }
 `
