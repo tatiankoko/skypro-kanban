@@ -5,6 +5,18 @@ export const MainStyled = styled.main`
     background-color: ${ (theme) => theme.mainBg };
 `
 
+export const MainContainerStyled = styled.div`
+    max-width: 1260px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
+
+    @media screen and (max-width: 495px) {
+        width: 100%;
+        padding: 0 0 0 16px;
+    }
+`
+
 export const MainBlock = styled.div`
     width: 100%;
     height: calc(100vh - 70px);
@@ -14,7 +26,14 @@ export const MainBlock = styled.div`
     @media screen and (max-width: 1200px) {
         width: 100%;
         margin: 0 auto;
-        padding: 40px 0 64px;
+        padding: 30px 0 69px;
+
+        /*overflow-x: hidden;*/
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        touch-action: pan-y;
     }
 `
 
@@ -22,6 +41,12 @@ export const MainContent = styled.div`
     width: 100%;
     display: flex;
 
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+    }
+    
     @media screen and (max-width: 1200px) {
         display: block;
     }

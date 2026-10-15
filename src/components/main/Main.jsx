@@ -1,6 +1,5 @@
 import Column from "../column/Column.jsx";
-import {MainBlock, MainContent, MainPlaceholder, MainStyled} from "./Main.styled.js";
-import {ContainerStyled} from "../Container.styled.js";
+import {MainBlock, MainContainerStyled, MainContent, MainPlaceholder, MainStyled} from "./Main.styled.js";
 import {ErrorMessage} from "../Notification.styled.js";
 import {status} from "../../status.js";
 import {useCallback, useEffect, useState} from "react";
@@ -63,7 +62,7 @@ const Main = () => {
 
     return (
         <MainStyled>
-            <ContainerStyled>
+            <MainContainerStyled>
                 <MainBlock>
                     <MainContent>
                         <DragDropProvider onDragStart={handleDragStart}
@@ -106,7 +105,7 @@ const Main = () => {
                             : null
                     }
                 </MainBlock>
-            </ContainerStyled>
+            </MainContainerStyled>
         </MainStyled>
     )
 }

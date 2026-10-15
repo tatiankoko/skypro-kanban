@@ -1,7 +1,14 @@
 import PopUser from "../popups/popUser/PopUser.jsx";
 import {useContext, useState} from "react";
-import {HeaderBlock, HeaderButtonMainNew, HeaderLogo, HeaderNav, HeaderStyled, HeaderUser} from "./Header.styled.js";
-import {ContainerStyled} from "../Container.styled.js";
+import {
+    HeaderBlock,
+    HeaderButtonMainNew,
+    HeaderContainerStyled,
+    HeaderLogo,
+    HeaderNav,
+    HeaderStyled,
+    HeaderUser
+} from "./Header.styled.js";
 import {Link, useNavigate} from "react-router-dom";
 import ThemeContext from "../../context/ThemeContext.jsx";
 import {useAuth} from "../../context/AuthContext.jsx";
@@ -20,7 +27,7 @@ const Header = () => {
 
     return (
         <HeaderStyled>
-            <ContainerStyled>
+            <HeaderContainerStyled>
                 <HeaderBlock>
                     <Link to={"/"}>
                         <HeaderLogo>
@@ -49,7 +56,7 @@ const Header = () => {
                         }
                     </HeaderNav>
                 </HeaderBlock>
-            </ContainerStyled>
+            </HeaderContainerStyled>
         </HeaderStyled>
     )
 }
