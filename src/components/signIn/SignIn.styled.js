@@ -141,20 +141,11 @@ export const ModalBtnEnter = styled.button`
     line-height: 21px;
     font-weight: 500;
     letter-spacing: -0.14px;
-    color: ${ ({ theme }) => theme.background};
+    color: ${ ({ theme }) => theme.btnText};
     
     &:hover {
         background-color: ${ ({ theme }) => theme.btnHover };
     }
-
-    /*a {
-        width: 100%;
-        height: 100%;
-        color: ${ props => props.theme.background };
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }*/
 
     @media screen and (max-width: 375px) {
         height: 40px;
