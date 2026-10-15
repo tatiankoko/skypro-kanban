@@ -27,17 +27,6 @@ export const MainContent = styled.div`
     }
 `
 
-export const MainColumn = styled.div`
-    width: 20%;
-    margin: 0 auto;
-    display: block;
-
-    @media screen and (max-width: 1200px) {
-        margin: 0 auto;
-        display: block;
-    }
-`
-
 export const MainPlaceholder = styled.div`
     justify-self: center;
     align-content: center;

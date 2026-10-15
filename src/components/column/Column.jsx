@@ -1,8 +1,6 @@
 import Card from "../card/Card.jsx";
 import CardLoader from "../card/CardLoader.jsx";
-import {MainColumn} from "../main/Main.styled.js";
-import {CardsStyled} from "../card/Card.styled.js";
-import {ColumnTitle} from "./Column.styled.js";
+import {ColumnCards, ColumnTitle, ColumnStyled} from "./Column.styled.js";
 import {cardList} from "../../data.js";
 import {useTasks} from "../../context/TaskContext.jsx";
 import CardDroppable from "../card/CardDroppable.jsx";
@@ -16,11 +14,11 @@ const Column = ({title, loading, dragActive}) => {
     const isSourceColumn = draggedTask?.status === title;
 
     return (
-        <MainColumn>
+        <ColumnStyled>
             <ColumnTitle>
                 <p>{title}</p>
             </ColumnTitle>
-            <CardsStyled>
+            <ColumnCards>
                 {
                     loading
                         ? cardList
@@ -47,8 +45,8 @@ const Column = ({title, loading, dragActive}) => {
                         ? <CardDroppable title={title} />
                         : null
                 }
-            </CardsStyled>
-        </MainColumn>
+            </ColumnCards>
+        </ColumnStyled>
     );
 }
 

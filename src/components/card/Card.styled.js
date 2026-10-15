@@ -1,18 +1,6 @@
 import styled from "styled-components";
 import {CardAnimation} from "./CardAnimation.styled.js";
 
-export const CardsStyled = styled.div`
-    width: 100%;
-    display: block;
-    position: relative;
-    
-    @media screen and (max-width: 1200px) {
-        width: 100%;
-        display: flex;
-        overflow-y: auto;
-    }
-`
-
 export const CardsItem = styled.div`
     padding: 5px;
     animation-name: ${ CardAnimation };
