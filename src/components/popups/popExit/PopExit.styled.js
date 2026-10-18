@@ -25,7 +25,7 @@ export const PopExitContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.4);
+    background: transparent;
 `
 
 export const PopExitBlock = styled.div`
@@ -36,7 +36,7 @@ export const PopExitBlock = styled.div`
     padding: 50px 60px;
     border-radius: 10px;
     background-color: ${ props => props.theme.background };
-    border: 0.7px solid ${ props => props.theme.border };
+    border: 1px solid ${ props => props.theme.border };
     box-shadow: 0 4px 67px -12px ${ props => props.theme.popShadow };
 
     @media only screen and (max-width: 375px) {
@@ -60,7 +60,6 @@ export const PopExitForm = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
-    /*justify-content: space-between;*/
 
     @media only screen and (max-width: 375px) {
         display: block;
@@ -101,7 +100,7 @@ export const PopExitExitNo = styled.button`
     height: 30px;
     background-color: transparent;
     border-radius: 4px;
-    border: 0.7px solid ${ props => props.theme.btnBorder };
+    border: 1px solid ${ props => props.theme.btnBorder };
     outline: none;
     display: flex;
     align-items: center;

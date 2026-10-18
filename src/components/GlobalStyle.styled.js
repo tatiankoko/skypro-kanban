@@ -14,11 +14,13 @@ export const GlobalStyle = createGlobalStyle`
 
     a,
     a:visited {
+        font-family: "Roboto", Arial, Helvetica, sans-serif;
         text-decoration: none;
         cursor: pointer;
     }
 
     button {
+        font-family: "Roboto", Arial, Helvetica, sans-serif;
         cursor: pointer;
         outline: none;
     }

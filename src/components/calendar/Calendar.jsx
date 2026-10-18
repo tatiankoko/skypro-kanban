@@ -60,7 +60,7 @@ const CardCalendar = ({initialDate = null, setDate}) => {
                         showNavigation={false}
                         prev2Label={null}
                         next2Label={null}
-                        showNeighboringMonth={false}
+                        showNeighboringMonth={true}
                         allowPartialRange={false}
                         selectRange={false}
                     />

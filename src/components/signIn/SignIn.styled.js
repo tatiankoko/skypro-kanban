@@ -59,6 +59,7 @@ export const ModalTtl = styled.div`
         line-height: 30px;
         letter-spacing: -0.6px;
         margin-bottom: 20px;
+    }
 `
 
 export const ModalFormLogin = styled.form`
@@ -68,9 +69,6 @@ export const ModalFormLogin = styled.form`
     align-items: center;
     justify-content: center;
     
-    /*input:first-child {
-        margin-bottom: 7px;
-    }*/
     input:not(:first-child) {
         margin-top: 7px;
     }
