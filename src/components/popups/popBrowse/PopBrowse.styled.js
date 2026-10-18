@@ -31,6 +31,7 @@ export const PopBrowseContainer = styled.div`
     align-items: center;
     justify-content: center;
     background-color: transparent;
+    backdrop-filter: brightness(30%);
 
     @media screen and (max-width: 660px) {
         padding: 0;

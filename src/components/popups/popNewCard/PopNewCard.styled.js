@@ -31,6 +31,7 @@ export const PopNewCardContainer = styled.div`
     align-items: center;
     justify-content: center;
     background: transparent;
+    backdrop-filter: brightness(30%);
 
     @media screen and (max-width: 660px) {
         padding: 0;

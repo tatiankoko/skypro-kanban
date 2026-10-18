@@ -26,6 +26,7 @@ export const PopExitContainer = styled.div`
     align-items: center;
     justify-content: center;
     background: transparent;
+    backdrop-filter: brightness(30%);
 `
 
 export const PopExitBlock = styled.div`
