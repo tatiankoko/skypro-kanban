@@ -32,19 +32,6 @@ export async function postTask({ token, task }) {
     }
 }
 
-export async function getTask({ token, id }) {
-    try {
-        const data = await axios.get(API_URL + id, {
-            headers: {
-                Authorization: 'Bearer ' + token,
-            },
-        })
-        return data.data
-    } catch (error) {
-        throw new Error(error.message)
-    }
-}
-
 export async function editTask({ token, id, task }) {
     try {
         const data = await axios.put(API_URL + id, task, {

@@ -28,7 +28,6 @@ export const MainBlock = styled.div`
         margin: 0 auto;
         padding: 30px 0 69px;
 
-        /*overflow-x: hidden;*/
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;

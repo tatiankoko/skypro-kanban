@@ -8,7 +8,7 @@ export const PopUserSetStyled = styled.div`
     width: 213px;
     height: 205px;
     border-radius: 10px;
-    border: 0.7px solid ${ props => props.theme.gray40 };
+    border: 1px solid ${ props => props.theme.gray40 };
     background: ${ props => props.theme.background };
     box-shadow: 0 10px 39px 0 ${ props => props.theme.shadow };
     padding: 34px;
@@ -94,19 +94,5 @@ export const PopUserSetTheme = styled.div`
     
     & input:checked[type=checkbox]::before {
         left: 12px;
-    }
-`
-
-export const PopUserButton = styled.button`
-    border-radius: 4px;
-    border: 0.7px solid ${ props => props.theme.btnBorder };
-    outline: none;
-    background: transparent;
-    color: ${ props => props.theme.btnBorder };
-    
-    &:hover {
-        background-color: ${ props => props.theme.btnBg };
-        border-color: ${ props => props.theme.btnBg };
-        color: ${ props => props.theme.btnText };
     }
 `
