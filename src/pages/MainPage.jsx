@@ -3,11 +3,11 @@ import Header from "../components/header/Header.jsx";
 import Main from "../components/main/Main.jsx";
 import {Outlet} from "react-router-dom";
 
-const MainPage = ({loading, error}) => {
+const MainPage = () => {
     return (
         <WrapperStyled>
             <Header />
-            <Main error={error} loading={loading} />
+            <Main />
             <Outlet />
         </WrapperStyled>
     )
