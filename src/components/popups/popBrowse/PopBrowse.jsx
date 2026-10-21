@@ -42,7 +42,10 @@ const PopBrowse = () => {
         ))?.[0];
 
     const [editedTask, setEditedTask] = useState({
-        _id: task?.id,
+        _id: task?._id,
+        userId: task?.userId,
+        title: task?.title,
+        topic: task?.topic,
         status: task?.status,
         description: task?.description,
         date: task?.date,
@@ -65,7 +68,7 @@ const PopBrowse = () => {
         const newErrors = { title: "", description: "" };
         let isValid = true;
 
-        if (!editedTask.description.trim()) {
+        if (!editedTask.description || !editedTask.description?.trim()) {
             newErrors.description = true;
             setError("Заполните поле описание задачи");
             isValid = false;
@@ -82,16 +85,18 @@ const PopBrowse = () => {
             return;
         }
 
-        task.status = editedTask.status;
-        task.description = editedTask.description;
-        task.date = editedTask.date;
-
         try {
-            await updateTask(task);
+            const result = await updateTask(editedTask);
+
+            if (result) {
+                task.status = editedTask.status;
+                task.description = editedTask.description;
+                task.date = editedTask.date;
+
+                setEditState(false);
+            }
         } catch (err) {
             setError(err.message);
-        } finally {
-            setEditState(false);
         }
     }
 

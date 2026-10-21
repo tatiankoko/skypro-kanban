@@ -19,6 +19,7 @@ export const CardsCard = styled.div`
     align-items: flex-start;
     justify-content: stretch;
     padding: 15px 13px 19px;
+    overflow: hidden;
 
     @media screen and (max-width: 1200px) {
         width: 220px;
@@ -92,6 +93,10 @@ export const CardTitle = styled.h3`
     line-height: 18px;
     color: ${ ({ theme }) => theme.title };
     margin-bottom: 10px;
+    width: 194px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const CardDate = styled.div`
@@ -108,6 +113,5 @@ export const CardDate = styled.div`
         font-size: 10px;
         line-height: 13px;
         color: ${ ({ theme }) => theme.gray };
-        letter-spacing: 0.2px;
     }
 `

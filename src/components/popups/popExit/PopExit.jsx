@@ -8,14 +8,17 @@ import {
     PopExitTtl
 } from "./PopExit.styled.js";
 import {useAuth} from "../../../context/AuthContext.jsx";
+import {useTasks} from "../../../context/TaskContext.jsx";
 
 const PopExit = () => {
     const navigate = useNavigate();
     const { logout } = useAuth();
+    const { setTasks } = useTasks();
 
     function handleLogout(e) {
         e.preventDefault();
         logout();
+        setTasks(null);
         navigate("/sign-in");
     }
 

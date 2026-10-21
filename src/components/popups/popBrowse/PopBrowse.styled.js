@@ -76,6 +76,11 @@ export const PopBrowseTtl = styled.h3`
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
+    /*width: 194px;*/
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const PopBrowseStatus = styled.h3`
