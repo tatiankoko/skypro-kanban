@@ -5,31 +5,33 @@ export const PopBrowseStyled = styled.div`
     width: 100%;
     height: 100%;
     min-width: 375px;
-    min-height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 7;
+    background-color: transparent;
     
     &:target {
         display: block;
     }
 
     @media screen and (max-width: 660px) {
+        height: calc(100vh - 70px);
         top: 70px;
+        box-shadow: 0 4px 67px -12px ${ props => props.theme.popShadow };
     }
 `
 
 export const PopBrowseContainer = styled.div`
     width: 100%;
     height: 100%;
-    min-height: 100vh;
     padding: 0 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.4);
+    background-color: transparent;
+    backdrop-filter: brightness(30%);
 
     @media screen and (max-width: 660px) {
         padding: 0;
@@ -74,6 +76,11 @@ export const PopBrowseTtl = styled.h3`
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
+    /*width: 194px;*/
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const PopBrowseStatus = styled.h3`
@@ -92,12 +99,19 @@ export const PopBrowseStatusThemes = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    /*justify-content: flex-start;*/
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 7px;
+
+    @media screen and (max-width: 660px) {
+        justify-content: flex-start;
+    }
 `
 
 export const PopBrowseStatusTheme = styled.div`
-    display: ${ ({$readonly, $active}) => $readonly && !$active ? 'none': 'block' };
+    display: ${ ({$readonly, $active}) => 
+            $readonly && !$active 
+                    ? 'none'
+                    : 'block' };
     border-radius: 24px;
     border: 1px solid ${ props => props.theme.gray40 };
     background: ${ ({$active}) => $active 
@@ -108,7 +122,6 @@ export const PopBrowseStatusTheme = styled.div`
             : props => props.theme.gray };
 
     padding: 10px 17px;
-    /*margin-right: 7px;*/
     margin-bottom: 7px;
 
     font-size: 14px;
@@ -116,8 +129,10 @@ export const PopBrowseStatusTheme = styled.div`
     line-height: 1;
     letter-spacing: -0.14px;
 
-    opacity: ${ ({$readonly, $active}) => $readonly && !$active ? 0 : 1 };
-    cursor: ${ ({$readonly}) => $readonly ? 'default' : 'pointer' };
+    opacity: ${ ({$readonly, $active}) => 
+            $readonly && !$active ? 0 : 1 };
+    cursor: ${ ({$readonly}) => 
+            $readonly ? 'default' : 'pointer' };
 `
 
 export const PopBrowseWrapper = styled.div`
@@ -145,6 +160,15 @@ export const PopBrowseForm = styled.form`
 export const FormBrowseBlock = styled.div`
     display: flex;
     flex-direction: column;
+`
+
+export const CategoriesBrowse = styled.div`
+    margin-bottom: 20px;
+    display: none;
+
+    @media screen and (max-width: 660px) {
+        display: block;
+    }
 `
 
 export const PopBrowseBtnEdit = styled.div`
@@ -202,14 +226,23 @@ export const BtnGroup = styled.div`
 `
 
 export const BtnBg = styled.button`
+    display: ${ ({$adaptiveOnly}) => $adaptiveOnly ? 'none' : 'unset'};
     border-radius: 4px;
     background-color: ${ props => props.theme.btnBg };
     border: none;
     outline: none;
     color: ${ props => props.theme.btnText };
     
+    & a {
+        color: ${ props => props.theme.btnText };
+    }
+    
     &:hover {
         background-color: ${ props => props.theme.btnHover };
+    }
+
+    @media screen and (max-width: 660px) {
+        display: ${ ({$adaptiveHide}) => $adaptiveHide ? 'none' : 'unset'};
     }
 `
 

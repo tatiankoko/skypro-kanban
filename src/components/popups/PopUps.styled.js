@@ -35,7 +35,7 @@ export const StyledTextarea = styled.textarea`
     max-width: 370px;
     height: 200px;
     outline: none;
-    padding: 20px 14px;
+    padding: 14px;
     background: transparent;
     color: ${ props => props.theme.title };
     border: 1px solid ${ props => props.theme.gray40 };
@@ -45,7 +45,7 @@ export const StyledTextarea = styled.textarea`
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.14px;
-    margin-top: 14px;
+    margin: 20px 0;
     resize: none;
 
     &:read-only {
@@ -69,5 +69,11 @@ export const StyledTextarea = styled.textarea`
         line-height: 1px;
         letter-spacing: -0.14px;
         color: ${({ theme }) => theme.gray};
+    }
+
+    @media screen and (max-width: 495px) {
+        min-width: 100%;
+        height: 45px;
+        margin: 20px 0 0 0;
     }
 `

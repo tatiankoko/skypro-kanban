@@ -1,6 +1,6 @@
 import CardCalendar from "../../calendar/Calendar.jsx";
 import {Link, Outlet, useParams} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
@@ -13,16 +13,16 @@ import {
     PopBrowseContainer,
     PopBrowseContent, PopBrowseForm, PopBrowseStatus, PopBrowseStatusP, PopBrowseStatusThemes,
     PopBrowseStyled,
-    PopBrowseTopBlock, PopBrowseTtl, PopBrowseWrapper, PopBrowseBtnBrowse, PopBrowseStatusTheme
+    PopBrowseTopBlock, PopBrowseTtl, PopBrowseWrapper, PopBrowseBtnBrowse, PopBrowseStatusTheme, CategoriesBrowse
 } from "./PopBrowse.styled.js";
-import {CategoriesTheme, Subttl} from "../popNewCard/PopNewCard.styled.js";
+import {CategoriesP, CategoriesTheme, Subttl} from "../popNewCard/PopNewCard.styled.js";
 import {themeBg, themeColor} from "../../card/Card.jsx";
 import {useTheme} from "styled-components";
-import TasksContext from "../../../context/TaskContext.jsx";
+import {useTasks} from "../../../context/TaskContext.jsx";
 
 const PopBrowse = () => {
     const userTheme = useTheme();
-    const {tasks, updateTask} = useContext(TasksContext);
+    const {tasks, updateTask} = useTasks();
 
     const { id } = useParams();
     const [error, setError] = useState("");
@@ -42,7 +42,10 @@ const PopBrowse = () => {
         ))?.[0];
 
     const [editedTask, setEditedTask] = useState({
-        _id: task?.id,
+        _id: task?._id,
+        userId: task?.userId,
+        title: task?.title,
+        topic: task?.topic,
         status: task?.status,
         description: task?.description,
         date: task?.date,
@@ -65,7 +68,7 @@ const PopBrowse = () => {
         const newErrors = { title: "", description: "" };
         let isValid = true;
 
-        if (!editedTask.description.trim()) {
+        if (!editedTask.description || !editedTask.description?.trim()) {
             newErrors.description = true;
             setError("Заполните поле описание задачи");
             isValid = false;
@@ -82,16 +85,18 @@ const PopBrowse = () => {
             return;
         }
 
-        task.status = editedTask.status;
-        task.description = editedTask.description;
-        task.date = editedTask.date;
-
         try {
-            await updateTask(task);
+            const result = await updateTask(editedTask);
+
+            if (result) {
+                task.status = editedTask.status;
+                task.description = editedTask.description;
+                task.date = editedTask.date;
+
+                setEditState(false);
+            }
         } catch (err) {
             setError(err.message);
-        } finally {
-            setEditState(false);
         }
     }
 
@@ -123,6 +128,7 @@ const PopBrowse = () => {
                                 $active={true}
                                 $bgColor={userTheme[themeBg(categoryKey)]}
                                 $color={userTheme[themeColor(categoryKey)]}
+                                $adaptiveHide={true}
                             >
                                 <p>{task?.topic}</p>
                             </CategoriesTheme>
@@ -169,12 +175,26 @@ const PopBrowse = () => {
                                                   })
                                               : {} } />
                         </PopBrowseWrapper>
+                        <CategoriesBrowse>
+                            <CategoriesP>Категория</CategoriesP>
+                            <CategoriesTheme
+                                $active={true}
+                                $bgColor={userTheme[themeBg(categoryKey)]}
+                                $color={userTheme[themeColor(categoryKey)]}
+                            >
+                                <p>{task?.topic}</p>
+                            </CategoriesTheme>
+                        </CategoriesBrowse>
                         {
                             editState
                                 ? <PopBrowseBtnEdit>
                                     <BtnGroup>
                                         <BtnBg onClick={handleSubmitEdit}>
                                             Сохранить
+                                        </BtnBg>
+
+                                        <BtnBg $adaptiveOnly={true}>
+                                            <Link to={"/"}>Закрыть</Link>
                                         </BtnBg>
 
                                         <BtnBor onClick={handleCancelEditState}>
@@ -185,9 +205,9 @@ const PopBrowse = () => {
                                             <BtnBor>Удалить задачу</BtnBor>
                                         </Link>
                                     </BtnGroup>
-                                    <Link to={"/"}>
-                                        <BtnBg>Закрыть</BtnBg>
-                                    </Link>
+                                    <BtnBg $adaptiveHide={true}>
+                                        <Link to={"/"}>Закрыть</Link>
+                                    </BtnBg>
                                 </PopBrowseBtnEdit>
                                 : <PopBrowseBtnBrowse>
                                     <BtnGroup>
@@ -200,9 +220,9 @@ const PopBrowse = () => {
                                         </Link>
                                     </BtnGroup>
 
-                                    <Link to={"/"}>
-                                        <BtnBg>Закрыть</BtnBg>
-                                    </Link>
+                                    <BtnBg>
+                                        <Link to={"/"}>Закрыть</Link>
+                                    </BtnBg>
                                 </PopBrowseBtnBrowse>
                         }
                         {

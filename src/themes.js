@@ -54,5 +54,4 @@ export const darkTheme = {
     title: '#FFFFFF',
     shadow: '#94A6BE66',
     popShadow: '#00000021',
-    /*#8B94A3*/
 }

@@ -1,6 +1,6 @@
 import CardCalendar from "../../calendar/Calendar.jsx";
 import {useNavigate} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import PopInput from "../PopInput.jsx";
 import {ErrorMessage} from "../../Notification.styled.js";
 import {category} from "../../../category.js";
@@ -15,13 +15,13 @@ import {
 } from "./PopNewCard.styled.js";
 import {themeBg, themeColor} from "../../card/Card.jsx";
 import {useTheme} from "styled-components";
-import TasksContext from "../../../context/TaskContext.jsx";
+import {useTasks} from "../../../context/TaskContext.jsx";
 
 const PopNewCard = () => {
     const userTheme = useTheme();
     const navigate = useNavigate();
     const [error, setError] = useState("");
-    const {addTask} = useContext(TasksContext);
+    const {addTask} = useTasks();
 
     const [newTask, setNewTask] = useState({
         title: "",

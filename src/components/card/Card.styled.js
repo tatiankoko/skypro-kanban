@@ -1,23 +1,12 @@
 import styled from "styled-components";
 import {CardAnimation} from "./CardAnimation.styled.js";
 
-export const CardsStyled = styled.div`
-    width: 100%;
-    display: block;
-    position: relative;
-    
-    @media screen and (max-width: 1200px) {
-        width: 100%;
-        display: flex;
-        overflow-y: auto;
-    }
-`
-
 export const CardsItem = styled.div`
     padding: 5px;
     animation-name: ${ CardAnimation };
     animation-duration: 500ms;
     animation-timing-function: linear;
+    cursor: grab;
 `
 
 export const CardsCard = styled.div`
@@ -30,6 +19,7 @@ export const CardsCard = styled.div`
     align-items: flex-start;
     justify-content: stretch;
     padding: 15px 13px 19px;
+    overflow: hidden;
 
     @media screen and (max-width: 1200px) {
         width: 220px;
@@ -79,6 +69,7 @@ export const CardBtn = styled.div`
     align-items: center;
     justify-content: space-around;
     padding: 2px;
+    cursor: default;
 
     div {
         width: 4px;
@@ -102,6 +93,10 @@ export const CardTitle = styled.h3`
     line-height: 18px;
     color: ${ ({ theme }) => theme.title };
     margin-bottom: 10px;
+    width: 194px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 
 export const CardDate = styled.div`
@@ -118,6 +113,5 @@ export const CardDate = styled.div`
         font-size: 10px;
         line-height: 13px;
         color: ${ ({ theme }) => theme.gray };
-        letter-spacing: 0.2px;
     }
 `

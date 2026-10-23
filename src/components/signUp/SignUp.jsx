@@ -7,14 +7,14 @@ import {
     SignInWrapper
 } from "../signIn/SignIn.styled.js";
 import {Link, useNavigate} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import BaseInput from "../signIn/BaseInput.jsx";
 import {ErrorNotification} from "../Notification.styled.js";
-import AuthContext from "../../context/AuthContext.jsx";
+import {useAuth} from "../../context/AuthContext.jsx";
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const { signup } = useContext(AuthContext);
+    const { signup } = useAuth();
 
     const [formData, setFormData] = useState({
         name: "",

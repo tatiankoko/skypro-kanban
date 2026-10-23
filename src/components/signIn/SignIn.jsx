@@ -6,14 +6,14 @@ import {
     SignInWrapper
 } from "./SignIn.styled.js";
 import {Link, useNavigate} from "react-router-dom";
-import {useContext, useState} from "react";
+import {useState} from "react";
 import BaseInput from "./BaseInput.jsx";
 import {ErrorNotification} from "../Notification.styled.js";
-import AuthContext from "../../context/AuthContext.jsx";
+import {useAuth} from "../../context/AuthContext.jsx";
 
 const SignIn = () => {
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    const { login } = useAuth();
 
     // состояние полей
     const [formData, setFormData] = useState({

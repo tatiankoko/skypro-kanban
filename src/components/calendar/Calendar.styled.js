@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 export const CalendarContainer = styled.div`
     .react-calendar {
-        width: 172px;
+        width: 174px;
         max-width: 100%;
         padding: 0;
         background: transparent;
         border: none;
         font-family: "Roboto", Arial, Helvetica, sans-serif;
-        /*line-height: 1.125em;*/
         margin-bottom: 14px;
         margin-top: 7px;
 
@@ -30,32 +29,46 @@ export const CalendarContainer = styled.div`
             &:enabled:hover {
                 cursor: pointer;
             }
+            
+            @media screen and (max-width: 660px) {
+                width: 43px !important;
+                height: 43px !important;
+            }
         }
 
         @media screen and (max-width: 660px) {
-            max-width: 340px;
-            width: 100%;
+            width: 100% !important;
         }
     }
 
-    .react-calendar__month-view__day__day {
-        width: 22px;
-        height: 22px;
+    .react-calendar__month-view__days__day--neighboringMonth {
+        opacity: 0;
     }
 
     .react-calendar__month-view__days {
-        row-gap: 3px;
-        column-gap: 3px;
+        display: grid !important;
+        grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+        justify-content: space-between;
+        align-items: center;
+        justify-items: center;
+        
+        .react-calendar__tile {
+            max-width: initial !important;
+        }
     }
 
     .react-calendar__month-view__weekdays {
         text-align: center;
-        /*text-transform: uppercase;*/
         font: inherit;
         font-size: 10px;
         line-height: 12px;
         font-weight: 500;
         color: ${ props => props.theme.gray };
+
+        @media screen and (max-width: 660px) {
+            font-size: 14px;
+            line-height: 23px;
+        }
     }
 
     .react-calendar__month-view__weekdays__weekday {
@@ -71,7 +84,7 @@ export const CalendarContainer = styled.div`
         align-items: center;
         justify-content: center;
         font: inherit;
-        font-size: 0.75em;
+        font-size: 10px;
         font-weight: bold;
     }
 
@@ -79,18 +92,10 @@ export const CalendarContainer = styled.div`
         color: ${ props => props.theme.gray };
     }
 
-    .react-calendar__year-view .react-calendar__tile,
-    .react-calendar__decade-view .react-calendar__tile,
-    .react-calendar__century-view .react-calendar__tile {
-        padding: 2em 0.5em;
-    }
-
     .react-calendar__tile {
         width: 22px !important;
         height: 22px;
-        /*margin: 2px;*/
-        /*max-width: 100%;*/
-        /*padding: 2px;*/
+        margin: 3px;
         background: none;
         text-align: center;
         font: inherit;
@@ -117,10 +122,16 @@ export const CalendarContainer = styled.div`
         &:enabled:focus {
             background-color: ${ props => props.theme.mainBg };
         }
+
+        @media screen and (max-width: 660px) {
+            width: 43px !important;
+            height: 43px !important;
+            font-size: 14px;
+            line-height: 23px;
+        }
     }    
 
     .react-calendar__tile--now {
-        /*background: #EAEEF6;*/
         font-weight: 700;
 
         &:enabled:hover,
@@ -154,6 +165,10 @@ export const CalendarContainer = styled.div`
     .react-calendar__month-view__days .react-calendar__tile {
         aspect-ratio: 1 / 1;
         flex-basis: 22px !important;
+
+        @media screen and (max-width: 660px) {
+            flex-basis: 43px !important;
+        }
     }
 
     .react-calendar--selectRange .react-calendar__tile--hover {
@@ -161,17 +176,7 @@ export const CalendarContainer = styled.div`
     }
 `
 
-export const CalendarStyled = styled.div`    
-    /*
-    width: 100%;
-     */
-    /*width: 182px;
-    margin-bottom: 20px;
-
-    @media screen and (max-width: 660px) {
-        max-width: 340px;
-        width: 100%;
-    }*/
+export const CalendarStyled = styled.div`
 `
 
 export const CalendarTtl = styled.p`
@@ -229,47 +234,9 @@ export const NavAction = styled.div`
     }
 `
 
-export const CalendarContent = styled.div`
-    margin-bottom: 12px;
-`
-
-export const CalendarDaysNames = styled.div`
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-    margin: 7px 0;
-    padding: 0 7px;
-`
-
-export const CalendarDayName = styled.div`
-    color: ${ ({ theme }) => theme.gray };
-    font-size: 10px;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.2px;
-
-    @media screen and (max-width: 660px) {
-        font-size: 14px;
-    }
-`
-
-export const CalendarCells = styled.div`
-    width: 182px;
-    height: 126px;
-    display: flex;
-    flex-wrap: wrap;
-
-    @media screen and (max-width: 660px) {
-        width: 344px;
-        height: auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-`
 export const CalendarPeriod = styled.div`
     padding: 0 7px;
+    margin-bottom: 20px;
 
     @media screen and (max-width: 660px) {
         padding: 0;
